@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harakiri Game Studios</title>
+  <meta name="description" content="Harakiri Game Studios: esperienze indie visive e coinvolgenti.">
+
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-p9+r64T1ZpskOzy0zEqm1S/x6W9ogA6pR3TzlUtl69XxRyCuVqexWe2RlUn3Fv1F1ek9Qt+gV7Gkgv4KURRhXw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<!-- Scroll to Top Button -->
+<button id="scrollToTop" aria-label="Torna su">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<body>
+
+  <!-- Splash -->
+  <div id="splash">
+    <img src="logo/logo-white.svg" alt="Harakiri Game Studios" class="logo splash-logo dark-logo" aria-hidden="true" />
+    <img src="logo/logo-black.svg" class="logo splash-logo light-logo" aria-hidden="true" />
+    <h1 class="splash-title">Harakiri Game Studios</h1>
+  </div>
+
+  <div id="particles-js"></div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <a href="#hero">
+        <img src="logo/logo-white.svg" class="nav-logo dark-logo logo-large" aria-hidden="true" />
+        <img src="logo/logo-black.svg" class="nav-logo light-logo logo-large" aria-hidden="true" />
+      </a>
+      Harakiri Game Studios
+    </div>
+
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">Chi Siamo</a></li>
+        <li><a href="#games">Giochi</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contatti</a></li>
+        <li><button id="themeToggle" aria-label="Toggle tema">🌓</button></li>
+      </ul>
+      <div class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero" class="hero parallax">
+    <div class="hero-content">
+      <h1>Harakiri Game Studios</h1>
+      <p>Esperienze indie visive e coinvolgenti.</p>
+      <audio controls autoplay loop>
+        <source src="musica.mp3" type="audio/mpeg" />
+      </audio>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2 class="section-title">Chi Siamo</h2>
+    <p>Siamo un team indie che realizza mondi bizzarri, surreali e magnetici. Sperimentiamo con gameplay, arte e narrazione per creare esperienze uniche.</p>
+  </section>
+
+  <!-- Games -->
+  <section id="games">
+    <h2 class="section-title">I Nostri Giochi</h2>
+    <div class="game-list">
+      <div class="game" onclick="location.href='neon-abyss-of-mind.html'" style="cursor:pointer;">
+        <h3>Neon Abyss of Mind</h3>
+        <div class="gallery">
+          <img src="https://picsum.photos/id/1005/400/300" alt="Screenshot 1" loading="lazy" />
+          <img src="https://picsum.photos/id/1015/400/300" alt="Screenshot 2" loading="lazy" />
+          <img src="https://picsum.photos/id/1025/400/300" alt="Screenshot 3" loading="lazy" />
+        </div>
+      </div>
+      <div class="game" onclick="location.href='cosmic-rituals.html'" style="cursor:pointer;">
+        <h3>Cosmic Rituals</h3>
+        <div class="gallery">
+          <img src="https://picsum.photos/id/1035/400/300" alt="Screenshot 1" loading="lazy" />
+          <img src="https://picsum.photos/id/1045/400/300" alt="Screenshot 2" loading="lazy" />
+          <img src="https://picsum.photos/id/1055/400/300" alt="Screenshot 3" loading="lazy" />
+        </div>
+      </div>
+      <div class="game" onclick="location.href='lucid-deathloop.html'" style="cursor:pointer;">
+        <h3>Lucid Deathloop</h3>
+        <div class="gallery">
+          <img src="https://picsum.photos/id/1065/400/300" alt="Screenshot 1" loading="lazy" />
+          <img src="https://picsum.photos/id/1075/400/300" alt="Screenshot 2" loading="lazy" />
+          <img src="https://picsum.photos/id/1085/400/300" alt="Screenshot 3" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="team">
+    <h2 class="section-title">Il Team</h2>
+    <div class="team-grid">
+      <!-- Membro 1 -->
+      <button class="member" data-name="Membro 1" data-role="Lead Programmer" data-bio="Esperto in codice e logica di gioco. Ama risolvere problemi complessi.">
+        <img src="https://i.pravatar.cc/100?img=11" alt="Membro 1" loading="lazy" />
+        <h3>Membro 1</h3>
+        <p>Lead Programmer</p>
+      </button>
+      <!-- Membro 2 -->
+      <button class="member" data-name="Membro 2" data-role="Lead Programmer" data-bio="Specialista in intelligenza artificiale e gameplay.">
+        <img src="https://i.pravatar.cc/100?img=12" alt="Membro 2" loading="lazy" />
+        <h3>Membro 2</h3>
+        <p>Lead Programmer</p>
+      </button>
+      <!-- Membro 3 -->
+      <button class="member" data-name="Membro 3" data-role="Art Director" data-bio="Responsabile della direzione artistica e stile visuale.">
+        <img src="https://i.pravatar.cc/100?img=13" alt="Membro 3" loading="lazy" />
+        <h3>Membro 3</h3>
+        <p>Art Director</p>
+      </button>
+      <!-- Membro 4 -->
+      <button class="member" data-name="Membro 4" data-role="3D Generalist and Characters" data-bio="Creatore di modelli 3D e animazioni per i personaggi.">
+        <img src="https://i.pravatar.cc/100?img=14" alt="Membro 4" loading="lazy" />
+        <h3>Membro 4</h3>
+        <p>3D Generalist and Characters</p>
+      </button>
+    </div>
+  </section>
+
+  <!-- Contatti -->
+  <section id="contact">
+    <h2 class="section-title">Contattaci</h2>
+    <p>Seguici sui nostri social e scopri i nostri giochi su Itch.io!</p>
+    <ul class="contact-list">
+      <li><a href="https://itch.io/team/harakirigamestudios" target="_blank" rel="noopener">Itch.io</a></li>
+      <li><a href="https://twitter.com/HarakiriGames" target="_blank" rel="noopener">Twitter</a></li>
+      <li><a href="https://discord.gg/yourdiscordinvite" target="_blank" rel="noopener">Discord</a></li>
+      <li><a href="https://bsky.app/profile/harakirigamestudios.bsky.social" target="_blank" rel="noopener">Bluesky</a></li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Harakiri Game Studios</p>
+  </footer>
+
+  <!-- Modal Team -->
+  <div id="teamModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Chiudi">&times;</button>
+      <h2 id="modalTitle"></h2>
+      <h4 id="modalRole"></h4>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+/* === RESET === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* === COLOR VARIABLES === */
+:root {
+  --bg-color: #000000;
+  --text-color: #dcdcdc;
+  --accent-color: #555555;
+  --accent-color-2: #888888;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --hover-glow: rgba(136, 136, 136, 0.7);
+}
+
+body.light {
+  --bg-color: #ffffff;
+  --text-color: #222222;
+  --accent-color: #777777;
+  --accent-color-2: #bbbbbb;
+  --card-bg: rgba(0, 0, 0, 0.05);
+  --hover-glow: rgba(119, 119, 119, 0.5);
+}
+
+/* === BASE STYLES === */
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.5s ease, color 0.5s ease;
+  overflow-x: hidden;
+}
+
+/* Fix colori interni alle card */
+.game h3, .game p,
+.member h3, .member p {
+  color: var(--text-color);
+}
+
+/* === SPLASH SCREEN === */
+#splash {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 9999;
+  transition: opacity 1s ease;
+}
+
+.splash-logo {
+  width: 150px;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+}
+
+.splash-title {
+  font-size: 3rem;
+  color: var(--accent-color-2);
+  text-shadow: 0 0 20px var(--accent-color), 0 0 40px var(--accent-color-2);
+}
+
+/* === PARTICLES BACKGROUND === */
+#particles-js {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -1;
+}
+
+/* === NAVBAR === */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-color);
+  border-bottom: 1px solid var(--accent-color-2);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.logo img.nav-logo {
+  height: 60px;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* === NAV LINKS === */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent-color-2);
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+  color: var(--text-color);
+}
+
+#themeToggle {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+#themeToggle:hover {
+  color: var(--accent-color-2);
+}
+
+/* === HERO === */
+.hero {
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=2100&q=80') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+}
+
+.hero-content {
+  text-align: center;
+  backdrop-filter: blur(3px);
+  background: rgba(0, 0, 0, 0.25);
+  padding: 2rem;
+  border-radius: 20px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.3rem;
+}
+
+/* === SECTIONS === */
+section {
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+/* === GAMES & TEAM GRID === */
+.game-list, .team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.game, .member {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px var(--accent-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.game:hover, .member:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px var(--hover-glow);
+}
+
+/* === GALLERY === */
+.gallery {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  margin-top: 1rem;
+  cursor: default;
+}
+
+.gallery img {
+  width: 300px;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+
+.gallery img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px var(--accent-color);
+}
+
+/* === TEAM MEMBERS === */
+.member img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 3px solid var(--accent-color);
+}
+
+/* === CONTACT === */
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.contact-list li a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+body.light .contact-list li a {
+  color: var(--accent-color-2);
+}
+
+.contact-list li a:hover {
+  color: yellow;
+  text-decoration: underline;
+}
+
+/* === FOOTER === */
+footer {
+  padding: 2rem;
+  border-top: 1px solid var(--accent-color-2);
+  text-align: center;
+}
+
+/* === PARALLAX === */
+.parallax {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: var(--bg-color);
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    padding: 1rem;
+    border-radius: 12px;
+    width: 180px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    z-index: 150;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .parallax {
+    background-attachment: scroll;
+  }
+}
+
+/* === MODAL === */
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal[aria-hidden="false"] {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--modal-bg-color);
+  color: var(--text-color);
+  padding: 2rem;
+  border-radius: 15px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 0 20px var(--accent-color);
+  text-align: center;
+  position: relative;
+  font-family: 'Orbitron', sans-serif;
+}
+
+:root {
+  --modal-bg-color: #121212;
+}
+
+body.light {
+  --modal-bg-color: #ffffff;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: var(--accent-color);
+}
+
+/* === LOGO SWITCH DARK/LIGHT === */
+.light-logo { display: none; }
+.dark-logo { display: inline; }
+body.light .light-logo { display: inline; }
+body.light .dark-logo { display: none; }
+
+/* === SCROLL TO TOP BUTTON === */
+#scrollToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  background: var(--accent-color);
+  color: var(--bg-color);
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px var(--accent-color);
+  transition: all 0.4s ease;
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(10px);
+}
+
+#scrollToTop:hover {
+  background: var(--accent-color-2);
+  box-shadow: 0 0 25px var(--accent-color-2);
+}
+
+#scrollToTop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
