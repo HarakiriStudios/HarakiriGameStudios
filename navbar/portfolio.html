@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio | Harakiri Game Studios</title>
+    <link rel="icon" type="image/x-icon" href="../logo/logo-white.svg" />
+    <meta name="description" content="Portfolio di Harakiri Game Studios: Progetti di gruppo e lavori individuali in Unity, Unreal, Godot, Maya, Blender, Photoshop e Illustrator.">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-p9+r64T1ZpskOzy0zEqm1S/x6W9ogA6pR3TzlUtl69XxRyCuVqexWe2RlUn3Fv1F1ek9Qt+gV7Gkgv4KURRhXw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="../style.css" />
+</head>
+
+<button id="scrollToTop" aria-label="Torna su">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<body>
+
+    <div id="splash">
+        <img src="../logo/logo-white.svg" alt="Harakiri Game Studios" class="logo splash-logo dark-logo" aria-hidden="true" />
+        <img src="../logo/logo-black.svg" class="logo splash-logo light-logo" aria-hidden="true" />
+        <h1 class="splash-title">PORTFOLIO</h1>
+    </div>
+
+    <div id="particles-js"></div>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="../index.html#hero">
+                <img src="../logo/logo-white.svg" class="nav-logo dark-logo logo-large" aria-hidden="true" />
+                <img src="../logo/logo-black.svg" class="nav-logo light-logo logo-large" aria-hidden="true" />
+            </a>
+            Portfolio
+        </div>
+
+        <nav>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#about">Home</a></li>
+                <li><a href="../index.html#games">Giochi</a></li>
+                <li><a href="../index.html#team">Team</a></li>
+                <li style="font-weight: bold;"><a href="#" style="color: var(--accent-color-2);">Portfolio</a></li>
+                <li><a href="../index.html#contact">Contatti</a></li>
+                <li><button id="themeToggle" aria-label="Toggle tema">🌓</button></li>
+            </ul>
+            <div class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</div>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero parallax" style="background-image: url('path/alla/tua/background_portfolio.jpg'); height: 60vh; min-height: 400px;">
+        <div class="hero-content">
+            <h1>Le Nostre Creazioni</h1>
+            <p>Progetti di gruppo e skill individuali.</p>
+        </div>
+    </section>
+
+    <section id="group-work">
+        <h2 class="section-title">🎮 Progetti Aziendali (Lavoro di Gruppo)</h2>
+        <p style="max-width: 900px; margin: 0 auto 3rem;">
+            Il risultato della sinergia tra i nostri programmatori e artisti. Le demo sono disponibili su Itch.io.
+        </p>
+        <div class="game-list">
+            <div class="game">
+                <h3>Neon Abyss of Mind</h3>
+                <p>**Motori:** Unity | **Ruolo del Gruppo:** Sviluppo completo, Arte 3D/2D, Gameplay</p>
+                <div class="gallery">
+                    <img src="https://picsum.photos/id/1005/400/300" alt="NAoM Screenshot" loading="lazy" />
+                    <img src="https://picsum.photos/id/1015/400/300" alt="NAoM Concept" loading="lazy" />
+                </div>
+            </div>
+            <div class="game">
+                <h3>Cosmic Rituals</h3>
+                <p>**Motori:** Unreal Engine/Godot | **Ruolo del Gruppo:** Prototipazione, Sistema di Rigging avanzato</p>
+                <div class="gallery">
+                    <img src="https://picsum.photos/id/1035/400/300" alt="CR Screenshot" loading="lazy" />
+                    <img src="https://picsum.photos/id/1045/400/300" alt="CR Model" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="marco-valastro-3d">
+        <h2 class="section-title">🗿 Portfolio Individuale: Marco Valastro (3D Modeler & Animator)</h2>
+        <p style="max-width: 900px; margin: 0 auto 3rem;">
+            Modelli, rigging e animazioni complessi realizzati in Maya e Blender.
+        </p>
+        <div class="individual-work-grid">
+            <div class="game">
+                <h3>Asset: Mecha Drone V.2</h3>
+                <p>**Software:** Maya, Blender (Hard Surface Modeling) | **Dettaglio:** 45K Triangles, Texture 4K PBR.</p>
+                <div class="gallery">
+                    <img src="https://picsum.photos/id/413/400/300" alt="Render Drone" loading="lazy" />
+                    <img src="https://picsum.photos/id/414/400/300" alt="Wireframe Drone" loading="lazy" />
+                </div>
+            </div>
+            <div class="game">
+                <h3>Animazione: Ciclo di Corsa</h3>
+                <p>**Software:** Maya | **Dettaglio:** Ottimizzazione per Unreal Engine, 45 frame al secondo, blend shapes.</p>
+                <div class="gallery">
+                    <img src="https://picsum.photos/id/415/400/300" alt="Run Cycle Screenshot" loading="lazy" />
+                    <img src="https://picsum.photos/id/416/400/300" alt="Rig Screenshot" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="serena-napoli-2d">
+        <h2 class="section-title">🎨 Portfolio Individuale: Serena Napoli (Concept & Texture Artist)</h2>
+        <p style="max-width: 900px; margin: 0 auto 3rem;">
+            Direzione artistica, texture custom e design dell'interfaccia utente.
+        </p>
+        <div class="individual-work-grid">
+            <div class="game">
+                <h3>Concept: Base Sotterranea</h3>
+                <p>**Software:** Photoshop | **Dettaglio:** Illustrazione ambientale, mood setting e lighting design.</p>
+                <div class="gallery">
+                    <img src="https://picsum.photos/id/417/400/300" alt="Concept Sotterraneo" loading="lazy" />
+                    <img src="https://picsum.photos/id/418/400/300" alt="Dettaglio Pittorico" loading="lazy" />
+                </div>
+            </div>
+            <div class="game">
+                <h3>Design UI/HUD</h3>
+                <p>**Software:** Illustrator | **Dettaglio:** Elementi vettoriali scalabili per inventario e minimappa.</p>
+                <div class="gallery">
+                    <img src="https://picsum.photos/id/419/400/300" alt="UI Illustrator" loading="lazy" />
+                    <img src="https://picsum.photos/id/420/400/300" alt="Set Icone" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programming-work">
+        <h2 class="section-title">💻 Portfolio Individuale: Programmatori</h2>
+        <p style="max-width: 900px; margin: 0 auto 1rem;">
+            Sistemi, logiche di gioco e ottimizzazioni realizzate da Marco D'Arrigo e Valeria Napoli. (Link a repository GitHub o demo specifiche)
+        </p>
+
+        <div class="programming-list">
+            <h3>Marco D'Arrigo (Lead Game Programmer)</h3>
+            <ul>
+                <li>
+                    <a href="link-al-repo/sistema-ai" target="_blank">Sistema di Navigazione & IA Comportamentale</a>
+                    <span>Unity (C#) | Ottimizzato con Job System</span>
+                </li>
+                <li>
+                    <a href="link-al-repo/network-module" target="_blank">Modulo Network Multi-Player</a>
+                    <span>Unreal Engine (C++) | Server Authoritative</span>
+                </li>
+            </ul>
+
+            <h3>Valeria Napoli (Gameplay & Systems Engineer)</h3>
+            <ul>
+                <li>
+                    <a href="link-al-repo/godot-inventory" target="_blank">Sistema di Inventario Modulare Dinamico</a>
+                    <span>Godot Engine (GDScript) | Drag-and-Drop e Slot Logic</span>
+                </li>
+                <li>
+                    <a href="link-al-repo/shader-fx" target="_blank">Shader FX per Transizioni Ambientali</a>
+                    <span>Unity (Shader Graph/HLSL) | Post-Processing Custom</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Harakiri Game Studios</p>
+    </footer>
+
+    <div id="teamModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Chiudi">&times;</button>
+            <h2 id="modalTitle"></h2>
+            <h4 id="modalRole"></h4>
+            <p id="modalDesc"></p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html>

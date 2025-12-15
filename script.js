@@ -1,4 +1,4 @@
-// Splash screen fadeout
+﻿// Splash screen fadeout
 window.addEventListener("load", () => {
   const splash = document.getElementById("splash");
   if (splash) {
@@ -13,9 +13,27 @@ window.addEventListener("load", () => {
 
 // Mobile menu toggle
 const navLinks = document.getElementById('navLinks');
+const menuToggleBtn = document.querySelector('.menu-toggle');
+
 function toggleMenu() {
-  navLinks?.classList.toggle('active');
+    navLinks?.classList.toggle('active');
+    // Aggiorna l'icona
+    if (menuToggleBtn) {
+        menuToggleBtn.textContent = navLinks?.classList.contains('active') ? '✖' : '☰';
+    }
 }
+
+// Assicura che la funzione sia disponibile globalmente per l'onclick nell'HTML
+window.toggleMenu = toggleMenu;
+
+// Chiudi il menu quando si fa clic su un link (scroll per la pagina)
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (navLinks?.classList.contains('active')) {
+            toggleMenu(); // Chiude il menu dopo il click
+        }
+    });
+});
 
 // Theme toggle (dark/light)
 const themeToggleBtn = document.getElementById('themeToggle');
