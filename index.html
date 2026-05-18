@@ -5,7 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Harakiri Game Studios</title>
   <link rel="icon" type="image/x-icon" href="logo/logo-white.svg"/>
-  <meta name="description" content="Harakiri Game Studios">
+  <meta name="description" content="Harakiri Game Studios - Esperienze indie visive e coinvolgenti.">
+
+  <!-- Open Graph / Facebook / Discord / Telegram -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://harakirigamestudios.com/">
+  <meta property="og:title" content="Harakiri Game Studios">
+  <meta property="og:description" content="Esperienze indie visive e coinvolgenti.">
+  <meta property="og:image" content="logo/preview-banner.png">
+
+  <!-- Twitter / X -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Harakiri Game Studios">
+  <meta property="twitter:description" content="Esperienze indie visive e coinvolgenti.">
+  <meta property="twitter:image" content="logo/preview-banner.png">
 
   <!-- FontAwesome CDN -->
   <link rel="stylesheet"
@@ -13,148 +26,285 @@
     integrity="sha512-p9+r64T1ZpskOzy0zEqm1S/x6W9ogA6pR3TzlUtl69XxRyCuVqexWe2RlUn3Fv1F1ek9Qt+gV7Gkgv4KURRhXw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Space+Grotesk:wght@300;400;700&family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<!-- Scroll to Top Button -->
-<button id="scrollToTop" aria-label="Torna su">
-  <i class="fas fa-chevron-up"></i>
-</button>
+<body class="elegant-dark">
 
-<body>
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTop" class="audio-click" aria-label="Torna su">
+    <i class="fas fa-chevron-up"></i>
+  </button>
 
-  <!-- Splash -->
+  <!-- Splash Screen -->
   <div id="splash">
-    <img src="logo/logo-white.svg" alt="Harakiri Game Studios" class="logo splash-logo dark-logo" aria-hidden="true" />
-    <img src="logo/logo-black.svg" class="logo splash-logo light-logo" aria-hidden="true" />
-    <h1 class="splash-title">Harakiri Game Studios</h1>
+    <div class="splash-box">
+      <div class="logo-wrapper-splash" style="height: 60px; position: relative; margin-bottom: 1rem;">
+        <img src="logo/logo-white.svg" alt="Harakiri Game Studios" class="logo splash-logo dark-logo" aria-hidden="true" style="height: 60px; position: absolute; left: 50%; transform: translateX(-50%);" />
+        <img src="logo/logo-black.svg" alt="Harakiri Game Studios" class="logo splash-logo light-logo" aria-hidden="true" style="height: 60px; position: absolute; left: 50%; transform: translateX(-50%);" />
+      </div>
+      <h1 class="splash-title">Harakiri Game Studios</h1>
+      
+      <div class="loading-wrapper">
+        <div class="loading-bar">
+          <div class="loading-progress"></div>
+        </div>
+        <button id="splashContinueBtn" class="win-action-btn audio-click" style="display:none;" data-lang-it="PREMI PER CONTINUARE" data-lang-en="PRESS TO CONTINUE">PREMI PER CONTINUARE</button>
+      </div>
+    </div>
   </div>
 
   <div id="particles-js"></div>
+  <div class="cyber-grid"></div>
+  <div class="crt-scanlines"></div>
 
   <!-- Navbar -->
   <header class="navbar">
     <div class="logo">
-      <a href="#hero">
-        <img src="logo/logo-white.svg" class="nav-logo dark-logo logo-large" aria-hidden="true" />
-        <img src="logo/logo-black.svg" class="nav-logo light-logo logo-large" aria-hidden="true" />
+      <a href="#hero" class="audio-click" style="display: block; height: 26px; width: 26px; position: relative;">
+        <img src="logo/logo-white.svg" class="nav-logo dark-logo logo-large" aria-hidden="true" style="position: absolute; top:0; left:0; height: 26px;" />
+        <img src="logo/logo-black.svg" class="nav-logo light-logo logo-large" aria-hidden="true" style="position: absolute; top:0; left:0; height: 26px;" />
       </a>
-      Harakiri Game Studios
+      <span>Harakiri Game Studios</span>
     </div>
 
     <nav>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#about">Chi Siamo</a></li>
-            <li><a href="#games">Giochi</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="navbar/portfolio.html">Portfolio</a></li>
-            <li><a href="#contact">Contatti</a></li>
-            <li><button id="themeToggle" aria-label="Toggle tema">🌓</button></li>
-        </ul>
-      <div class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="audio-click" data-lang-it="Chi Siamo" data-lang-en="About Us">Chi Siamo</a></li>
+        <li><a href="#games" class="audio-click" data-lang-it="Giochi" data-lang-en="Games">Giochi</a></li>
+        <li><a href="#team" class="audio-click" data-lang-it="Team" data-lang-en="Team">Team</a></li>
+        <li><a href="navbar/portfolio.html" class="audio-click" data-lang-it="Portfolio" data-lang-en="Portfolio">Portfolio</a></li>
+        <li><a href="#contact" class="audio-click" data-lang-it="Contatti" data-lang-en="Contact">Contatti</a></li>
+        <li>
+          <select id="languageSelector" aria-label="Seleziona Lingua" class="theme-dropdown audio-click">
+            <option value="it">IT</option>
+            <option value="en">EN</option>
+          </select>
+        </li>
+        <li>
+          <select id="themeSelector" aria-label="Seleziona tema" class="theme-dropdown audio-click">
+            <option value="cyber-dark">Cyber Dark</option>
+            <option value="cyber-white">Cyber White</option>
+            <option value="elegant-dark" selected>Elegant Dark</option>
+            <option value="elegant-light">Elegant Light</option>
+          </select>
+        </li>
+      </ul>
+      <div class="menu-toggle audio-click" onclick="toggleMenu()" aria-label="Toggle menu">☰</div>
     </nav>
   </header>
 
-  <!-- Hero -->
-  <section id="hero" class="hero parallax">
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
     <div class="hero-content">
-      <h1>Harakiri Game Studios</h1>
-      <p>Esperienze indie visive e coinvolgenti.</p>
+      <h1 data-text="Harakiri Game Studios">Harakiri Game Studios</h1>
+      <p class="hero-subtext" data-lang-it="Esperienze indie visive e coinvolgenti." data-lang-en="Visual and immersive indie experiences.">Esperienze indie visive e coinvolgenti.</p>
+      <button id="openTrailerBtn" class="win-action-btn audio-click" style="margin-top: 15px;" data-lang-it="GUARDA IL TRAILER" data-lang-en="WATCH TRAILER">GUARDA IL TRAILER</button>
     </div>
   </section>
 
-  <!-- About -->
+  <!-- Sezione News / Marquee -->
+  <div class="retro-ticker">
+    <marquee id="tickerMarquee" scrollamount="5" data-lang-it="++ HARAKIRI OS v3.4 ONLINE ++ CARICAMENTO CORE DATABASE COMPLETATO CON SUCCESSO ++ PROSSIMO RILASCIO PREVISTO IN ESTATE ++" data-lang-en="++ HARAKIRI OS v3.4 ONLINE ++ CORE DATABASE LOADED SUCCESSFULLY ++ NEXT RELEASE EXPECTED THIS SUMMER ++">++ HARAKIRI OS v3.4 ONLINE ++ CARICAMENTO CORE DATABASE COMPLETATO CON SUCCESSO ++ PROSSIMO RILASCIO PREVISTO IN ESTATE ++</marquee>
+  </div>
+
+  <!-- About Section -->
   <section id="about">
-    <h2 class="section-title">Chi Siamo</h2>
-    <p>Siamo un team indie che realizza mondi bizzarri, surreali e magnetici. Sperimentiamo con gameplay, arte e narrazione per creare esperienze uniche.</p>
-  </section>
-
-  <!-- Games -->
-  <section id="games">
-    <h2 class="section-title">I Nostri Giochi</h2>
-    <div class="game-list">
-      <div class="game" onclick="location.href='neon-abyss-of-mind.html'" style="cursor:pointer;">
-        <h3>Neon Abyss of Mind</h3>
-        <div class="gallery">
-          <img src="https://picsum.photos/id/1005/400/300" alt="Screenshot 1" loading="lazy" />
-          <img src="https://picsum.photos/id/1015/400/300" alt="Screenshot 2" loading="lazy" />
-          <img src="https://picsum.photos/id/1025/400/300" alt="Screenshot 3" loading="lazy" />
-        </div>
+    <div class="window-box">
+      <div class="window-header">
+        <span class="window-title" data-cyber="ABOUT_US.TXT" data-elegant-it="Chi Siamo" data-elegant-en="About Us"><i class="fa-solid fa-circle-info"></i> <span></span></span>
+        <div class="window-controls"><span>_</span><span>&#9633;</span><span>&times;</span></div>
       </div>
-      <div class="game" onclick="location.href='cosmic-rituals.html'" style="cursor:pointer;">
-        <h3>Cosmic Rituals</h3>
-        <div class="gallery">
-          <img src="https://picsum.photos/id/1035/400/300" alt="Screenshot 1" loading="lazy" />
-          <img src="https://picsum.photos/id/1045/400/300" alt="Screenshot 2" loading="lazy" />
-          <img src="https://picsum.photos/id/1055/400/300" alt="Screenshot 3" loading="lazy" />
-        </div>
-      </div>
-      <div class="game" onclick="location.href='lucid-deathloop.html'" style="cursor:pointer;">
-        <h3>Lucid Deathloop</h3>
-        <div class="gallery">
-          <img src="https://picsum.photos/id/1065/400/300" alt="Screenshot 1" loading="lazy" />
-          <img src="https://picsum.photos/id/1075/400/300" alt="Screenshot 2" loading="lazy" />
-          <img src="https://picsum.photos/id/1085/400/300" alt="Screenshot 3" loading="lazy" />
-        </div>
+      <div class="window-body">
+        <h2 data-lang-it="Chi Siamo" data-lang-en="About Us">Chi Siamo</h2>
+        <p style="margin-top: 10px;" data-lang-it="Siamo un team indie che realizza mondi bizzarri, surreali e magnetici. Sperimentiamo con gameplay, arte e narrazione per creare experiences uniche e indimenticabili." data-lang-en="We are an indie team crafting bizarre, surreal, and magnetic worlds. We experiment with gameplay, art, and storytelling to create unique and unforgettable experiences.">Siamo un team indie che realizza mondi bizzarri, surreali e magnetici. Sperimentiamo con gameplay, arte e narrazione per creare esperienze uniche e indimenticabili.</p>
       </div>
     </div>
   </section>
 
-  <!-- Team -->
+  <!-- Games Section -->
+  <section id="games">
+    <div class="window-box large-window">
+      <div class="window-header">
+        <span class="window-title" data-cyber="SOFTWARE_ARCHIVE.EXE" data-elegant-it="I Nostri Giochi" data-elegant-en="Our Games"><i class="fa-solid fa-gamepad"></i> <span></span></span>
+        <div class="window-controls"><span>_</span><span>&#9633;</span><span>&times;</span></div>
+      </div>
+      <div class="window-body">
+        <h2 style="margin-bottom: 20px; text-align: center;" data-lang-it="I Nostri Giochi" data-lang-en="Our Games">I Nostri Giochi</h2>
+        
+        <div class="desktop-grid">
+          <!-- Gioco 1 -->
+          <div class="game-card audio-click" data-game="neon-abyss">
+            <h3 class="game-card-header">Neon Abyss of Mind</h3>
+            <p class="game-card-text" data-lang-it="Un viaggio psichedelico destrutturato all'interno della memoria RAM..." data-lang-en="A deconstructed psychedelic journey inside the RAM memory...">Un viaggio psichedelico destrutturato all'interno della memoria RAM...</p>
+            <div class="gallery">
+              <img src="https://picsum.photos/id/1005/400/300" alt="Screenshot 1" loading="lazy" />
+            </div>
+            <span class="action-text" data-lang-it="[Clicca per Dettagli]" data-lang-en="[Click for Details]">[Clicca per Dettagli]</span>
+          </div>
+
+          <!-- Gioco 2 -->
+          <div class="game-card audio-click" data-game="cosmic-rituals">
+            <h3 class="game-card-header">Cosmic Rituals</h3>
+            <p class="game-card-text" data-lang-it="Simulatore di culti spaziali a 8-bit. Gestisci complessi rituali..." data-lang-en="8-bit space cult simulator. Manage complex cosmic rituals...">Simulatore di culti spaziali a 8-bit. Gestisci complessi rituali...</p>
+            <div class="gallery">
+              <img src="https://picsum.photos/id/1035/400/300" alt="Screenshot 1" loading="lazy" />
+            </div>
+            <span class="action-text" data-lang-it="[Clicca per Dettagli]" data-lang-en="[Click for Details]">[Clicca per Dettagli]</span>
+          </div>
+
+          <!-- Gioco 3 -->
+          <div class="game-card audio-click" data-game="lucid-deathloop">
+            <h3 class="game-card-header">Lucid Deathloop</h3>
+            <p class="game-card-text" data-lang-it="Muori, destabilizza l'ambiente circostante, rompi le variabili globali..." data-lang-en="Die, destabilize the environment, break global variables...">Muori, destabilizza l'ambiente circostante, rompi le variabili globali...</p>
+            <div class="gallery">
+              <img src="https://picsum.photos/id/1065/400/300" alt="Screenshot 1" loading="lazy" />
+            </div>
+            <span class="action-text" data-lang-it="[Clicca per Dettagli]" data-lang-en="[Click for Details]">[Clicca per Dettagli]</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
   <section id="team">
-    <h2 class="section-title">Il Team</h2>
-    <div class="team-grid">
-      <!-- Membro 1 -->
-      <button class="member" data-name="Marco D'Arrigo'" data-role="Lead Programmer" data-bio="Esperto in codice e logica di gioco. Ama risolvere problemi complessi.">
-        <img src="https://i.pravatar.cc/100?img=11" alt="Marco D'Arrigo" loading="lazy" />
-        <h3>Marco D'Arrigo</h3>
-        <p>Lead Programmer</p>
-      </button>
-      <!-- Membro 2 -->
-      <button class="member" data-name="Valeria Napoli" data-role="Lead Programmer" data-bio="Specialista in intelligenza artificiale e gameplay.">
-        <img src="https://i.pravatar.cc/100?img=12" alt="Valeria Napoli" loading="lazy" />
-        <h3>Valeria Napoli</h3>
-        <p>Lead Programmer</p>
-      </button>
-      <!-- Membro 3 -->
-      <button class="member" data-name="Marco Valastro" data-role="Digital Artist" data-bio="Responsabile della direzione artistica e stile visuale.">
-        <img src="https://i.pravatar.cc/100?img=13" alt="Marco Valastro" loading="lazy" />
-        <h3>Marco Valastro</h3>
-        <p>Digital Artist</p>
-      </button>
-      <!-- Membro 4 -->
-      <button class="member" data-name="Serena Napoli" data-role="3D Generalist and Characters" data-bio="Creatore di modelli 3D e animazioni per i personaggi.">
-        <img src="https://i.pravatar.cc/100?img=14" alt="Serena Napoli" loading="lazy" />
-        <h3>Serena Napoli</h3>
-        <p>3D Generalist and Characters</p>
-      </button>
+    <div class="window-box large-window">
+      <div class="window-header">
+        <span class="window-title" data-cyber="STAFF_MANIFEST.SYS" data-elegant-it="Il Nostro Team" data-elegant-en="Our Team"><i class="fa-solid fa-users"></i> <span></span></span>
+        <div class="window-controls"><span>_</span><span>&#9633;</span><span>&times;</span></div>
+      </div>
+      <div class="window-body">
+        <h2 style="margin-bottom: 20px; text-align: center;" data-lang-it="Il Nostro Team" data-lang-en="Our Team">Il Nostro Team</h2>
+        
+        <div class="team-grid">
+          <!-- Aggiunto data-portfolio su ogni membro -->
+          <button class="member audio-click" data-name="Marco D'Arrigo" data-role-it="Lead Programmer" data-role-en="Lead Programmer" data-bio-it="Esperto in codice e logica di gioco. Ama risolvere problemi complessi." data-bio-en="Expert in code and game logic. Loves solving complex structural problems." data-portfolio="https://github.com/marcodarrigo">
+            <img src="https://i.pravatar.cc/100?img=11" alt="Marco D'Arrigo" loading="lazy" />
+            <h3>Marco D'Arrigo</h3>
+            <p class="member-role">Lead Programmer</p>
+          </button>
+          
+          <button class="member audio-click" data-name="Valeria Napoli" data-role-it="Lead Programmer" data-role-en="Lead Programmer" data-bio-it="Esperta in intelligenza artificiale, architetture e gameplay." data-bio-en="Expert in artificial intelligence, architecture and core gameplay systems." data-portfolio="https://valerianapoli.dev">
+            <img src="https://i.pravatar.cc/100?img=12" alt="Valeria Napoli" loading="lazy" />
+            <h3>Valeria Napoli</h3>
+            <p class="member-role">Lead Programmer</p>
+          </button>
+          
+          <button class="member audio-click" data-name="Marco Valastro" data-role-it="Digital Artist" data-role-en="Digital Artist" data-bio-it="Responsabile della direzione artistica complessiva e stile visuale." data-bio-en="Responsible for overall art direction, concept art and visual style." data-portfolio="https://artstation.com/marcovalastro">
+            <img src="https://i.pravatar.cc/100?img=13" alt="Marco Valastro" loading="lazy" />
+            <h3>Marco Valastro</h3>
+            <p class="member-role">Digital Artist</p>
+          </button>
+          
+          <button class="member audio-click" data-name="Serena Napoli" data-role-it="3D Generalist" data-role-en="3D Generalist" data-bio-it="Creatrice di modelli tridimensionali ed elaborazione delle animazioni dei personaggi." data-bio-en="Creator of 3D assets, environmental props and main character animations." data-portfolio="https://artstation.com/serenanapoli">
+            <img src="https://i.pravatar.cc/100?img=14" alt="Serena Napoli" loading="lazy" />
+            <h3>Serena Napoli</h3>
+            <p class="member-role">3D Generalist</p>
+          </button>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Contatti -->
   <section id="contact">
-    <h2 class="section-title">Contattaci</h2>
-    <p>Seguici sui nostri social e scopri i nostri giochi su Itch.io!</p>
-    <ul class="contact-list">
-      <li><a href="https://itch.io/team/harakirigamestudios" target="_blank" rel="noopener">Itch.io</a></li>
-      <li><a href="https://twitter.com/HarakiriGames" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://discord.gg/yourdiscordinvite" target="_blank" rel="noopener">Discord</a></li>
-    </ul>
+    <div class="window-box">
+      <div class="window-header">
+        <span class="window-title" data-cyber="UPLINK_CHANNELS.NET" data-elegant-it="Contatti" data-elegant-en="Contact Us"><i class="fa-solid fa-envelope"></i> <span></span></span>
+        <div class="window-controls"><span>_</span><span>&#9633;</span><span>&times;</span></div>
+      </div>
+      <div class="window-body" style="text-align: center;">
+        <h2 data-lang-it="Contattaci" data-lang-en="Contact Us">Contattaci</h2>
+        <p style="margin-bottom: 15px;" data-lang-it="Seguici sui nostri canali social per aggiornamenti costanti." data-lang-en="Follow us on our social handles for constant updates.">Seguici sui nostri canali social per aggiornamenti costanti.</p>
+        <ul class="contact-list">
+          <li><a href="https://instagram.com/yourusername" target="_blank" rel="noopener" class="audio-click"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+          <li><a href="https://itch.io/team/harakirigamestudios" target="_blank" rel="noopener" class="audio-click"><i class="fa-solid fa-gamepad"></i> Itch.io</a></li>
+          <li><a href="https://twitter.com/HarakiriGames" target="_blank" rel="noopener" class="audio-click"><i class="fa-brands fa-x-twitter"></i> Twitter</a></li>
+          <li><a href="https://discord.gg/yourdiscordinvite" target="_blank" rel="noopener" class="audio-click"><i class="fa-brands fa-discord"></i> Discord</a></li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Harakiri Game Studios</p>
+    <p>&copy; 2026 Harakiri Game Studios</p>
+    <div class="retro-banners">
+      <span class="env-text">[ MADE FOR CYBER-ENVIRONMENTS ]</span>
+      <span class="env-text">[ SYSTEM: ONLINE ]</span>
+    </div>
   </footer>
 
-  <!-- Modal Team -->
-  <div id="teamModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDesc">
-    <div class="modal-content">
-      <button class="modal-close" aria-label="Chiudi">&times;</button>
-      <h2 id="modalTitle"></h2>
-      <h4 id="modalRole"></h4>
-      <p id="modalDesc"></p>
+  <!-- MODAL TRAILER -->
+  <div id="trailerModal" class="modal" aria-hidden="true" role="dialog">
+    <div class="modal-content retro-popup large-popup">
+      <div class="window-header">
+        <span class="window-title" data-cyber="MEDIA_STREAM_PLAYER.HK" data-elegant-it="Visualizzatore Media" data-elegant-en="Media Player"><i class="fa-solid fa-video"></i> <span></span></span>
+        <button class="modal-close audio-click">&times;</button>
+      </div>
+      <div class="window-body">
+        <div class="video-container">
+          <iframe id="trailerIframe" src="" title="Harakiri Studio Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div style="text-align: center; margin-top: 15px;">
+          <button class="win-action-btn closeModalBtn audio-click" data-lang-it="CHIUDI TRAILER" data-lang-en="CLOSE TRAILER">CHIUDI TRAILER</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 1: Dettaglio Staff (Aggiornato con Immagine e Portfolio) -->
+  <div id="teamModal" class="modal" aria-hidden="true" role="dialog">
+    <div class="modal-content retro-popup">
+      <div class="window-header">
+        <span id="modalTitle" class="window-title">Nome Staff</span>
+        <button class="modal-close audio-click">&times;</button>
+      </div>
+      <div class="window-body" style="text-align: center;">
+        <!-- Elemento Immagine aggiunto per il popup -->
+        <img id="modalImg" src="" alt="" style="width: 90px; height: 90px; border-radius: 50%; border: var(--border-style); object-fit: cover; margin-bottom: 15px;" />
+        
+        <h4 id="modalRole" style="color: var(--accent-neon); margin-bottom: 10px;">Ruolo</h4>
+        <p id="modalDesc" style="margin-bottom: 20px; text-align: left;"></p>
+        
+        <!-- Contenitore dinamico per il link del Portfolio -->
+        <div id="modalPortfolioWrapper" style="margin-bottom: 20px;"></div>
+        
+        <div style="text-align: center;">
+          <button class="win-action-btn closeModalBtn audio-click">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: Dettaglio Gioco -->
+  <div id="gameModal" class="modal" aria-hidden="true" role="dialog">
+    <div class="modal-content retro-popup large-popup">
+      <div class="window-header">
+        <span class="window-title" data-cyber="GAME_DATABASE.SYS" data-elegant-it="Dettagli Gioco" data-elegant-en="Game Details"><i class="fa-solid fa-floppy-disk"></i> <span></span></span>
+        <button class="modal-close audio-click">&times;</button>
+      </div>
+      <div class="window-body" style="text-align: left;">
+        <h2 id="gameModalTitle" style="text-align: center; margin-bottom: 15px;">Nome Gioco</h2>
+        
+        <h3 class="popup-sub-title"><i class="fa-solid fa-file-lines"></i> <span data-lang-it="1. PANORAMICA" data-lang-en="1. OVERVIEW">1. PANORAMICA</span></h3>
+        <p id="gameModalDesc" style="margin-bottom: 15px; font-size: 0.95rem;"></p>
+        
+        <h3 class="popup-sub-title"><i class="fa-solid fa-images"></i> <span data-lang-it="2. SCREENSHOTS" data-lang-en="2. SCREENSHOTS">2. SCREENSHOTS</span></h3>
+        <div id="gameModalGallery" class="popup-gallery" style="margin-bottom: 15px;"></div>
+
+        <h3 class="popup-sub-title"><i class="fa-solid fa-cart-shopping"></i> <span data-lang-it="3. LINK STORE" data-lang-en="3. STORE LINKS">3. LINK STORE</span></h3>
+        <div id="gameModalStores" class="popup-stores-wrapper" style="margin-bottom: 20px;"></div>
+
+        <div id="gameModalExtra" class="modal-extra-box"></div>
+        
+        <div style="text-align: center; margin-top: 20px;">
+          <button class="win-action-btn closeModalBtn audio-click" data-lang-it="CHIUDI RECORD" data-lang-en="CLOSE RECORD">CHIUDI RECORD</button>
+        </div>
+      </div>
     </div>
   </div>
 

@@ -1,0 +1,135 @@
+/* Stili specifici per la pagina Portfolio */
+
+.portfolio-tech-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 0.75rem;
+  background: rgba(var(--accent-neon), 0.1);
+  border: 1px solid var(--accent-neon);
+  color: var(--accent-neon);
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+body.cyber-dark .portfolio-tech-tag, 
+body.cyber-white .portfolio-tech-tag {
+  font-family: var(--title-font);
+}
+
+.back-btn {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.portfolio-section-title {
+  font-family: var(--title-font);
+  color: var(--accent-neon);
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-bottom: 1px dashed var(--window-border);
+  padding-bottom: 8px;
+}
+
+.member-spec-card {
+  background: rgba(0, 0, 0, 0.15);
+  border: var(--border-style);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+body.elegant-light .member-spec-card, 
+body.cyber-white .member-spec-card {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* Effetto di selezione sulle card cliccabili */
+.clickable-card {
+  cursor: pointer;
+}
+.clickable-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(var(--accent-neon), 0.15);
+  border-color: var(--accent-neon);
+}
+
+.member-header-block {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 12px;
+}
+
+.member-header-block img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: var(--border-style);
+  object-fit: cover;
+}
+
+.member-header-block h4 {
+  font-family: var(--body-font);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.member-header-block p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Stile per le tabelle o i blocchi extra dentro il popup */
+.modal-detailed-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  margin-top: 15px;
+  text-align: left;
+}
+
+/* Container e stile pulsante link esterno nel modale */
+.modal-link-container {
+  margin-top: 25px;
+  text-align: center;
+  padding-top: 15px;
+  border-top: 1px dashed var(--window-border);
+}
+
+.external-portfolio-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid var(--accent-neon);
+  color: var(--accent-neon);
+  box-shadow: 0 0 8px rgba(var(--accent-neon), 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.external-portfolio-link:hover {
+  background-color: var(--accent-neon);
+  color: #000000 !important; /* Contrasto scuro sul neon */
+  box-shadow: 0 0 15px rgba(var(--accent-neon), 0.5);
+}
+
+/* Fix colore testo inverso per il tema Cyber White o Elegant Light quando si passa sopra il link */
+body.cyber-white .external-portfolio-link:hover,
+body.elegant-light .external-portfolio-link:hover {
+  color: #ffffff !important;
+}
+
+@media (min-width: 600px) {
+  .modal-detailed-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+

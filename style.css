@@ -1,446 +1,390 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+/* ==========================================================================
+   1. FONTS
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DotGothic16&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;600;700&display=swap');
 
-/* === RESET === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
+/* ==========================================================================
+   2. REGISTRAZIONE VARIABILI TEMI
+   ========================================================================== */
+
+/* TEMA 1: CYBER DARK */
+body.cyber-dark {
+  --bg-color: #0c051a;
+  --text-color: #00ffcc;
+  --accent-neon: #ff007f;
+  --window-bg: #150d2a;
+  --window-border: #ff007f;
+  --shadow-color: #00ffff;
+  --header-text: #000000;
+  --nav-bg: #1c0f3a;
+  --card-bg: #221447;
+  --text-muted: #ff99dd;
+  --grid-color: rgba(255, 0, 127, 0.06);
+  --card-text: #00ffcc;
+  
+  --title-font: 'DotGothic16', sans-serif;
+  --body-font: 'Space Grotesk', sans-serif;
+  
+  --window-shadow: 6px 6px 0px var(--shadow-color);
+  --border-radius: 0px;
+  --border-style: 3px solid var(--window-border);
+  --header-gradient: linear-gradient(90deg, var(--accent-neon), var(--shadow-color));
 }
 
-/* === COLOR VARIABLES === */
-:root {
-  --bg-color: #000000;
-  --text-color: #dcdcdc;
-  --accent-color: #555555;
-  --accent-color-2: #888888;
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --hover-glow: rgba(136, 136, 136, 0.7);
+/* TEMA 2: CYBER WHITE */
+body.cyber-white {
+  --bg-color: #f7f5fa;
+  --text-color: #1c0f3a;
+  --accent-neon: #ff007f;
+  --window-bg: #ffffff;
+  --window-border: #1c0f3a;
+  --shadow-color: #ff007f;
+  --header-text: #ffffff;
+  --nav-bg: #ffffff;
+  --card-bg: #f0edf5;
+  --text-muted: #6b5b95;
+  --grid-color: rgba(255, 0, 127, 0.05);
+  --card-text: #000000;
+
+  --title-font: 'DotGothic16', sans-serif;
+  --body-font: 'Space Grotesk', sans-serif;
+
+  --window-shadow: 6px 6px 0px var(--shadow-color);
+  --border-radius: 0px;
+  --border-style: 3px solid var(--window-border);
+  --header-gradient: linear-gradient(90deg, #1c0f3a, #ff007f);
 }
 
-body.light {
-  --bg-color: #ffffff;
-  --text-color: #222222;
-  --accent-color: #777777;
-  --accent-color-2: #bbbbbb;
-  --card-bg: rgba(0, 0, 0, 0.05);
-  --hover-glow: rgba(119, 119, 119, 0.5);
+/* TEMA 3: ELEGANT DARK */
+body.elegant-dark {
+  --bg-color: #0b0b0b;
+  --text-color: #f1f1f1;
+  --accent-neon: #c5a880; 
+  --window-bg: #121212;
+  --window-border: #1f1f1f;
+  --shadow-color: rgba(0, 0, 0, 0.8);
+  --header-text: #ffffff;
+  --nav-bg: rgba(14, 14, 14, 0.9);
+  --card-bg: #161616;
+  --text-muted: #888888;
+  --grid-color: transparent;
+  --card-text: #f1f1f1;
+
+  --title-font: 'Cinzel', serif;
+  --body-font: 'Inter', sans-serif;
+  
+  --window-shadow: 0px 20px 45px rgba(0,0,0,0.8);
+  --border-radius: 4px;
+  --border-style: 1px solid var(--window-border);
+  --header-gradient: #121212;
 }
 
-/* === BASE STYLES === */
+/* TEMA 4: ELEGANT LIGHT */
+body.elegant-light {
+  --bg-color: #fcfcfc;
+  --text-color: #1a1a1a;
+  --accent-neon: #785838; 
+  --window-bg: #ffffff;
+  --window-border: #eaeaea;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  --header-text: #1a1a1a;
+  --nav-bg: rgba(255, 255, 255, 0.9);
+  --card-bg: #f7f7f7;
+  --text-muted: #666666;
+  --grid-color: transparent; 
+  --card-text: #1a1a1a;
+  
+  --title-font: 'Cinzel', serif;
+  --body-font: 'Inter', sans-serif;
+  
+  --window-shadow: 0px 25px 50px var(--shadow-color);
+  --border-radius: 4px;
+  --border-style: 1px solid var(--window-border);
+  --header-gradient: #ffffff;
+}
+
+/* ==========================================================================
+   3. BASE STYLES & STRUTTURA
+   ========================================================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
 body {
-  font-family: 'Orbitron', sans-serif;
-  background: var(--bg-color);
-  color: var(--text-color);
-  transition: background 0.5s ease, color 0.5s ease;
-  overflow-x: hidden;
+  font-family: var(--body-font); background-color: var(--bg-color); color: var(--text-color);
+  transition: background 0.4s ease, color 0.4s ease; overflow-x: hidden; padding-bottom: 20px;
 }
 
-/* Fix colori interni alle card */
-.game h3, .game p,
-.member h3, .member p {
-  color: var(--text-color);
+body.cyber-dark, body.cyber-white { cursor: url('https://cur.cursors-4u.net/games/gam-4/gam372.cur'), auto; }
+body.cyber-dark a, body.cyber-dark button, body.cyber-dark .member, body.cyber-dark .game-card,
+body.cyber-white a, body.cyber-white button, body.cyber-white .member, body.cyber-white .game-card {
+  cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), pointer !important;
 }
 
-/* === SPLASH SCREEN === */
+#particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+
+.cyber-grid {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 35px 35px; z-index: -2; pointer-events: none;
+}
+
+.crt-scanlines {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 999; pointer-events: none; opacity: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.04));
+  background-size: 100% 4px, 6px 100%;
+}
+body.cyber-dark .crt-scanlines, body.cyber-white .crt-scanlines { opacity: 1; }
+
+/* ==========================================================================
+   4. SPLASH SCREEN
+   ========================================================================== */
 #splash {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: var(--bg-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  z-index: 9999;
-  transition: opacity 1s ease;
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #070707;
+  display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.5s ease;
 }
+body.elegant-light #splash, body.cyber-white #splash { background: #ffffff; }
+.splash-box { text-align: center; padding: 2.5rem; border: var(--border-style); border-radius: var(--border-radius); background: var(--window-bg); }
+.splash-title { font-size: 1.8rem; font-family: var(--title-font); margin-top: 1rem; }
+.loading-wrapper { min-height: 50px; margin-top: 1.2rem; display: flex; align-items: center; justify-content: center; }
+.loading-bar { width: 180px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; position: relative; }
+body.elegant-light .loading-bar, body.cyber-white .loading-bar { background: rgba(0,0,0,0.1); }
+.loading-progress { width: 40%; height: 100%; background: var(--accent-neon); animation: loadSim 1.5s infinite ease-in-out; }
+@keyframes loadSim { 0% { transform: translateX(-110%); } 100% { transform: translateX(260%); } }
 
-.splash-logo {
-  width: 150px;
-  height: auto;
-  user-select: none;
-  pointer-events: none;
-}
-
-.splash-title {
-  font-size: 3rem;
-  color: var(--accent-color-2);
-  text-shadow: 0 0 20px var(--accent-color), 0 0 40px var(--accent-color-2);
-}
-
-/* === PARTICLES BACKGROUND === */
-#particles-js {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: -1;
-}
-
-/* === NAVBAR === */
+/* ==========================================================================
+   5. NAVBAR & SMOOTH LOGO CROSS-FADE
+   ========================================================================== */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--bg-color);
-  border-bottom: 1px solid var(--accent-color-2);
-  padding: 1rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--nav-bg); border-bottom: var(--border-style);
+  padding: 1.2rem 2.5rem; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px);
 }
+.logo { display: flex; align-items: center; gap: 0.8rem; font-size: 1.1rem; font-family: var(--title-font); font-weight: 700; letter-spacing: 1px; }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(--text-color);
-}
+.light-logo, .dark-logo { transition: opacity 0.4s ease-in-out; }
+.light-logo { opacity: 0; } 
+.dark-logo { opacity: 1; }
 
-.logo img.nav-logo {
-  height: 60px;
-  user-select: none;
-  pointer-events: none;
-}
+body.elegant-light .light-logo, body.cyber-white .light-logo { opacity: 1; } 
+body.elegant-light .dark-logo, body.cyber-white .dark-logo { opacity: 0; }
 
-/* === NAV LINKS === */
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-}
-
+.nav-links { list-style: none; display: flex; gap: 1.5rem; align-items: center; }
 .nav-links a {
-  color: var(--text-color);
-  text-decoration: none;
-  transition: color 0.3s ease;
+  color: var(--text-color); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px;
+  padding: 6px 12px; border-radius: var(--border-radius); transition: all 0.2s ease; text-transform: uppercase;
+}
+.nav-links a:hover { background: var(--accent-neon); color: var(--header-text); }
+body.elegant-light .nav-links a:hover, body.elegant-dark .nav-links a:hover { background: var(--accent-neon); color: #000000; font-weight: 600; }
+body.cyber-white .nav-links a:hover { color: #ffffff; }
+
+.menu-toggle { display: none; }
+
+.theme-dropdown {
+  background: var(--card-bg); color: var(--text-color); border: var(--border-style);
+  padding: 5px 8px; font-family: var(--body-font); font-size: 0.8rem;
+  border-radius: var(--border-radius); cursor: pointer; outline: none;
 }
 
-.nav-links a:hover {
-  color: var(--accent-color-2);
+/* ==========================================================================
+   6. HERO SECTION
+   ========================================================================== */
+.hero { height: 40vh; display: flex; justify-content: center; align-items: center; text-align: center; }
+body.elegant-dark .hero-content h1, body.elegant-light .hero-content h1 {
+  font-size: 3.8rem; font-family: var(--title-font); font-weight: 400; text-transform: uppercase; letter-spacing: 4px; color: var(--text-color);
+}
+.hero-subtext { font-size: 1rem; color: var(--text-muted); margin-top: 10px; font-weight: 300; letter-spacing: 0.5px; }
+
+.retro-ticker { background: var(--card-bg); color: var(--text-color); padding: 8px 0; border-bottom: var(--border-style); font-size: 0.8rem; transition: background 0.4s, color 0.4s; }
+body.cyber-dark .retro-ticker { background: var(--accent-neon); color: var(--header-text); font-weight: bold; }
+body.cyber-white .retro-ticker { background: var(--window-border); color: #ffffff; font-weight: bold; }
+
+body.cyber-dark .hero-content h1, body.cyber-white .hero-content h1 {
+  font-size: 3.6rem; font-family: var(--title-font); text-transform: uppercase;
+  position: relative; animation: cyber-shake 3s infinite;
+}
+body.cyber-dark .hero-content h1 {
+  background: linear-gradient(to bottom, #ffffff 0%, #7d7d7d 40%, #00f0ff 45%, #000000 50%, #ff007f 55%, #ffffff 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+body.cyber-white .hero-content h1 {
+  background: linear-gradient(to bottom, #1c0f3a 0%, #ff007f 45%, #1c0f3a 50%, #00b3ff 55%, #1c0f3a 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+@keyframes cyber-shake {
+  0%, 95%, 100% { transform: skewX(0deg); }
+  96% { transform: skewX(6deg) skewY(-2deg); }
+  98% { transform: skewX(-4deg); }
 }
 
-.menu-toggle {
-  display: none;
-  font-size: 2rem;
+/* ==========================================================================
+   7. WINDOW BOXES
+   ========================================================================== */
+section { padding: 3rem 1.5rem; }
+.window-box {
+  background: var(--window-bg); border: var(--border-style); box-shadow: var(--window-shadow);
+  border-radius: var(--border-radius); max-width: 850px; margin: 0 auto; overflow: hidden;
+  transition: transform 0.3s ease, background 0.4s;
+}
+.large-window { max-width: 1050px; }
+.window-header {
+  background: var(--header-gradient); color: var(--header-text); padding: 8px 15px;
+  display: flex; justify-content: space-between; align-items: center; border-bottom: var(--border-style);
+}
+.window-title { font-size: 0.85rem; font-weight: bold; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; }
+.window-body { padding: 2.2rem; font-size: 0.95rem; line-height: 1.7; }
+
+body.cyber-dark #about .window-box, body.cyber-white #about .window-box { transform: rotate(-1.5deg) skewX(-1.5deg); }
+body.cyber-dark #games .window-box, body.cyber-white #games .window-box { transform: rotate(-0.8deg) skewX(0.5deg); }
+body.cyber-dark #team .window-box, body.cyber-white #team .window-box { transform: rotate(1.2deg) skewX(-1deg); }
+body.cyber-dark #contact .window-box, body.cyber-white #contact .window-box { transform: rotate(-2deg) skewX(2deg); }
+body.cyber-dark .window-box:hover, body.cyber-white .window-box:hover { transform: rotate(0deg) skewX(0deg) scale(1.01); }
+
+body.elegant-dark .window-controls, body.elegant-light .window-controls { display: none; }
+body.elegant-dark .window-header, body.elegant-light .window-header { border-bottom: 1px solid var(--window-border); padding: 14px 20px 4px 20px; }
+
+.window-body h2 { font-family: var(--title-font); font-size: 1.8rem; margin-bottom: 15px; letter-spacing: 1px; }
+body.elegant-dark .window-body h2, body.elegant-light .window-body h2 {
+  font-weight: 400; text-transform: uppercase; text-align: center; font-size: 1.6rem; border-bottom: 1px solid var(--window-border); padding-bottom: 12px;
+}
+
+/* ==========================================================================
+   8. YOUTUBE VIDEO CONTAINER
+   ========================================================================== */
+.video-container {
+  position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+  border: var(--border-style); border-radius: var(--border-radius); background: #000;
+}
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* ==========================================================================
+   9. GRIDS & EFFETTI INTERATTIVI (GAME & TEAM)
+   ========================================================================== */
+.desktop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 15px; }
+.game-card {
+  background: var(--card-bg); border: var(--border-style); border-radius: var(--border-radius);
+  padding: 1.5rem; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.4s;
+}
+.game-card:hover { transform: translateY(-4px); box-shadow: var(--window-shadow); }
+.game-card-header { font-size: 1.2rem; margin-bottom: 0.6rem; color: var(--accent-neon); font-family: var(--title-font); }
+.game-card-text { color: var(--card-text); font-size: 0.9rem; margin-bottom: 10px; }
+
+body.elegant-dark .game-card-header, body.elegant-light .game-card-header {
+  font-family: var(--body-font); font-weight: 600; color: var(--text-color); text-transform: none; letter-spacing: 0;
+}
+.gallery img { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); border: var(--border-style); margin-bottom: 8px; }
+.action-text { font-size: 0.75rem; text-transform: uppercase; color: var(--accent-neon); font-weight: bold; letter-spacing: 0.5px; }
+
+/* SEZIONE TEAM */
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 15px; }
+
+/* Configurazione base del bottone membro */
+.team-grid .member {
   cursor: pointer;
-  user-select: none;
-  color: var(--text-color);
+  background: var(--card-bg); color: var(--text-color); padding: 1.8rem 1rem;
+  border: var(--border-style); border-radius: var(--border-radius); text-align: center; width: 100%; font-family: var(--body-font);
+  display: flex; flex-direction: column; align-items: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.4s;
 }
 
-#themeToggle {
-  font-size: 1.5rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text-color);
-  transition: color 0.3s ease;
+/* Effetto HOVER globale sul membro del team */
+.team-grid .member:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-neon);
+  box-shadow: 0 8px 25px rgba(var(--accent-neon), 0.22);
+  background-color: rgba(var(--accent-neon), 0.02);
 }
 
-#themeToggle:hover {
-  color: var(--accent-color-2);
+/* Immagine del profilo */
+.team-grid .member img { 
+  width: 75px; height: 75px; border-radius: 50%; border: var(--border-style); margin-bottom: 0.8rem; object-fit: cover; 
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* === HERO === */
-.hero {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+/* Effetto sull'immagine all'hover */
+.team-grid .member:hover img {
+  transform: scale(1.06);
+  border-color: var(--accent-neon);
+  box-shadow: 0 0 12px rgba(var(--accent-neon), 0.4);
 }
 
-.hero-content {
-  text-align: center;
-  backdrop-filter: blur(3px);
-  background: rgba(0, 0, 0, 0.25);
-  padding: 2rem;
-  border-radius: 20px;
+/* Testi interni */
+.team-grid .member h3 { font-size: 1rem; margin-bottom: 3px; font-family: var(--body-font); font-weight: 600; transition: color 0.25s ease; }
+.team-grid .member p { font-size: 0.85rem; color: var(--text-muted); }
+
+/* Illuminazione dinamica del nome all'hover */
+.team-grid .member:hover h3 {
+  color: var(--accent-neon);
 }
 
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
+/* CONTATTI */
+.contact-list { list-style: none; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+.contact-list a { color: var(--accent-neon); text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: opacity 0.2s; }
+.contact-list a:hover { opacity: 0.8; }
+body.elegant-dark .contact-list a, body.elegant-light .contact-list a { color: var(--text-color); border-bottom: 1px dashed var(--accent-neon); }
 
-.hero p {
-  font-size: 1.3rem;
-}
-
-/* === SECTIONS === */
-section {
-  padding: 5rem 2rem;
-  text-align: center;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-}
-
-/* === GAMES & TEAM GRID === */
-.game-list, .team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-}
-
-.game, .member {
-  background: var(--card-bg);
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 0 20px var(--accent-color);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.game:hover, .member:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px var(--hover-glow);
-}
-
-/* === GALLERY === */
-.gallery {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  margin-top: 1rem;
-  cursor: default;
-}
-
-.gallery img {
-  width: 300px;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-  user-select: none;
-}
-
-.gallery img:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px var(--accent-color);
-}
-
-/* === TEAM MEMBERS === */
-.member img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-  border: 3px solid var(--accent-color);
-}
-
-/* === CONTACT === */
-.contact-list {
-  list-style: none;
-  padding: 0;
-  margin-top: 1rem;
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  font-size: 1.2rem;
-}
-
-.contact-list li a {
-  color: var(--accent-color);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-body.light .contact-list li a {
-  color: var(--accent-color-2);
-}
-
-.contact-list li a:hover {
-  color: yellow;
-  text-decoration: underline;
-}
-
-/* === FOOTER === */
-footer {
-  padding: 2rem;
-  border-top: 1px solid var(--accent-color-2);
-  text-align: center;
-}
-
-/* === PARALLAX === */
-.parallax {
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-}
-
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background: var(--bg-color);
-    position: absolute;
-    top: 80px;
-    right: 20px;
-    padding: 1rem;
-    border-radius: 12px;
-    width: 180px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
-    z-index: 150;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .parallax {
-    background-attachment: scroll;
-  }
-}
-
-/* === MODAL === */
+/* ==========================================================================
+   10. MODALI
+   ========================================================================== */
 .modal {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0,0,0,0.7);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.75);
+  display: none; align-items: center; justify-content: center; z-index: 2000; padding: 15px; backdrop-filter: blur(6px);
+}
+.modal[aria-hidden="false"] { display: flex; }
+.retro-popup {
+  background: var(--window-bg); border: var(--border-style); border-radius: var(--border-radius);
+  box-shadow: var(--window-shadow); width: 95%; max-width: 500px; animation: modalIn 0.25s ease-out;
+}
+.retro-popup.large-popup { max-width: 650px; }
+@keyframes modalIn { from { transform: scale(0.98); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.modal-close { background: none; border: none; color: var(--header-text); font-size: 1.4rem; cursor: pointer; }
+body.elegant-dark .modal-close, body.elegant-light .modal-close { color: var(--text-color); }
+
+.win-action-btn {
+  background: var(--card-bg); color: var(--text-color); border: var(--border-style);
+  border-radius: var(--border-radius); padding: 8px 24px; font-family: var(--body-font); font-size: 0.8rem; cursor: pointer; letter-spacing: 0.5px;
 }
 
-.modal[aria-hidden="false"] {
-  display: flex;
+body.cyber-dark .win-action-btn, body.cyber-white .win-action-btn { font-family: var(--title-font); box-shadow: 3px 3px 0px var(--text-color); text-transform: uppercase; }
+
+.popup-sub-title { font-size: 0.85rem; color: var(--accent-neon); margin-top: 14px; margin-bottom: 6px; letter-spacing: 0.5px; }
+.popup-gallery { display: flex; gap: 8px; overflow-x: auto; padding: 4px; }
+.popup-gallery-img { width: 160px; height: 100px; object-fit: cover; border-radius: var(--border-radius); border: var(--border-style); }
+.popup-stores-wrapper { display: flex; gap: 10px; margin-top: 6px; }
+.store-btn {
+  text-decoration: none; padding: 6px 14px; border-radius: var(--border-radius);
+  color: var(--text-color); border: var(--border-style); font-size: 0.8rem;
 }
+.modal-extra-box { border: 1px dashed var(--window-border); padding: 8px; font-size: 0.75rem; background: rgba(0,0,0,0.1); font-family: 'Space Grotesk', sans-serif; }
 
-.modal-content {
-  background: var(--modal-bg-color);
-  color: var(--text-color);
-  padding: 2rem;
-  border-radius: 15px;
-  max-width: 400px;
-  width: 90%;
-  box-shadow: 0 0 20px var(--accent-color);
-  text-align: center;
-  position: relative;
-  font-family: 'Orbitron', sans-serif;
-}
+/* ==========================================================================
+   11. FOOTER & RETROBANNERS
+   ========================================================================== */
+footer { padding: 2.5rem; border-top: var(--border-style); text-align: center; background: var(--nav-bg); font-size: 0.85rem; transition: background 0.4s; }
 
-:root {
-  --modal-bg-color: #121212;
-}
+.retro-banners { display: none; margin-top: 15px; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.env-text { padding: 4px 10px; font-size: 0.75rem; font-family: 'DotGothic16', sans-serif; }
 
-body.light {
-  --modal-bg-color: #ffffff;
-}
+body.cyber-dark .retro-banners, body.cyber-white .retro-banners { display: flex; }
+body.cyber-dark .env-text { background: var(--text-color); color: #000; font-weight: bold; }
+body.cyber-white .env-text { background: var(--window-border); color: #fff; font-weight: bold; }
 
-.modal-close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: var(--text-color);
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.modal-close:hover {
-  color: var(--accent-color);
-}
-
-/* === LOGO SWITCH DARK/LIGHT === */
-.light-logo { display: none; }
-.dark-logo { display: inline; }
-body.light .light-logo { display: inline; }
-body.light .dark-logo { display: none; }
-
-/* === SCROLL TO TOP BUTTON === */
 #scrollToTop {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 1000;
-  background: var(--accent-color);
-  color: var(--bg-color);
-  border: none;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  font-size: 1.8rem;
-  cursor: pointer;
-  box-shadow: 0 0 15px var(--accent-color);
-  transition: all 0.4s ease;
-  opacity: 0;
-  pointer-events: none;
-  backdrop-filter: blur(10px);
+  position: fixed; bottom: 25px; right: 25px; z-index: 1000; background: var(--window-bg);
+  color: var(--text-color); border: var(--border-style); border-radius: var(--border-radius);
+  width: 40px; height: 40px; cursor: pointer; opacity: 0; transition: opacity 0.3s ease;
+}
+#scrollToTop.show { opacity: 1; }
+
+/* ==========================================================================
+   12. MEDIA QUERIES & EVENTI DA TASTIERA/REINDERIZZAMENTI
+   ========================================================================== */
+@media (max-width: 768px) {
+  .nav-links { display: none; flex-direction: column; background: var(--nav-bg); position: absolute; top: 65px; right: 0; width: 100%; padding: 1.5rem; border-bottom: var(--border-style); gap: 1rem; }
+  .nav-links.active { display: flex; }
+  .menu-toggle { display: block; font-size: 1.5rem; cursor: pointer; color: var(--text-color); } 
+  
+  body.cyber-dark .window-box, body.cyber-white .window-box { transform: none !important; } 
+  body.cyber-dark .hero-content h1, body.cyber-white .hero-content h1 { font-size: 2.2rem !important; }
+  body.elegant-dark .hero-content h1, body.elegant-light .hero-content h1 { font-size: 2.4rem !important; }
 }
 
-#scrollToTop:hover {
-  background: var(--accent-color-2);
-  box-shadow: 0 0 25px var(--accent-color-2);
-}
-
-#scrollToTop.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.programming-list {
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: left;
-    padding-top: 2rem;
-}
-
-    .programming-list h3 {
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        color: var(--accent-color-2);
-        border-bottom: 1px solid var(--accent-color);
-        padding-bottom: 5px;
-    }
-
-    .programming-list ul {
-        list-style: none;
-        padding-left: 0;
-    }
-
-    .programming-list li {
-        background: var(--card-bg);
-        padding: 1rem;
-        margin-bottom: 10px;
-        border-radius: 8px;
-        transition: background 0.3s ease;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-        .programming-list li:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .programming-list li a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .programming-list li span {
-            font-style: italic;
-            color: var(--accent-color);
-            font-size: 0.9em;
-        }
-
-/* Allineamento griglia per le card individuali */
-.individual-work-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+a.win-action-btn:hover { background: var(--accent-neon); color: var(--header-text) !important; }
