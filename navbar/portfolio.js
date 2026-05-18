@@ -3,32 +3,31 @@ const portfolioDatabase = {
   "marco_d": {
     title_it: "Iniezione Dati: Marco D'Arrigo",
     title_en: "Data Stream: Marco D'Arrigo",
-    // Inserisci qui il link esterno (es. GitHub)
     link: "https://github.com/marcodarrigo", 
     link_text_it: "Vedi GitHub Portfolio",
     link_text_en: "View GitHub Portfolio",
     html_it: `
       <div style="text-align:center; margin-bottom:15px;">
-        <img src="https://i.pravatar.cc/100?img=11" style="width:80px; border-radius:50%; border:var(--border-style);" />
+        <img src="../imgsProfile/marcod.jpg" style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:var(--border-style);" />
         <h3>Marco D'Arrigo</h3>
-        <p style="color:var(--accent-neon)">Systems Architect & Engine Expert</p>
+        <p style="color:var(--accent-neon)">Unity & Godot Programmer</p>
       </div>
-      <p><b>Dettagli Tecnici Avanzati:</b> Integra sistemi complessi in Unreal Engine 5 ottimizzando i cicli della CPU. Ha riscritto parti del motore di rendering per la gestione delle ombre asincrone.</p>
+      <p><b>Dettagli Tecnici:</b> Smanetto a 360° sulla logica di gioco e sull'architettura del codice, saltando senza problemi da Unity a Godot. Scrivo sistemi puliti e flessibili, e se c'è un bug strano o un problema di programmazione impossibile, ci vado a nozze finché non lo distruggo.</p>
       <div class="modal-detailed-grid">
-        <div><b>Progetti Principali:</b> Core Engine Framework, Custom Physics Thread.</div>
-        <div><b>Focus Consoles:</b> Devkit PS5 / Xbox Series X optimization.</div>
+        <div><b>Engine Principali:</b> Unity, Godot Engine (C# / GDScript)</div>
+        <div><b>Focus:</b> Architettura dei sistemi, logica di gameplay e problem solving.</div>
       </div>
     `,
     html_en: `
       <div style="text-align:center; margin-bottom:15px;">
-        <img src="https://i.pravatar.cc/100?img=11" style="width:80px; border-radius:50%; border:var(--border-style);" />
+        <img src="../imgsProfile/marcod.jpg" style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:var(--border-style);" />
         <h3>Marco D'Arrigo</h3>
-        <p style="color:var(--accent-neon)">Systems Architect & Engine Expert</p>
+        <p style="color:var(--accent-neon)">Unity & Godot Programmer</p>
       </div>
-      <p><b>Advanced Technical Specifications:</b> Implements optimized data architectures in Unreal Engine 5. Rewrote low-level engine modules to accommodate customized async rendering paths.</p>
+      <p><b>Technical Focus:</b> I handle code architecture and gameplay logic inside Unity and Godot. I focus on writing clean, scalable systems. The trickier the bug or the logic puzzle, the more I enjoy breaking it down and solving it.</p>
       <div class="modal-detailed-grid">
-        <div><b>Main Contributions:</b> Core Engine Framework, Custom Physics Thread.</div>
-        <div><b>Target Hardwares:</b> PS5 & Xbox Series X devkit pipelines.</div>
+        <div><b>Primary Engines:</b> Unity, Godot Engine (C# / GDScript)</div>
+        <div><b>Focus:</b> Systems architecture, core gameplay systems, and pure problem solving.</div>
       </div>
     `
   },
@@ -40,71 +39,85 @@ const portfolioDatabase = {
     link_text_en: "View Personal Repository",
     html_it: `
       <div style="text-align:center; margin-bottom:15px;">
-        <img src="https://i.pravatar.cc/100?img=12" style="width:80px; border-radius:50%; border:var(--border-style);" />
+        <img src="../imgsProfile/valeria.jpg" style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:var(--border-style);" />
         <h3>Valeria Napoli</h3>
-        <p style="color:var(--accent-neon)">AI Specialist & Lead Gameplay Engineer</p>
+        <p style="color:var(--accent-neon)">Unity & Godot Programmer</p>
       </div>
-      <p><b>Dettagli Tecnici Avanzati:</b> Sviluppatrice degli algoritmi decisionali del team. Ha creato un framework proprietario di Behavior Trees in grado di gestire centinaia di agenti contemporaneamente.</p>
+      <p><b>Dettagli Tecnici:</b> Mi occupo di programmazione gameplay, intelligenza artificiale e sistemi core sia su Unity che su Godot. Trasformo i concept e i flussi di idee del team in meccaniche reali, fluide, ottimizzate e pronte per essere giocate.</p>
+      <div class="modal-detailed-grid">
+        <div><b>Engine Principali:</b> Unity, Godot Engine</div>
+        <div><b>Focus:</b> Comportamento IA, logica core del gioco e stabilità delle meccaniche.</div>
+      </div>
     `,
     html_en: `
       <div style="text-align:center; margin-bottom:15px;">
-        <img src="https://i.pravatar.cc/100?img=12" style="width:80px; border-radius:50%; border:var(--border-style);" />
+        <img src="../imgsProfile/valeria.jpg" style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:var(--border-style);" />
         <h3>Valeria Napoli</h3>
-        <p style="color:var(--accent-neon)">AI Specialist & Lead Gameplay Engineer</p>
+        <p style="color:var(--accent-neon)">Unity & Godot Programmer</p>
       </div>
-      <p><b>Advanced Technical Specifications:</b> Architect behind the studio's algorithmic decision systems. Built a proprietary utility-AI behavior matrix.</p>
+      <p><b>Technical Focus:</b> I specialize in gameplay programming, AI mechanics, and core systems using both Unity and Godot. I love translating our team's creative sketches and ideas into playable, optimized, and fully functioning game prototypes.</p>
+      <div class="modal-detailed-grid">
+        <div><b>Primary Engines:</b> Unity, Godot Engine</div>
+        <div><b>Focus:</b> AI Behaviors, interactive core systems, and gameplay stability.</div>
+      </div>
     `
   },
   "marco_v": {
     title_it: "Iniezione Dati: Marco Valastro",
     title_en: "Data Stream: Marco Valastro",
-    link: "https://www.artstation.com", // Esempio ArtStation
+    link: "https://artstation.com/marcovalastro",
     link_text_it: "Vedi Portfolio ArtStation",
     link_text_en: "View ArtStation Showcase",
     html_it: `
       <div style="text-align:center; margin-bottom:15px;">
-        <img src="https://i.pravatar.cc/100?img=13" style="width:80px; border-radius:50%; border:var(--border-style);" />
+        <img src="../imgsProfile/marco.jpg" style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:var(--border-style);" />
         <h3>Marco Valastro</h3>
-        <p style="color:var(--accent-neon)">Art Director & Concept Pioneer</p>
+        <p style="color:var(--accent-neon)">Digital Artist</p>
       </div>
-      <p><b>Dettagli Artistici Avanzati:</b> Dirige la coerenza cromatica ed estetica dello studio. Ha ideato lo stile unico che unisce l'eleganza classica a dettagli cyberpunk industriali.</p>
+      <p><b>Dettagli Artistici:</b> Do forma, colore e identità visiva a tutto lo studio. Dai primissimi schizzi di concept art bidimensionale fino alla progettazione delle interfacce grafiche di gioco (UI), curo l'estetica generale e l'atmosfera dei nostri progetti.</p>
     `,
     html_en: `
       <div style="text-align:center; margin-bottom:15px;">
-        <img src="https://i.pravatar.cc/100?img=13" style="width:80px; border-radius:50%; border:var(--border-style);" />
+        <img src="../imgsProfile/marco.jpg" style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:var(--border-style);" />
         <h3>Marco Valastro</h3>
-        <p style="color:var(--accent-neon)">Art Director & Concept Pioneer</p>
+        <p style="color:var(--accent-neon)">Digital Artist</p>
       </div>
-      <p><b>Advanced Artistic Specifications:</b> Sets color palettes and aesthetic direction. Pioneered the structural design of Harakiri Studios.</p>
+      <p><b>Artistic Focus:</b> I shape the color palettes and visual identity of our games. From early 2D concept art and sketches to UI design and graphic elements, I define the look, feel, and thematic atmosphere of each experience.</p>
     `
   },
   "serena_n": {
     title_it: "Iniezione Dati: Serena Napoli",
     title_en: "Data Stream: Serena Napoli",
-    link: "https://www.artstation.com", 
+    link: "https://artstation.com/serenanapoli", 
     link_text_it: "Vedi Showreel 3D",
     link_text_en: "View 3D Showreel",
     html_it: `
       <div style="text-align:center; margin-bottom:15px;">
-        <img src="https://i.pravatar.cc/100?img=14" style="width:80px; border-radius:50%; border:var(--border-style);" />
+        <img src="../imgsProfile/sere.jpg" style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:var(--border-style);" />
         <h3>Serena Napoli</h3>
-        <p style="color:var(--accent-neon)">Lead 3D & Technical Animator</p>
+        <p style="color:var(--accent-neon)">3D Generalist</p>
       </div>
-      <p><b>Dettagli Artistici Avanzati:</b> Esperta nella modellazione poligonale complessa e nella fisica delle giunzioni (rigging). Sviluppa gli shader di movimento.</p>
+      <p><b>Dettagli Artistici:</b> Trasformo le idee bidimensionali in realtà tridimensionale. Sono specializzata nella modellazione poligonale, creando da zero sia i modelli dei personaggi che gli oggetti di scena e gli elementi che riempiono le nostre ambientazioni.</p>
+      <div class="modal-detailed-grid">
+        <div><b>Competenze Core:</b> 3D Modeling (Prop & Character), Texturing.</div>
+      </div>
     `,
     html_en: `
       <div style="text-align:center; margin-bottom:15px;">
-        <img src="https://i.pravatar.cc/100?img=14" style="width:80px; border-radius:50%; border:var(--border-style);" />
+        <img src="../imgsProfile/sere.jpg" style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:var(--border-style);" />
         <h3>Serena Napoli</h3>
-        <p style="color:var(--accent-neon)">Lead 3D & Technical Animator</p>
+        <p style="color:var(--accent-neon)">3D Generalist</p>
       </div>
-      <p><b>Advanced Technical Specifications:</b> Master of asset optimization and organic constraints.</p>
+      <p><b>Artistic Focus:</b> Turning flat 2D designs into tangible 3D game worlds. I focus on polygon modeling, sculpting everything from organic characters to environmental assets and game props from scratch.</p>
+      <div class="modal-detailed-grid">
+        <div><b>Core Skills:</b> 3D Asset Modeling (Props & Characters), UV & Texturing.</div>
+      </div>
     `
   },
   "ggj_2025": {
     title_it: "File Progetto: Global Game Jam 2025",
     title_en: "Project File: Global Game Jam 2025",
-    link: "https://itch.io", // Esempio link per giocare al prototipo
+    link: "https://itch.io", 
     link_text_it: "Gioca su Itch.io",
     link_text_en: "Play on Itch.io",
     html_it: `
@@ -119,7 +132,6 @@ const portfolioDatabase = {
   "vfx_sandbox": {
     title_it: "File Progetto: VFX Shader Sandbox",
     title_en: "Project File: VFX Shader Sandbox",
-    // Se non metti il campo 'link', il pulsante semplicemente non apparirà per questa card
     html_it: `
       <h3 style="color:var(--accent-neon); text-align:center;">Tool Proprietario R&D</h3>
       <p style="margin-top:15px;">Una suite creata internamente ad Harakiri Studios per simulare l'interazione tra fumo e fuoco.</p>
