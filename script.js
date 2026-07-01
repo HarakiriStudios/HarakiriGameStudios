@@ -64,6 +64,56 @@
   }
 };
 
+// Il tuo gamesDatabase rimane esattamente identico a come lo hai configurato
+
+function renderPlayStationGrid() {
+  const gamesContainer = document.getElementById('games');
+  if (!gamesContainer) return;
+
+  // Svuota il contenitore per evitare duplicati e applica la classe principale
+  gamesContainer.innerHTML = '';
+  gamesContainer.className = 'ps-fullscreen-wrapper';
+
+  // Rileva la lingua attiva sul tuo sito (di default 'it', cambia a 'en' se serve)
+  // Puoi adattare questa riga in base a come gestisci il bilinguismo (es. document.documentElement.lang)
+  const currentLang = document.body.classList.contains('lang-en') ? 'en' : 'it';
+
+  // Cicla sui giochi nel database per generare le bande diagonali
+  Object.keys(gamesDatabase).forEach(key => {
+    const game = gamesDatabase[key];
+    const dataLang = game[currentLang] ? game[currentLang] : game['it']; // Fallback sulla lingua italiana
+    
+    // Prende il primo screenshot come immagine di sfondo della banda principale
+    const mainBg = game.screenshots[0] || 'https://picsum.photos/id/1005/1200/800';
+
+    // Costruisce la struttura HTML della banda
+    const slice = document.createElement('div');
+    slice.className = 'ps-game-slice audio-click';
+    slice.setAttribute('data-game', key);
+    slice.style.setProperty('--bg-img', `url('${mainBg}')`);
+
+    slice.innerHTML = `
+      <div class="slice-content">
+        <h2 class="slice-title">${dataLang.title}</h2>
+        <p class="slice-desc">${dataLang.desc}</p>
+        <span class="action-text" data-lang-it="[Clicca per Dettagli]" data-lang-en="[Click for Details]">
+          ${currentLang === 'en' ? '[Click for Details]' : '[Clicca per Dettagli]'}
+        </span>
+      </div>
+    `;
+
+    // Se hai già un listener globale per gli elementi ".audio-click" o per aprire la modale al click:
+    // lo script continuerà a intercettarlo grazie al data-game!
+    gamesContainer.appendChild(slice);
+  });
+}
+
+// Inizializza la griglia al caricamento della pagina
+document.addEventListener('DOMContentLoaded', renderPlayStationGrid);
+
+// Se hai un sistema di cambio lingua nel sito, ricordati di richiamare 
+// renderPlayStationGrid() quando l'utente switcha tra IT ed EN per aggiornare i testi!
+
 let currentLang = localStorage.getItem('selected-lang') || 'it';
 let currentTheme = localStorage.getItem('selected-theme') || 'elegant-dark';
 
@@ -184,10 +234,10 @@ document.getElementById('openTrailerBtn')?.addEventListener('click', () => {
 const teamModal = document.getElementById('teamModal');
 if (teamModal) {
   const modalTitle = document.getElementById('modalTitle');
-  const modalImg = document.getElementById('modalImg'); // Nuovo elemento per l'immagine
+  const modalImg = document.getElementById('modalImg'); 
   const modalRole = document.getElementById('modalRole');
   const modalDesc = document.getElementById('modalDesc');
-  const modalPortfolioWrapper = document.getElementById('modalPortfolioWrapper'); // Nuovo wrapper portfolio
+  const modalPortfolioWrapper = document.getElementById('modalPortfolioWrapper'); // Questo farà da Linktree contenitore
 
   document.querySelectorAll('.member').forEach(memberBtn => {
     memberBtn.addEventListener('click', () => {
@@ -209,19 +259,53 @@ if (teamModal) {
         modalDesc.textContent = memberBtn.getAttribute('data-bio-en');
       }
 
-      // Gestione dinamica del link Portfolio
+      // ==========================================================================
+      // GENERATORE DINAMICO DI LINKTREE INTERNO ALLA MODALE
+      // ==========================================================================
       if (modalPortfolioWrapper) {
         modalPortfolioWrapper.innerHTML = ''; // Svuota vecchi link
-        const portfolioUrl = memberBtn.getAttribute('data-portfolio');
         
-        if (portfolioUrl) {
-          const btnText = currentLang === 'it' ? 'VEDI PORTFOLIO' : 'VIEW PORTFOLIO';
-          modalPortfolioWrapper.innerHTML = `
-            <a href="${portfolioUrl}" target="_blank" rel="noopener" class="win-action-btn audio-click" style="text-decoration: none; display: inline-block;">
-              <i class="fa-solid fa-briefcase" style="margin-right: 6px;"></i> ${btnText}
-            </a>
-          `;
-        }
+        // Mappatura delle piattaforme social, delle icone FontAwesome e delle label
+        const socialPlatforms = [
+          { key: 'portfolio', icon: 'fa-solid fa-briefcase', labelIt: 'Portfolio', labelEn: 'Portfolio' },
+          { key: 'github', icon: 'fa-brands fa-github', labelIt: 'GitHub', labelEn: 'GitHub' },
+          { key: 'artstation', icon: 'fa-brands fa-artstation', labelIt: 'ArtStation', labelEn: 'ArtStation' },
+          { key: 'twitter', icon: 'fa-brands fa-x-twitter', labelIt: 'Twitter / X', labelEn: 'Twitter / X' },
+          { key: 'instagram', icon: 'fa-brands fa-instagram', labelIt: 'Instagram', labelEn: 'Instagram' },
+          { key: 'linkedin', icon: 'fa-brands fa-linkedin', labelIt: 'LinkedIn', labelEn: 'LinkedIn' }
+        ];
+
+        // Crea un micro-container verticale per i link stile Linktree
+        const linktreeContainer = document.createElement('div');
+        linktreeContainer.style.display = 'flex';
+        linktreeContainer.style.flexDirection = 'column';
+        linktreeContainer.style.gap = '10px';
+        linktreeContainer.style.width = '100%';
+        linktreeContainer.style.marginTop = '15px';
+
+        socialPlatforms.forEach(platform => {
+          // Prende l'attributo es: data-github, data-artstation, ecc.
+          const url = memberBtn.getAttribute(`data-${platform.key}`);
+          
+          if (url) {
+            const label = currentLang === 'it' ? platform.labelIt : platform.labelEn;
+            const linkBtn = document.createElement('a');
+            linkBtn.href = url;
+            linkBtn.target = '_blank';
+            linkBtn.rel = 'noopener';
+            // Riutilizza le classi del tuo template per mantenere intatto il tema visivo (Cyber/Elegant)
+            linkBtn.className = 'win-action-btn audio-click'; 
+            linkBtn.style.textDecoration = 'none';
+            linkBtn.style.display = 'block';
+            linkBtn.style.textAlign = 'center';
+            linkBtn.style.width = '100%';
+            
+            linkBtn.innerHTML = `<i class="${platform.icon}" style="margin-right: 8px;"></i> ${label}`;
+            linktreeContainer.appendChild(linkBtn);
+          }
+        });
+
+        modalPortfolioWrapper.appendChild(linktreeContainer);
       }
 
       teamModal.setAttribute('aria-hidden', 'false');
@@ -229,6 +313,9 @@ if (teamModal) {
   });
 }
 
+/* ==========================================================================
+   GESTIONE MODALE GIOCHI + LIGHTBOX AVANZATO CON SCORRIMENTO FULLSCREEN
+   ========================================================================== */
 const gameModal = document.getElementById('gameModal');
 if (gameModal) {
   const gameModalTitle = document.getElementById('gameModalTitle');
@@ -237,41 +324,137 @@ if (gameModal) {
   const gameModalGallery = document.getElementById('gameModalGallery');
   const gameModalStores = document.getElementById('gameModalStores');
 
-  document.querySelectorAll('.game-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const gameKey = card.dataset.game;
-      const gameData = gamesDatabase[gameKey];
+  // Variabili di stato per tracciare gli screenshot del gioco attualmente aperto
+  let currentScreenshots = [];
+  let currentImgIndex = 0;
 
-      if (gameData) {
-        const localizedData = gameData[currentLang];
-        gameModalTitle.textContent = localizedData.title;
-        gameModalDesc.textContent = localizedData.desc;
-        gameModalExtra.innerHTML = `<strong>SYS_LOG:</strong> ${localizedData.extra}`;
+  document.getElementById('games')?.addEventListener('click', (e) => {
+    const slice = e.target.closest('.ps-game-slice');
+    if (!slice) return;
+
+    const gameKey = slice.dataset.game;
+    const gameData = gamesDatabase[gameKey];
+
+    if (gameData) {
+      const localizedData = gameData[currentLang] || gameData['it'];
+      gameModalTitle.textContent = localizedData.title;
+      gameModalDesc.textContent = localizedData.desc;
+      gameModalExtra.innerHTML = `<strong>SYS_LOG:</strong> ${localizedData.extra}`;
+      
+      // Salviamo gli screenshot correnti per il Lightbox
+      currentScreenshots = gameData.screenshots || [];
+
+      gameModalGallery.innerHTML = `
+        <button class="gallery-nav-btn prev-btn" aria-label="Precedente">❬</button>
+        <div class="gallery-track"></div>
+        <button class="gallery-nav-btn next-btn" aria-label="Successiva">❭</button>
+      `;
+      
+      const track = gameModalGallery.querySelector('.gallery-track');
+      
+      currentScreenshots.forEach((src, index) => {
+        const img = document.createElement('img');
+        img.src = src; 
+        img.className = 'popup-gallery-img audio-click';
+        img.alt = localizedData.title + " Visual";
         
-        gameModalGallery.innerHTML = '';
-        gameData.screenshots.forEach(src => {
-          const img = document.createElement('img');
-          img.src = src; img.className = 'popup-gallery-img';
-          gameModalGallery.appendChild(img);
+        // Cliccando la foto nella modale, apriamo il fullscreen su quell'indice
+        img.addEventListener('click', () => {
+          currentImgIndex = index;
+          openLightbox();
         });
+        
+        track.appendChild(img);
+      });
 
-        gameModalStores.innerHTML = '';
-        let hasLinks = false;
-        if (gameData.stores.steam) {
-          gameModalStores.innerHTML += `<a href="${gameData.stores.steam}" target="_blank" rel="noopener" class="store-btn audio-click"><i class="fa-brands fa-steam"></i> Steam</a>`;
-          hasLinks = true;
-        }
-        if (gameData.stores.itch) {
-          gameModalStores.innerHTML += `<a href="${gameData.stores.itch}" target="_blank" rel="noopener" class="store-btn audio-click"><i class="fa-solid fa-gamepad"></i> Itch.io</a>`;
-          hasLinks = true;
-        }
-        if (!hasLinks) {
-          gameModalStores.innerHTML = `<span style="font-size:0.9rem; color:var(--text-muted);">${currentLang === 'it' ? '[PROSSIMAMENTE]' : '[COMING SOON]'}</span>`;
-        }
-        gameModal.setAttribute('aria-hidden', 'false');
+      const prevBtn = gameModalGallery.querySelector('.prev-btn');
+      const nextBtn = gameModalGallery.querySelector('.next-btn');
+      
+      prevBtn.addEventListener('click', () => {
+        track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
+      });
+      nextBtn.addEventListener('click', () => {
+        track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
+      });
+
+      // Stores
+      gameModalStores.innerHTML = '';
+      let hasLinks = false;
+      if (gameData.stores.steam) {
+        gameModalStores.innerHTML += `<a href="${gameData.stores.steam}" target="_blank" rel="noopener" class="store-btn audio-click"><i class="fa-brands fa-steam"></i> Steam</a>`;
+        hasLinks = true;
       }
-    });
+      if (gameData.stores.itch) {
+        gameModalStores.innerHTML += `<a href="${gameData.stores.itch}" target="_blank" rel="noopener" class="store-btn audio-click"><i class="fa-solid fa-gamepad"></i> Itch.io</a>`;
+        hasLinks = true;
+      }
+      if (!hasLinks) {
+        gameModalStores.innerHTML = `<span style="font-size:0.9rem; color:var(--text-muted);">${currentLang === 'it' ? '[PROSSIMAMENTE]' : '[COMING SOON]'}</span>`;
+      }
+      
+      gameModal.setAttribute('aria-hidden', 'false');
+    }
   });
+
+  // Gestione ed evoluzione del Lightbox a schermo intero
+  function openLightbox() {
+    let lightbox = document.getElementById('global-lightbox');
+    
+    if (!lightbox) {
+      lightbox = document.createElement('div');
+      lightbox.id = 'global-lightbox';
+      lightbox.innerHTML = `
+        <span class="lightbox-close">&times;</span>
+        <button class="lightbox-nav lightbox-prev">❬</button>
+        <img class="lightbox-content" id="lightbox-img" src="" alt="Fullscreen screenshot">
+        <button class="lightbox-nav lightbox-next">❭</button>
+      `;
+      document.body.appendChild(lightbox);
+      
+      // Chiusura al click sullo sfondo o sulla X
+      lightbox.addEventListener('click', (e) => {
+        if (e.target.id === 'global-lightbox' || e.target.className === 'lightbox-close') {
+          lightbox.classList.remove('active');
+        }
+      });
+
+      // Eventi frecce del Lightbox
+      lightbox.querySelector('.lightbox-prev').addEventListener('click', (e) => {
+        e.stopPropagation(); // Evita la chiusura del lightbox cliccando sulla freccia
+        navigateLightbox(-1);
+      });
+      lightbox.querySelector('.lightbox-next').addEventListener('click', (e) => {
+        e.stopPropagation();
+        navigateLightbox(1);
+      });
+
+      // Supporto per le frecce della tastiera fisica
+      document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'ArrowLeft') navigateLightbox(-1);
+        if (e.key === 'ArrowRight') navigateLightbox(1);
+        if (e.key === 'Escape') lightbox.classList.remove('active');
+      });
+    }
+    
+    updateLightboxImage();
+    lightbox.classList.add('active');
+  }
+
+  function updateLightboxImage() {
+    const lightboxImg = document.getElementById('lightbox-img');
+    if (lightboxImg && currentScreenshots[currentImgIndex]) {
+      lightboxImg.src = currentScreenshots[currentImgIndex];
+    }
+  }
+
+  function navigateLightbox(direction) {
+    // Cicla all'infinito tra gli screenshot del gioco selezionato
+    currentImgIndex += direction;
+    if (currentImgIndex < 0) currentImgIndex = currentScreenshots.length - 1;
+    if (currentImgIndex >= currentScreenshots.length) currentImgIndex = 0;
+    updateLightboxImage();
+  }
 }
 
 const scrollToTopBtn = document.getElementById('scrollToTop');

@@ -216,7 +216,7 @@ body.cyber-white .hero-content h1 {
 }
 
 /* ==========================================================================
-   7. WINDOW BOXES
+   7. WINDOW BOXES (USATE PER LE ALTRE SEZIONI COME I CONTATTI)
    ========================================================================== */
 section { padding: 3rem 1.5rem; }
 .window-box {
@@ -232,9 +232,6 @@ section { padding: 3rem 1.5rem; }
 .window-title { font-size: 0.85rem; font-weight: bold; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; }
 .window-body { padding: 2.2rem; font-size: 0.95rem; line-height: 1.7; }
 
-body.cyber-dark #about .window-box, body.cyber-white #about .window-box { transform: rotate(-1.5deg) skewX(-1.5deg); }
-body.cyber-dark #games .window-box, body.cyber-white #games .window-box { transform: rotate(-0.8deg) skewX(0.5deg); }
-body.cyber-dark #team .window-box, body.cyber-white #team .window-box { transform: rotate(1.2deg) skewX(-1deg); }
 body.cyber-dark #contact .window-box, body.cyber-white #contact .window-box { transform: rotate(-2deg) skewX(2deg); }
 body.cyber-dark .window-box:hover, body.cyber-white .window-box:hover { transform: rotate(0deg) skewX(0deg) scale(1.01); }
 
@@ -256,85 +253,239 @@ body.elegant-dark .window-body h2, body.elegant-light .window-body h2 {
 .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
 /* ==========================================================================
-   9. GRIDS & EFFETTI INTERATTIVI (GAME & TEAM)
+   9. SEZIONE CHI SIAMO & TEAM UNIFICATA (SENZA BLOCCHI / INVISIBILE)
    ========================================================================== */
-.desktop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 15px; }
-.game-card {
-  background: var(--card-bg); border: var(--border-style); border-radius: var(--border-radius);
-  padding: 1.5rem; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.4s;
+.unified-about-team {
+  padding: 5rem 1.5rem;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  max-width: 1100px;
+  margin: 0 auto;
 }
-.game-card:hover { transform: translateY(-4px); box-shadow: var(--window-shadow); }
-.game-card-header { font-size: 1.2rem; margin-bottom: 0.6rem; color: var(--accent-neon); font-family: var(--title-font); }
-.game-card-text { color: var(--card-text); font-size: 0.9rem; margin-bottom: 10px; }
 
-body.elegant-dark .game-card-header, body.elegant-light .game-card-header {
-  font-family: var(--body-font); font-weight: 600; color: var(--text-color); text-transform: none; letter-spacing: 0;
+.about-brand-intro {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto;
 }
-.gallery img { width: 100%; height: 140px; object-fit: cover; border-radius: var(--border-radius); border: var(--border-style); margin-bottom: 8px; }
-.action-text { font-size: 0.75rem; text-transform: uppercase; color: var(--accent-neon); font-weight: bold; letter-spacing: 0.5px; }
 
-/* SEZIONE TEAM */
-.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 15px; }
+.unified-section-title {
+  font-family: var(--title-font);
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  text-align: center;
+}
+body.elegant-dark .unified-section-title, body.elegant-light .unified-section-title {
+  font-weight: 400;
+}
 
-/* Configurazione base del bottone membro */
+.about-brand-text {
+  font-family: var(--body-font);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  opacity: 0.9;
+}
+
+.team-showcase {
+  width: 100%;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-top: 15px;
+}
+
+/* Configurazione dei singoli bottoni membro (integrati fluidamente) */
 .team-grid .member {
   cursor: pointer;
-  background: var(--card-bg); color: var(--text-color); padding: 1.8rem 1rem;
-  border: var(--border-style); border-radius: var(--border-radius); text-align: center; width: 100%; font-family: var(--body-font);
-  display: flex; flex-direction: column; align-items: center;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.4s;
+  background: transparent; 
+  color: var(--text-color);
+  padding: 2rem 1rem;
+  border: none; 
+  border-radius: var(--border-radius);
+  text-align: center;
+  width: 100%;
+  font-family: var(--body-font);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.25s ease;
 }
 
-/* Effetto HOVER globale sul membro del team */
 .team-grid .member:hover {
   transform: translateY(-5px);
-  border-color: var(--accent-neon);
-  box-shadow: 0 8px 25px rgba(var(--accent-neon), 0.22);
-  background-color: rgba(var(--accent-neon), 0.02);
+  background-color: transparent; 
+  box-shadow: none;
 }
 
-/* Immagine del profilo */
+/* Profilo Immagine Circolare */
 .team-grid .member img { 
-  width: 75px; height: 75px; border-radius: 50%; border: var(--border-style); margin-bottom: 0.8rem; object-fit: cover; 
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: var(--border-style);
+  margin-bottom: 1.2rem;
+  object-fit: cover; 
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Effetto sull'immagine all'hover */
 .team-grid .member:hover img {
-  transform: scale(1.06);
+  transform: scale(1.05);
   border-color: var(--accent-neon);
-  box-shadow: 0 0 12px rgba(var(--accent-neon), 0.4);
+  box-shadow: 0 0 15px var(--accent-neon);
 }
 
-/* Testi interni */
-.team-grid .member h3 { font-size: 1rem; margin-bottom: 3px; font-family: var(--body-font); font-weight: 600; transition: color 0.25s ease; }
-.team-grid .member p { font-size: 0.85rem; color: var(--text-muted); }
+.team-grid .member h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  font-family: var(--body-font);
+  font-weight: 600;
+  transition: color 0.25s ease;
+}
 
-/* Illuminazione dinamica del nome all'hover */
 .team-grid .member:hover h3 {
   color: var(--accent-neon);
 }
 
-/* CONTATTI */
+.member-role {
+  font-size: 0.85rem;
+  color: var(--accent-neon);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   10. SEZIONE GIOCHI DIAGONALE A SCHERMO INTERO (STILE PLAYSTATION)
+   ========================================================================== */
+.ps-fullscreen-wrapper {
+  display: flex;
+  width: 100vw;
+  height: 80vh;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  overflow: hidden;
+  background: var(--card-bg, #111);
+  position: relative;
+  border-top: var(--border-style);
+  border-bottom: var(--border-style);
+}
+
+.ps-game-slice {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
+  margin-right: -4vw;
+  margin-left: -4vw;
+  transition: flex 0.6s cubic-bezier(0.25, 1, 0.3, 1), filter 0.4s;
+  filter: brightness(0.4) grayscale(0.4);
+  cursor: pointer;
+}
+
+.ps-game-slice:first-child {
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+  margin-left: 0;
+}
+.ps-game-slice:last-child {
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+  margin-right: 0;
+}
+
+.ps-game-slice::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -10%;
+  width: 120%;
+  height: 100%;
+  background-image: var(--bg-img);
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.3, 1);
+  z-index: 1;
+}
+
+.ps-game-slice::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--bg-color, #111) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+  opacity: 0.8;
+  transition: opacity 0.4s;
+  z-index: 2;
+}
+
+.slice-content {
+  position: absolute;
+  bottom: 40px;
+  left: 15%;
+  right: 10%;
+  z-index: 3;
+  color: var(--text-color, #fff);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.slice-title {
+  font-family: var(--title-font, sans-serif);
+  font-size: 2rem;
+  color: var(--accent-neon, #fff);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.slice-desc {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  max-width: 80%;
+  color: var(--card-text, #ddd);
+}
+
+.ps-game-slice:hover {
+  flex: 3;
+  filter: brightness(1.1) grayscale(0);
+  z-index: 5;
+}
+.ps-game-slice:hover::after { opacity: 0.9; }
+.ps-game-slice:hover::before { transform: scale(1.05); }
+.ps-game-slice:hover .slice-content { opacity: 1; transform: translateY(0); }
+
+/* ==========================================================================
+   11. CONTATTI
+   ========================================================================== */
 .contact-list { list-style: none; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
 .contact-list a { color: var(--accent-neon); text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: opacity 0.2s; }
 .contact-list a:hover { opacity: 0.8; }
 body.elegant-dark .contact-list a, body.elegant-light .contact-list a { color: var(--text-color); border-bottom: 1px dashed var(--accent-neon); }
 
 /* ==========================================================================
-   10. MODALI
+   12. MODALI & ADVANCED SLIDER + LIGHTBOX DETTAGLI GIOCO
    ========================================================================== */
 .modal {
   position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.75);
   display: none; align-items: center; justify-content: center; z-index: 2000; padding: 15px; backdrop-filter: blur(6px);
 }
 .modal[aria-hidden="false"] { display: flex; }
+
 .retro-popup {
   background: var(--window-bg); border: var(--border-style); border-radius: var(--border-radius);
   box-shadow: var(--window-shadow); width: 95%; max-width: 500px; animation: modalIn 0.25s ease-out;
 }
 .retro-popup.large-popup { max-width: 650px; }
 @keyframes modalIn { from { transform: scale(0.98); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
 .modal-close { background: none; border: none; color: var(--header-text); font-size: 1.4rem; cursor: pointer; }
 body.elegant-dark .modal-close, body.elegant-light .modal-close { color: var(--text-color); }
 
@@ -342,23 +493,172 @@ body.elegant-dark .modal-close, body.elegant-light .modal-close { color: var(--t
   background: var(--card-bg); color: var(--text-color); border: var(--border-style);
   border-radius: var(--border-radius); padding: 8px 24px; font-family: var(--body-font); font-size: 0.8rem; cursor: pointer; letter-spacing: 0.5px;
 }
-
 body.cyber-dark .win-action-btn, body.cyber-white .win-action-btn { font-family: var(--title-font); box-shadow: 3px 3px 0px var(--text-color); text-transform: uppercase; }
 
 .popup-sub-title { font-size: 0.85rem; color: var(--accent-neon); margin-top: 14px; margin-bottom: 6px; letter-spacing: 0.5px; }
-.popup-gallery { display: flex; gap: 8px; overflow-x: auto; padding: 4px; }
-.popup-gallery-img { width: 160px; height: 100px; object-fit: cover; border-radius: var(--border-radius); border: var(--border-style); }
 .popup-stores-wrapper { display: flex; gap: 10px; margin-top: 6px; }
 .store-btn {
   text-decoration: none; padding: 6px 14px; border-radius: var(--border-radius);
   color: var(--text-color); border: var(--border-style); font-size: 0.8rem;
 }
 .modal-extra-box { border: 1px dashed var(--window-border); padding: 8px; font-size: 0.75rem; background: rgba(0,0,0,0.1); font-family: 'Space Grotesk', sans-serif; }
+a.win-action-btn:hover { background: var(--accent-neon); color: var(--header-text) !important; }
+
+/* --- SEZIONE IMMERSIVA DETTAGLI GIOCO (MODALE GRANDE) --- */
+#gameModal .modal-content, 
+#gameModal.modal .window-box { 
+  width: 90% !important;
+  max-width: 900px !important; 
+  transition: all 0.3s ease;
+}
+
+/* Contenitore principale galleria interno alla modale */
+#gameModalGallery {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 15px 0;
+}
+
+/* Binario di scorrimento orizzontale */
+.gallery-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  width: 100%;
+  gap: 10px;
+  border-radius: var(--border-radius);
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
+.gallery-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Regola specifica ed esclusiva per le immagini DENTRO lo slider della modale */
+.gallery-track .popup-gallery-img {
+  flex: 0 0 100% !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 450px !important; 
+  object-fit: cover !important;
+  scroll-snap-align: start;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  border: var(--border-style);
+}
+
+/* Frecce interne alla modale */
+#gameModalGallery .gallery-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 1.5rem;
+  padding: 8px 12px;
+  cursor: pointer;
+  z-index: 5;
+  border-radius: var(--border-radius);
+  transition: all 0.2s;
+  user-select: none;
+}
+#gameModalGallery .gallery-nav-btn:hover {
+  background: var(--accent-neon, #ff007f);
+  border-color: transparent;
+}
+#gameModalGallery .prev-btn { left: 10px; }
+#gameModalGallery .next-btn { right: 10px; }
+
+/* --- STRUTTURA ED ECCELLENZA EFFETTI LIGHTBOX FULLSCREEN (RISOLTO PROBLEMA DIMENSIONI OG) --- */
+#global-lightbox {
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+#global-lightbox.active {
+  display: flex;
+  opacity: 1;
+}
+
+/* Qui forziamo l'immagine a fregarsene dei vecchi width/height e a espandersi davvero */
+#global-lightbox .lightbox-content {
+  width: auto !important;
+  height: auto !important;
+  max-width: 92% !important;
+  max-height: 90% !important;
+  object-fit: contain !important; /* Mantiene le proporzioni corrette senza tagliare l'immagine */
+  border: var(--border-style) !important;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  color: #fff;
+  font-size: 45px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 100002;
+}
+.lightbox-close:hover {
+  color: var(--accent-neon, #ff007f);
+}
+
+/* Frecce di navigazione a pieno schermo giganti e responsive */
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 2.8rem;
+  padding: 18px 25px;
+  cursor: pointer;
+  z-index: 100001;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.lightbox-nav:hover {
+  background: var(--accent-neon, #ff007f);
+  border-color: transparent;
+  transform: translateY(-50%) scale(1.08);
+}
+.lightbox-prev { left: 25px; }
+.lightbox-next { right: 25px; }
 
 /* ==========================================================================
-   11. FOOTER & RETROBANNERS
+   13. FOOTER & RETROBANNERS
    ========================================================================== */
 footer { padding: 2.5rem; border-top: var(--border-style); text-align: center; background: var(--nav-bg); font-size: 0.85rem; transition: background 0.4s; }
+
+footer h2 {
+  font-family: var(--title-font);
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+body.elegant-dark footer h2, body.elegant-light footer h2 {
+  font-weight: 400;
+  text-transform: uppercase;
+}
 
 .retro-banners { display: none; margin-top: 15px; justify-content: center; gap: 10px; flex-wrap: wrap; }
 .env-text { padding: 4px 10px; font-size: 0.75rem; font-family: 'DotGothic16', sans-serif; }
@@ -375,7 +675,7 @@ body.cyber-white .env-text { background: var(--window-border); color: #fff; font
 #scrollToTop.show { opacity: 1; }
 
 /* ==========================================================================
-   12. MEDIA QUERIES & EVENTI DA TASTIERA/REINDERIZZAMENTI
+   14. MEDIA QUERIES
    ========================================================================== */
 @media (max-width: 768px) {
   .nav-links { display: none; flex-direction: column; background: var(--nav-bg); position: absolute; top: 65px; right: 0; width: 100%; padding: 1.5rem; border-bottom: var(--border-style); gap: 1rem; }
@@ -385,6 +685,28 @@ body.cyber-white .env-text { background: var(--window-border); color: #fff; font
   body.cyber-dark .window-box, body.cyber-white .window-box { transform: none !important; } 
   body.cyber-dark .hero-content h1, body.cyber-white .hero-content h1 { font-size: 2.2rem !important; }
   body.elegant-dark .hero-content h1, body.elegant-light .hero-content h1 { font-size: 2.4rem !important; }
-}
 
-a.win-action-btn:hover { background: var(--accent-neon); color: var(--header-text) !important; }
+  /* Adattamenti Mobile per la Sezione Unificata */
+  .unified-about-team { padding: 3rem 1rem; gap: 3rem; }
+  .unified-section-title { font-size: 1.8rem; }
+  .about-brand-text { font-size: 1rem; }
+
+  /* Adattamenti Mobile per i Giochi e Modale */
+  .ps-fullscreen-wrapper { flex-direction: column; height: auto; }
+  .ps-game-slice { clip-path: none !important; margin: 0 !important; height: 250px; filter: brightness(0.7) grayscale(0); }
+  .ps-game-slice::before { width: 100%; left: 0; }
+  .slice-content { opacity: 1; transform: translateY(0); left: 20px; bottom: 20px; }
+  .slice-title { font-size: 1.5rem; }
+
+  #gameModal .modal-content { width: 95% !important; }
+  .gallery-track .popup-gallery-img { max-height: 260px !important; }
+  
+  #global-lightbox .lightbox-content { max-width: 95% !important; max-height: 80% !important; }
+  
+  .lightbox-nav {
+    font-size: 1.8rem;
+    padding: 10px 15px;
+  }
+  .lightbox-prev { left: 10px; }
+  .lightbox-next { right: 10px; }
+}

@@ -37,24 +37,6 @@
     <i class="fas fa-chevron-up"></i>
   </button>
 
-  <!-- Splash Screen -->
-  <div id="splash">
-    <div class="splash-box">
-      <div class="logo-wrapper-splash" style="height: 60px; position: relative; margin-bottom: 1rem;">
-        <img src="logo/logo-white.svg" alt="Harakiri Game Studios" class="logo splash-logo dark-logo" aria-hidden="true" style="height: 60px; position: absolute; left: 50%; transform: translateX(-50%);" />
-        <img src="logo/logo-black.svg" alt="Harakiri Game Studios" class="logo splash-logo light-logo" aria-hidden="true" style="height: 60px; position: absolute; left: 50%; transform: translateX(-50%);" />
-      </div>
-      <h1 class="splash-title">Harakiri Game Studios</h1>
-      
-      <div class="loading-wrapper">
-        <div class="loading-bar">
-          <div class="loading-progress"></div>
-        </div>
-        <button id="splashContinueBtn" class="win-action-btn audio-click" style="display:none;" data-lang-it="PREMI PER CONTINUARE" data-lang-en="PRESS TO CONTINUE">PREMI PER CONTINUARE</button>
-      </div>
-    </div>
-  </div>
-
   <div id="particles-js"></div>
   <div class="cyber-grid"></div>
   <div class="crt-scanlines"></div>
@@ -73,7 +55,6 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#about" class="audio-click" data-lang-it="Chi Siamo" data-lang-en="About Us">Chi Siamo</a></li>
         <li><a href="#games" class="audio-click" data-lang-it="Giochi" data-lang-en="Games">Giochi</a></li>
-        <li><a href="#team" class="audio-click" data-lang-it="Team" data-lang-en="Team">Team</a></li>
         <li><a href="navbar/portfolio.html" class="audio-click" data-lang-it="Portfolio" data-lang-en="Portfolio">Portfolio</a></li>
         <li><a href="#contact" class="audio-click" data-lang-it="Contatti" data-lang-en="Contact">Contatti</a></li>
         <li>
@@ -110,126 +91,116 @@
   </div>
 
   <!-- About Section -->
-  <section id="about">
-    <div class="window-box">
-      <div class="window-header">
-        <span class="window-title" data-cyber="ABOUT_US.TXT" data-elegant-it="Chi Siamo" data-elegant-en="About Us"><i class="fa-solid fa-circle-info"></i> <span></span></span>
-        <div class="window-controls"><span>_</span><span>&#9633;</span><span>&times;</span></div>
-      </div>
-      <div class="window-body">
-        <h2 data-lang-it="Chi Siamo" data-lang-en="About Us">Chi Siamo</h2>
-        <p style="margin-top: 10px;" data-lang-it="Siamo un team indie che realizza mondi bizzarri, surreali e magnetici. Sperimentiamo con gameplay, arte e narrazione per creare experiences uniche e indimenticabili." data-lang-en="We are an indie team crafting bizarre, surreal, and magnetic worlds. We experiment with gameplay, art, and storytelling to create unique and unforgettable experiences.">Siamo un team indie che realizza mondi bizzarri, surreali e magnetici. Sperimentiamo con gameplay, arte e narrazione per creare esperienze uniche e indimenticabili.</p>
+  <section id="about" class="unified-about-team">
+    
+    <div class="about-brand-intro">
+      <h2 class="unified-section-title" data-lang-it="Chi Siamo" data-lang-en="About Us">Chi Siamo</h2>
+      <p class="about-brand-text" data-lang-it="Siamo un team indie che realizza mondi bizzarri, surreali e magnetici. Sperimentiamo con gameplay, arte e narrazione per creare esperienze uniche e indimenticabili." data-lang-en="We are an indie team crafting bizarre, surreal, and magnetic worlds. We experiment with gameplay, art, and storytelling to create unique and unforgettable experiences.">Siamo un team indie che realizza mondi bizzarri, surreali e magnetici. Sperimentiamo con gameplay, arte e narrazione per creare esperienze uniche e indimenticabili.</p>
+    </div>
+
+    <div id="team" class="team-showcase">
+      <h2 class="unified-section-title" style="margin-bottom: 40px;" data-lang-it="Il Nostro Team" data-lang-en="Our Team">Il Nostro Team</h2>
+      
+      <div class="team-grid">
+        <button class="member audio-click" 
+                data-name="Marco D'Arrigo" 
+                data-role-it="Game Programmer" 
+                data-role-en="Unity Programmer" 
+                data-bio-it="Faccio di tutto su Unity: dal codice puro alla struttura di gioco. Più un problema è impossibile da risolvere, più mi diverto a distruggerlo." 
+                data-bio-en="I do a bit of everything in Unity: from pure code to game design architecture. The more complex the bug, the more I love crushing it." 
+                data-github="https://github.com/MeraMadness">
+          <img src="imgsProfile/marcod.jpg" alt="Marco D'Arrigo" loading="lazy" />
+          <h3>Marco D'Arrigo</h3>
+          <p class="member-role">Unity Programmer</p>
+        </button>
+        
+        <button class="member audio-click" 
+                data-name="Valeria Napoli" 
+                data-role-it="Game Programmer" 
+                data-role-en="Unity Programmer" 
+                data-bio-it="Sviluppo la logica di gioco, l'IA e i sistemi core in Unity. Trasformo le idee del team in meccaniche reali, fluide e pronte all'azione." 
+                data-bio-en="I code gameplay systems, AI, and core mechanics in Unity. Turning our wild ideas into solid, fluid, and playable mechanics." 
+                data-github="https://github.com/vale130612">
+          <img src="imgsProfile/vale.png" alt="Valeria Napoli" loading="lazy" />
+          <h3>Valeria Napoli</h3>
+          <p class="member-role">Unity Programmer</p>
+        </button>
+        
+        <button class="member audio-click" 
+                data-name="Marco Valastro" 
+                data-role-it="Digital Artist" 
+                data-role-en="Digital Artist" 
+                data-bio-it="Do vita e colore ai nostri mondi. Dai primi schizzi di concept art fino all'interfaccia di gioco, curo l'estetica e l'atmosfera visiva." 
+                data-bio-en="Bringing life and color to our worlds. From early concept art to the final UI, I shape the aesthetic and visual atmosphere." 
+                data-instagram="https://www.instagram.com/valstrax_draw/">
+          <img src="imgsProfile/marco.jpg" alt="Marco Valastro" loading="lazy" />
+          <h3>Marco Valastro</h3>
+          <p class="member-role">Digital Artist</p>
+        </button>
+        
+        <button class="member audio-click" 
+                data-name="Serena Napoli" 
+                data-role-it="3D Generalist" 
+                data-role-en="3D Generalist" 
+                data-bio-it="Modello in tre dimensioni tutto ciò che serve, dai personaggi agli oggetti ambientali, e do loro vita facendoli muovere e animare." 
+                data-bio-en="Modeling everything we need in 3D, from characters to props, and bringing them to life with dynamic animations." 
+                data-artstation="https://www.artstation.com/serenanapoli_3d">
+          <img src="imgsProfile/sere" alt="Serena Napoli" loading="lazy" />
+          <h3>Serena Napoli</h3>
+          <p class="member-role">3D Generalist</p>
+        </button>
       </div>
     </div>
-  </section>
+
+</section>
 
   <!-- Games Section -->
-  <section id="games">
-    <div class="window-box large-window">
-      <div class="window-header">
-        <span class="window-title" data-cyber="SOFTWARE_ARCHIVE.EXE" data-elegant-it="I Nostri Giochi" data-elegant-en="Our Games"><i class="fa-solid fa-gamepad"></i> <span></span></span>
-        <div class="window-controls"><span>_</span><span>&#9633;</span><span>&times;</span></div>
-      </div>
-      <div class="window-body">
-        <h2 style="margin-bottom: 20px; text-align: center;" data-lang-it="I Nostri Giochi" data-lang-en="Our Games">I Nostri Giochi</h2>
-        
-        <div class="desktop-grid">
-          <!-- Gioco 1 -->
-          <div class="game-card audio-click" data-game="neon-abyss">
-            <h3 class="game-card-header">Neon Abyss of Mind</h3>
-            <p class="game-card-text" data-lang-it="Un viaggio psichedelico destrutturato all'interno della memoria RAM..." data-lang-en="A deconstructed psychedelic journey inside the RAM memory...">Un viaggio psichedelico destrutturato all'interno della memoria RAM...</p>
-            <div class="gallery">
-              <img src="https://picsum.photos/id/1005/400/300" alt="Screenshot 1" loading="lazy" />
-            </div>
-            <span class="action-text" data-lang-it="[Clicca per Dettagli]" data-lang-en="[Click for Details]">[Clicca per Dettagli]</span>
-          </div>
-
-          <!-- Gioco 2 -->
-          <div class="game-card audio-click" data-game="cosmic-rituals">
-            <h3 class="game-card-header">Cosmic Rituals</h3>
-            <p class="game-card-text" data-lang-it="Simulatore di culti spaziali a 8-bit. Gestisci complessi rituali..." data-lang-en="8-bit space cult simulator. Manage complex cosmic rituals...">Simulatore di culti spaziali a 8-bit. Gestisci complessi rituali...</p>
-            <div class="gallery">
-              <img src="https://picsum.photos/id/1035/400/300" alt="Screenshot 1" loading="lazy" />
-            </div>
-            <span class="action-text" data-lang-it="[Clicca per Dettagli]" data-lang-en="[Click for Details]">[Clicca per Dettagli]</span>
-          </div>
-
-          <!-- Gioco 3 -->
-          <div class="game-card audio-click" data-game="lucid-deathloop">
-            <h3 class="game-card-header">Lucid Deathloop</h3>
-            <p class="game-card-text" data-lang-it="Muori, destabilizza l'ambiente circostante, rompi le variabili globali..." data-lang-en="Die, destabilize the environment, break global variables...">Muori, destabilizza l'ambiente circostante, rompi le variabili globali...</p>
-            <div class="gallery">
-              <img src="https://picsum.photos/id/1065/400/300" alt="Screenshot 1" loading="lazy" />
-            </div>
-            <span class="action-text" data-lang-it="[Clicca per Dettagli]" data-lang-en="[Click for Details]">[Clicca per Dettagli]</span>
-          </div>
-        </div>
-
+  <section id="games" class="ps-fullscreen-wrapper">
+    
+    <div class="ps-game-slice audio-click" data-game="neon-abyss" style="--bg-img: url('https://picsum.photos/id/1005/1200/800');">
+      <div class="slice-content">
+        <h2 class="slice-title">Neon Abyss of Mind</h2>
+        <p class="slice-desc" data-lang-it="Un viaggio psichedelico destrutturato all'interno della memoria RAM..." data-lang-en="A deconstructed psychedelic journey inside the RAM memory...">Un viaggio psichedelico destrutturato all'interno della memoria RAM...</p>
+        <span class="action-text" data-lang-it="[Clicca per Dettagli]" data-lang-en="[Click for Details]">[Clicca per Dettagli]</span>
       </div>
     </div>
-  </section>
 
-<section id="team">
-    <div class="window-box large-window">
-      <div class="window-header">
-        <span class="window-title" data-cyber="STAFF_MANIFEST.SYS" data-elegant-it="Il Nostro Team" data-elegant-en="Our Team"><i class="fa-solid fa-users"></i> <span></span></span>
-        <div class="window-controls"><span>_</span><span>&#9633;</span><span>&times;</span></div>
-      </div>
-      <div class="window-body">
-        <h2 style="margin-bottom: 20px; text-align: center;" data-lang-it="Il Nostro Team" data-lang-en="Our Team">Il Nostro Team</h2>
-        
-        <div class="team-grid">
-          <button class="member audio-click" data-name="Marco D'Arrigo" data-role-it="Unity Programmer" data-role-en="Unity Programmer" data-bio-it="Faccio di tutto su Unity: dal codice puro alla struttura di gioco. Più un problema è impossibile da risolvere, più mi diverto a distruggerlo." data-bio-en="I do a bit of everything in Unity: from pure code to game design architecture. The more complex the bug, the more I love crushing it." data-portfolio="https://github.com/MeraMadness">
-            <img src="imgsProfile/marcod.jpg" alt="Marco D'Arrigo" loading="lazy" />
-            <h3>Marco D'Arrigo</h3>
-            <p class="member-role">Unity Programmer</p>
-          </button>
-          
-          <button class="member audio-click" data-name="Valeria Napoli" data-role-it="Unity Programmer" data-role-en="Unity Programmer" data-bio-it="Sviluppo la logica di gioco, l'IA e i sistemi core in Unity. Trasformo le idee del team in meccaniche reali, fluide e pronte all'azione." data-bio-en="I code gameplay systems, AI, and core mechanics in Unity. Turning our wild ideas into solid, fluid, and playable mechanics." data-portfolio="https://github.com/vale130612">
-            <img src="imgsProfile/vale.png" alt="Valeria Napoli" loading="lazy" />
-            <h3>Valeria Napoli</h3>
-            <p class="member-role">Unity Programmer</p>
-          </button>
-          
-          <button class="member audio-click" data-name="Marco Valastro" data-role-it="Digital Artist" data-role-en="Digital Artist" data-bio-it="Do vita e colore ai nostri mondi. Dai primi schizzi di concept art fino all'interfaccia di gioco, curo l'estetica e l'atmosfera visiva." data-bio-en="Bringing life and color to our worlds. From early concept art to the final UI, I shape the aesthetic and visual atmosphere." data-portfolio="https://www.instagram.com/valstrax_draw/">
-            <img src="imgsProfile/marco.jpg" alt="Marco Valastro" loading="lazy" />
-            <h3>Marco Valastro</h3>
-            <p class="member-role">Digital Artist</p>
-          </button>
-          
-          <button class="member audio-click" data-name="Serena Napoli" data-role-it="3D Generalist" data-role-en="3D Generalist" data-bio-it="Modello in tre dimensioni tutto ciò che serve, dai personaggi agli oggetti ambientali, e do loro vita facendoli muovere e animare." data-bio-en="Modeling everything we need in 3D, from characters to props, and bringing them to life with dynamic animations." data-portfolio="https://www.artstation.com/serenanapoli_3d">
-            <img src="imgsProfile/sere" alt="Serena Napoli" loading="lazy" />
-            <h3>Serena Napoli</h3>
-            <p class="member-role">3D Generalist</p>
-          </button>
-        </div>
+    <div class="ps-game-slice audio-click" data-game="cosmic-rituals" style="--bg-img: url('https://picsum.photos/id/1035/1200/800');">
+      <div class="slice-content">
+        <h2 class="slice-title">Cosmic Rituals</h2>
+        <p class="slice-desc" data-lang-it="Simulatore di culti spaziali a 8-bit. Gestisci complessi rituali..." data-lang-en="8-bit space cult simulator. Manage complex cosmic rituals...">Simulatore di culti spaziali a 8-bit. Gestisci complessi rituali...</p>
+        <span class="action-text" data-lang-it="[Clicca per Dettagli]" data-lang-en="[Click for Details]">[Clicca per Dettagli]</span>
       </div>
     </div>
-  </section>
 
-  <!-- Contatti -->
-  <section id="contact">
-    <div class="window-box">
-      <div class="window-header">
-        <span class="window-title" data-cyber="UPLINK_CHANNELS.NET" data-elegant-it="Contatti" data-elegant-en="Contact Us"><i class="fa-solid fa-envelope"></i> <span></span></span>
-        <div class="window-controls"><span>_</span><span>&#9633;</span><span>&times;</span></div>
-      </div>
-      <div class="window-body" style="text-align: center;">
-        <h2 data-lang-it="Contattaci" data-lang-en="Contact Us">Contattaci</h2>
-        <p style="margin-bottom: 15px;" data-lang-it="Seguici sui nostri canali social per aggiornamenti costanti." data-lang-en="Follow us on our social handles for constant updates.">Seguici sui nostri canali social per aggiornamenti costanti.</p>
-        <ul class="contact-list">
-          <li><a href="https://instagram.com/harakiri.studios" target="_blank" rel="noopener" class="audio-click"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
-          <li><a href="https://itch.io/team/harakirigamestudios" target="_blank" rel="noopener" class="audio-click"><i class="fa-solid fa-gamepad"></i> Itch.io</a></li>
-          <li><a href="https://x.com/HarakiriStudios" target="_blank" rel="noopener" class="audio-click"><i class="fa-brands fa-x-twitter"></i> Twitter</a></li>
-          <li><a href="https://discord.gg/yourdiscordinvite" target="_blank" rel="noopener" class="audio-click"><i class="fa-brands fa-discord"></i> Discord</a></li>
-        </ul>
+    <div class="ps-game-slice audio-click" data-game="lucid-deathloop" style="--bg-img: url('https://picsum.photos/id/1065/1200/800');">
+      <div class="slice-content">
+        <h2 class="slice-title">Lucid Deathloop</h2>
+        <p class="slice-desc" data-lang-it="Muori, destabilizza l'ambiente circostante, rompi le variabili globali..." data-lang-en="Die, destabilize the environment, break global variables...">Muori, destabilizza l'ambiente circostante, rompi le variabili globali...</p>
+        <span class="action-text" data-lang-it="[Clicca per Dettagli]" data-lang-en="[Click for Details]">[Clicca per Dettagli]</span>
       </div>
     </div>
+
   </section>
 
-  <!-- Footer -->
+  <!-- Footer (Contatti Integrati) -->
   <footer>
+    <div class="footer-contact-wrapper">
+      <h2 data-lang-it="Contattaci" data-lang-en="Contact Us">Contattaci</h2>
+      <p style="margin-bottom: 20px;" data-lang-it="Seguici sui nostri canali social per aggiornamenti costanti." data-lang-en="Follow us on our social handles for constant updates.">Seguici sui nostri canali social per aggiornamenti costanti.</p>
+      
+      <ul class="contact-list" style="margin-bottom: 30px;">
+        <li><a href="https://instagram.com/harakiri.studios" target="_blank" rel="noopener" class="audio-click"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+        <li><a href="https://itch.io/team/harakirigamestudios" target="_blank" rel="noopener" class="audio-click"><i class="fa-solid fa-gamepad"></i> Itch.io</a></li>
+        <li><a href="https://x.com/HarakiriStudios" target="_blank" rel="noopener" class="audio-click"><i class="fa-brands fa-x-twitter"></i> Twitter</a></li>
+        <li><a href="https://discord.gg/yourdiscordinvite" target="_blank" rel="noopener" class="audio-click"><i class="fa-brands fa-discord"></i> Discord</a></li>
+      </ul>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--window-border); max-width: 400px; margin: 0 auto 20px auto; opacity: 0.5;">
+
     <p>&copy; 2026 Harakiri Game Studios</p>
+    
     <div class="retro-banners">
       <span class="env-text">[ MADE FOR CYBER-ENVIRONMENTS ]</span>
       <span class="env-text">[ SYSTEM: ONLINE ]</span>
