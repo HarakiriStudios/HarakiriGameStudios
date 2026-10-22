@@ -19,6 +19,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark")}catch(e){}</script>
 </head>
 
 <body>
@@ -32,11 +33,13 @@
     <nav class="nav" id="nav" aria-label="Principale">
       <a href="#about" data-lang-it="Studio" data-lang-en="Studio">Studio</a>
       <a href="#games" data-lang-it="Giochi" data-lang-en="Games">Giochi</a>
+      <a href="#devlog" data-lang-it="Devlog" data-lang-en="Devlog">Devlog</a>
       <a href="#team" data-lang-it="Team" data-lang-en="Team">Team</a>
       <a href="navbar/portfolio.html">Portfolio</a>
       <a href="#contact" data-lang-it="Contatti" data-lang-en="Contact">Contatti</a>
     </nav>
     <div class="topbar-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Tema chiaro/scuro"><i class="fa-solid fa-sun"></i></button>
       <div class="lang-switch" role="group" aria-label="Lingua">
         <button class="lang-btn" data-lang="it">IT</button>
         <button class="lang-btn" data-lang="en">EN</button>
@@ -55,7 +58,7 @@
         <h1>HARAKIRI<br><span class="outline">GAME STUDIOS</span></h1>
         <p class="hero-sub" data-lang-it="Esperienze indie visive e coinvolgenti." data-lang-en="Visual and immersive indie experiences.">Esperienze indie visive e coinvolgenti.</p>
         <div class="hero-cta">
-          <a href="#games" class="btn btn-primary" data-lang-it="Scopri i giochi" data-lang-en="Explore our games">Scopri i giochi</a>
+          <a href="#games" class="btn btn-primary" data-lang-it="Scopri il gioco" data-lang-en="See the game">Scopri il gioco</a>
           <a href="navbar/portfolio.html" class="btn btn-ghost" data-lang-it="Vedi il portfolio" data-lang-en="View portfolio">Vedi il portfolio</a>
         </div>
       </div>
@@ -69,21 +72,27 @@
 
       <dl class="stats">
         <div><dt>4</dt><dd data-lang-it="Persone" data-lang-en="People">Persone</dd></div>
-        <div><dt>3</dt><dd data-lang-it="Giochi" data-lang-en="Games">Giochi</dd></div>
-        <div><dt>2</dt><dd data-lang-it="Motori: Unity e Godot" data-lang-en="Engines: Unity &amp; Godot">Motori: Unity e Godot</dd></div>
+        <div><dt>1</dt><dd data-lang-it="Gioco in sviluppo" data-lang-en="Game in development">Gioco in sviluppo</dd></div>
+        <div><dt>VR</dt><dd data-lang-it="Tech demo" data-lang-en="Tech demo">Tech demo</dd></div>
       </dl>
     </section>
 
     <!-- Games -->
     <section id="games" class="section reveal">
       <div class="section-head">
-        <h2 data-lang-it="I nostri giochi" data-lang-en="Our games">I nostri giochi</h2>
+        <h2 data-lang-it="Il nostro gioco" data-lang-en="Our game">Il nostro gioco</h2>
         <div class="rail-nav">
           <button id="railPrev" aria-label="Precedente"><i class="fa-solid fa-chevron-left"></i></button>
           <button id="railNext" aria-label="Successivo"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
       </div>
       <div id="gamesRail" class="rail"></div>
+    </section>
+
+    <!-- Devlog (contenuti in script.js) -->
+    <section id="devlog" class="section reveal">
+      <div class="section-head"><h2>Devlog</h2></div>
+      <ul id="devlogList" class="devlog"></ul>
     </section>
 
     <!-- Team -->
@@ -184,6 +193,7 @@
     </div>
   </div>
 
+  <script src="theme.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

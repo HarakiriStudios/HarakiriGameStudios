@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="portfolio.css" />
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark")}catch(e){}</script>
 </head>
 <body>
 
@@ -26,6 +27,7 @@
       <a href="../index.html#contact" data-lang-it="Contatti" data-lang-en="Contact">Contatti</a>
     </nav>
     <div class="topbar-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Tema chiaro/scuro"><i class="fa-solid fa-sun"></i></button>
       <div class="lang-switch" role="group" aria-label="Lingua">
         <button class="lang-btn" data-lang="it">IT</button>
         <button class="lang-btn" data-lang="en">EN</button>
@@ -74,6 +76,7 @@
     </div>
   </div>
 
+  <script src="../theme.js"></script>
   <script src="portfolio.js"></script>
 </body>
 </html>

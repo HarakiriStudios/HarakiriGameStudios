@@ -1,71 +1,47 @@
-﻿const gamesDatabase = {
-  "neon-abyss": {
+﻿/* ==========================================================================
+   CONTENUTI - modifica qui giochi e devlog
+   ========================================================================== */
+
+// Un gioco = una voce. `screenshots` e `stores` possono restare vuoti.
+// Per aggiungere immagini: metti i file in media/ e scrivi ["media/shot1.png", ...]
+const gamesDatabase = {
+  "ikai": {
+    status: { it: "Tech demo VR", en: "VR tech demo" },
     it: {
-      title: "Neon Abyss of Mind",
-      short: "Un viaggio psichedelico nella memoria RAM di un vecchio supercomputer.",
-      desc: "Un viaggio psichedelico destrutturato all'interno della memoria RAM corrotta di un vecchio supercomputer degli anni '90. Affronta glitch fisici, logiche bizzarre e algoritmi ostili in questo surreale platform narrativo.",
-      extra: "Stato: alpha 0.4 · Requisiti: almeno 16MB di RAM virtuale."
+      title: "IKAI: The Other Side",
+      short: "La versione in realtà virtuale di IKAI. Tech demo in sviluppo.",
+      desc: "Il porting in VR di IKAI: The Other Side. Una tech demo giocabile con visore e controller: movimento, interazione con le mani, menu e puzzle adattati alla realtà virtuale, con opzioni di comfort.",
+      extra: "Unity · OpenXR · testato su Meta Quest 3S"
     },
     en: {
-      title: "Neon Abyss of Mind",
-      short: "A psychedelic trip inside an old supercomputer's RAM.",
-      desc: "A deconstructed psychedelic journey inside the corrupted RAM memory of an old 90s supercomputer. Battle physics glitches, bizarre logic, and hostile algorithms in this surreal narrative platformer.",
-      extra: "Status: alpha 0.4 · Requirements: at least 16MB of virtual RAM."
+      title: "IKAI: The Other Side",
+      short: "The virtual reality version of IKAI. Tech demo in development.",
+      desc: "The VR port of IKAI: The Other Side. A playable tech demo with headset and controllers: movement, hand interaction, menus and puzzles adapted to virtual reality, with comfort options.",
+      extra: "Unity · OpenXR · tested on Meta Quest 3S"
     },
-    screenshots: [
-      "https://picsum.photos/id/1005/600/400",
-      "https://picsum.photos/id/1015/600/400",
-      "https://picsum.photos/id/1025/600/400"
-    ],
-    stores: { steam: "https://store.steampowered.com", itch: "https://itch.io/team/harakirigamestudios" }
-  },
-  "cosmic-rituals": {
-    it: {
-      title: "Cosmic Rituals",
-      short: "Simulatore di culti spaziali a 8-bit.",
-      desc: "Simulatore di culti spaziali a 8-bit. Gestisci rituali complessi generati proceduralmente nello spazio siderale profondo, cercando di attirare l'attenzione di divinità cosmiche pigre.",
-      extra: "Stato: completo · Stile: pixel-art retro-fatalista · Grafica: 4 colori."
-    },
-    en: {
-      title: "Cosmic Rituals",
-      short: "An 8-bit space cult simulator.",
-      desc: "8-bit cosmic cult simulator. Manage complex, procedurally generated rituals in deep outer space, trying to attract the fleeting attention of lazy cosmic entities.",
-      extra: "Status: complete · Style: retro-fatalistic pixel art · Graphics: 4 colors."
-    },
-    screenshots: [
-      "https://picsum.photos/id/1035/600/400",
-      "https://picsum.photos/id/1045/600/400",
-      "https://picsum.photos/id/1055/600/400"
-    ],
-    stores: { steam: "", itch: "https://itch.io/team/harakirigamestudios" }
-  },
-  "lucid-deathloop": {
-    it: {
-      title: "Lucid Deathloop",
-      short: "Muori, rompi le variabili globali, ripeti.",
-      desc: "Muori, destabilizza l'ambiente circostante, rompi le variabili globali e ripeti il ciclo. Un puzzle-azione frenetico in cui ogni tua morte modifica strutturalmente la mappa.",
-      extra: "Stato: in sviluppo · Audio: colonna sonora synthwave distorta."
-    },
-    en: {
-      title: "Lucid Deathloop",
-      short: "Die, break global variables, repeat.",
-      desc: "Die, destabilize your surroundings, break global engine variables and repeat. A frantic action-puzzle game where every single death structurally alters the environment.",
-      extra: "Status: in development · Audio: distorted synthwave soundtrack."
-    },
-    screenshots: [
-      "https://picsum.photos/id/1065/600/400",
-      "https://picsum.photos/id/1075/600/400",
-      "https://picsum.photos/id/1085/600/400"
-    ],
-    stores: { steam: "https://store.steampowered.com", itch: "" }
+    screenshots: [],
+    stores: { steam: "", itch: "" }
   }
 };
 
-const gameStatus = {
-  "neon-abyss": { it: "Alpha 0.4", en: "Alpha 0.4" },
-  "cosmic-rituals": { it: "Disponibile", en: "Available" },
-  "lucid-deathloop": { it: "In sviluppo", en: "In development" }
-};
+// Devlog: la voce piu' recente per prima. Formato data: AAAA-MM-GG.
+const devlog = [
+  {
+    date: "2026-10-21",
+    it: { title: "Si riparte da zero per la VR", text: "Nuovo progetto Ikai_VR: ricominciamo da una base pulita per costruire la versione VR." },
+    en: { title: "Fresh start for VR", text: "New Ikai_VR project: we are starting over from a clean base to build the VR version." }
+  },
+  {
+    date: "2026-10-19",
+    it: { title: "Primo test su Quest 3S", text: "IKAI gira in VR su un Meta Quest 3S: movimento, interazione con i controller, menu e puzzle adattati, più le opzioni di comfort." },
+    en: { title: "First run on Quest 3S", text: "IKAI runs in VR on a Meta Quest 3S: movement, controller interaction, adapted menus and puzzles, plus comfort options." }
+  },
+  {
+    date: "2026-10-18",
+    it: { title: "Le basi della VR", text: "Configurati OpenXR e XR Interaction Toolkit, con un simulatore nell'editor per provare tutto anche senza visore." },
+    en: { title: "VR groundwork", text: "Set up OpenXR and the XR Interaction Toolkit, with an in-editor simulator so we can test without a headset." }
+  }
+];
 
 const socialPlatforms = [
   { key: 'portfolio', icon: 'fa-solid fa-briefcase', label: 'Portfolio' },
@@ -96,6 +72,7 @@ function applyLanguage() {
     b.classList.toggle('active', b.dataset.lang === currentLang);
   });
   renderGames();
+  renderDevlog();
 }
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -192,22 +169,36 @@ const gameModal = $('gameModal');
 
 function renderGames() {
   const rail = $('gamesRail');
+  const entries = Object.entries(gamesDatabase);
   rail.innerHTML = '';
-  Object.entries(gamesDatabase).forEach(([key, game]) => {
+  rail.classList.toggle('single', entries.length === 1);
+  $('railPrev').parentElement.hidden = entries.length < 3;
+
+  entries.forEach(([key, game]) => {
     const t = game[currentLang];
+    const cover = game.screenshots[0];
     const card = document.createElement('button');
-    card.className = 'game-card';
+    card.className = 'game-card' + (cover ? '' : ' noimg');
     card.dataset.game = key;
     card.innerHTML = `
-      <img src="${game.screenshots[0]}" alt="" loading="lazy" />
+      ${cover ? `<img src="${cover}" alt="" loading="lazy" />` : ''}
       <span class="game-body">
-        <span class="pill">${gameStatus[key][currentLang]}</span>
+        <span class="pill">${game.status[currentLang]}</span>
         <h3>${t.title}</h3>
         <p>${t.short}</p>
         <span class="game-cta">${currentLang === 'it' ? 'Dettagli' : 'Details'}</span>
       </span>`;
     rail.appendChild(card);
   });
+}
+
+function renderDevlog() {
+  const locale = currentLang === 'it' ? 'it-IT' : 'en-GB';
+  $('devlogList').innerHTML = devlog.map(entry => {
+    const t = entry[currentLang];
+    const label = new Date(entry.date).toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' });
+    return `<li><time datetime="${entry.date}">${label}</time><strong>${t.title}</strong><p>${t.text}</p></li>`;
+  }).join('');
 }
 
 $('railPrev').addEventListener('click', () => $('gamesRail').scrollBy({ left: -340, behavior: 'smooth' }));
@@ -221,7 +212,7 @@ $('gamesRail').addEventListener('click', (e) => {
 
   $('gameModalTitle').textContent = t.title;
   $('gameModalDesc').textContent = t.desc;
-  $('gameModalStatus').textContent = gameStatus[card.dataset.game][currentLang];
+  $('gameModalStatus').textContent = game.status[currentLang];
   $('gameModalExtra').textContent = t.extra;
 
   const gallery = $('gameModalGallery');
