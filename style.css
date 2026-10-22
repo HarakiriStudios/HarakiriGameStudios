@@ -226,7 +226,20 @@ body.menu-open .nav-backdrop { opacity: 1; pointer-events: auto; }
 
 /* ---------- Devlog ---------- */
 .devlog { list-style: none; display: grid; gap: 28px; max-width: 760px; }
-.devlog li { border-left: 2px solid var(--accent); padding: 2px 0 2px 24px; }
+.devlog li { position: relative; padding: 0 0 0 44px; }
+.devlog li::before {
+  content: ''; position: absolute; left: 0; top: 2px; width: 26px; height: 26px; background: var(--accent);
+  -webkit-mask: url("media/ikai-v.png") center / contain no-repeat; mask: url("media/ikai-v.png") center / contain no-repeat;
+}
+.devlog li:not(:last-child)::after { content: ''; position: absolute; left: 12px; top: 38px; bottom: -28px; width: 1px; background: var(--line); }
+
+/* Faint IKAI "V" watermark behind the devlog */
+#devlog { position: relative; overflow: hidden; }
+#devlog::before {
+  content: ''; position: absolute; z-index: -1; pointer-events: none; right: -4%; top: 6%;
+  width: min(520px, 70vw); aspect-ratio: 1; background: var(--text); opacity: 0.04;
+  -webkit-mask: url("media/ikai-v.png") center / contain no-repeat; mask: url("media/ikai-v.png") center / contain no-repeat;
+}
 .devlog time { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
 .devlog strong { display: block; font-family: var(--display); font-weight: 700; font-size: 1.9rem; text-transform: uppercase; line-height: 1.1; margin: 4px 0; }
 .devlog p { color: var(--muted); }
