@@ -25,6 +25,12 @@ const gamesDatabase = {
   }
 };
 
+// Cose che piacciono al team (hobby, gusti, giochi preferiti...). Se resta vuoto, la sezione non appare.
+// Esempio: { it: "Musica dal vivo", en: "Live music" }
+const likes = [];
+
+// Hobby personali dei singoli membri: scrivili in index.html, negli attributi data-fun-it e data-fun-en di ogni persona.
+
 // Link Discord: incolla qui l'invito (es. "https://discord.gg/xxxxx") e il bottone compare da solo.
 const discordUrl = "";
 
@@ -92,6 +98,7 @@ function applyLanguage() {
   renderProgress();
   renderDevlog();
   renderDiscord();
+  renderLikes();
 }
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -168,6 +175,10 @@ document.querySelectorAll('.member').forEach(member => {
 
     $('modalRole').textContent = member.getAttribute(`data-role-${currentLang}`);
     $('modalDesc').textContent = member.getAttribute(`data-bio-${currentLang}`);
+    const fun = member.getAttribute(`data-fun-${currentLang}`);
+    $('modalFun').hidden = !fun;
+    $('modalFun').innerHTML = fun ? `<strong>${currentLang === 'it' ? 'Nel tempo libero' : 'Off the clock'}</strong> ` : '';
+    if (fun) $('modalFun').append(fun);
 
     const links = $('modalLinks');
     links.innerHTML = '';
@@ -227,6 +238,11 @@ function renderProgress() {
     <ul class="milestones">
       ${milestones.map(m => `<li class="${m.done ? 'done' : ''}"><i class="fa-${m.done ? 'solid fa-circle-check' : 'regular fa-circle'}"></i>${m[currentLang]}</li>`).join('')}
     </ul>`;
+}
+
+function renderLikes() {
+  $('likes').hidden = likes.length === 0;
+  $('likesList').innerHTML = likes.map(l => `<li>${l[currentLang]}</li>`).join('');
 }
 
 function renderDiscord() {

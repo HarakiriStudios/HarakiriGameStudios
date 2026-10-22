@@ -72,6 +72,11 @@
       <p class="eyebrow" data-lang-it="Chi siamo" data-lang-en="Who we are">Chi siamo</p>
       <p class="manifesto-text" data-lang-it="Siamo quattro amici del Sud Italia e condividiamo un grande sogno: trasformare la nostra creatività in videogiochi che emozionino davvero. Vogliamo far riflettere, sorprendere e far venire la pelle d’oca. Siamo qui per dare vita a storie che restino con voi anche dopo aver posato il controller." data-lang-en="We are four friends from Sicily sharing one big dream: turning our creativity into games that truly move people. We want to make you think, surprise you and give you goosebumps. We are here to bring to life stories that stay with you long after you put the controller down.">Siamo quattro amici del Sud Italia e condividiamo un grande sogno: trasformare la nostra creatività in videogiochi che emozionino davvero. Vogliamo far riflettere, sorprendere e far venire la pelle d’oca. Siamo qui per dare vita a storie che restino con voi anche dopo aver posato il controller.</p>
 
+      <div id="likes" class="likes" hidden>
+        <p class="eyebrow" data-lang-it="Cosa ci piace" data-lang-en="What we love">Cosa ci piace</p>
+        <ul id="likesList"></ul>
+      </div>
+
       <dl class="stats">
         <div><dt>4</dt><dd data-lang-it="Persone" data-lang-en="People">Persone</dd></div>
         <div><dt>1</dt><dd data-lang-it="Gioco in sviluppo" data-lang-en="Game in development">Gioco in sviluppo</dd></div>
@@ -116,6 +121,7 @@
       </div>
       <div class="team-grid">
         <button class="tile member"
+                data-fun-it="" data-fun-en=""
                 data-name="Marco D'Arrigo"
                 data-role-it="Game Programmer" data-role-en="Unity Programmer"
                 data-bio-it="Faccio di tutto su Unity: dal codice puro alla struttura di gioco. Più un problema è impossibile da risolvere, più mi diverto a distruggerlo."
@@ -126,6 +132,7 @@
         </button>
 
         <button class="tile member"
+                data-fun-it="" data-fun-en=""
                 data-name="Valeria Napoli"
                 data-role-it="Game Programmer" data-role-en="Unity Programmer"
                 data-bio-it="Sviluppo la logica di gioco, l'IA e i sistemi core in Unity. Trasformo le idee del team in meccaniche reali, fluide e pronte all'azione."
@@ -136,6 +143,7 @@
         </button>
 
         <button class="tile member"
+                data-fun-it="" data-fun-en=""
                 data-name="Marco Valastro"
                 data-role-it="Digital Artist" data-role-en="Digital Artist"
                 data-bio-it="Do vita e colore ai nostri mondi. Dai primi schizzi di concept art fino all'interfaccia di gioco, curo l'estetica e l'atmosfera visiva."
@@ -146,6 +154,7 @@
         </button>
 
         <button class="tile member"
+                data-fun-it="" data-fun-en=""
                 data-name="Serena Napoli"
                 data-role-it="3D Generalist" data-role-en="3D Generalist"
                 data-bio-it="Modello in tre dimensioni tutto ciò che serve, dai personaggi agli oggetti ambientali, e do loro vita facendoli muovere e animare."
@@ -188,6 +197,7 @@
         <h3 id="modalTitle"></h3>
         <p id="modalRole" class="modal-role"></p>
         <p id="modalDesc"></p>
+        <p id="modalFun" class="modal-fun" hidden></p>
         <div id="modalLinks" class="modal-links"></div>
       </div>
     </div>
