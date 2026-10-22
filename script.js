@@ -32,9 +32,6 @@ const likes = [];
 
 // Hobby personali dei singoli membri: scrivili in index.html, negli attributi data-fun-it e data-fun-en di ogni persona.
 
-// Link Discord: incolla qui l'invito (es. "https://discord.gg/xxxxx") e il bottone compare da solo.
-const discordUrl = "";
-
 // Tappe del progetto: `done: true` quando completata. La percentuale si calcola da sola.
 const milestones = [
   { done: true,  it: "Basi VR: OpenXR e simulatore",             en: "VR groundwork: OpenXR and simulator" },
@@ -270,8 +267,8 @@ function renderLikes() {
 
 function renderDiscord() {
   document.querySelectorAll('[data-discord]').forEach(a => {
-    a.hidden = !discordUrl;
-    if (discordUrl) a.href = discordUrl;
+    a.hidden = !SITE.discordUrl;
+    if (SITE.discordUrl) a.href = SITE.discordUrl;
   });
 }
 

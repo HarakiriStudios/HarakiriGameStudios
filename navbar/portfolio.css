@@ -19,5 +19,26 @@
 
 .tile .tags { margin-top: 8px; }
 
+.hint { color: var(--muted); margin-bottom: 20px; }
+.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.solo {
+  display: flex; flex-direction: column; text-align: left; cursor: pointer; overflow: hidden; padding: 0;
+  background: var(--card-bg); color: var(--text); font: inherit; border: 1px solid var(--line); border-radius: 18px;
+  transition: transform 0.4s var(--ease), border-color 0.3s;
+}
+.solo:hover, .solo:focus-visible { transform: translateY(-4px); border-color: var(--accent); outline: none; }
+.solo-cover { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; isolation: isolate; background: var(--media-bg); }
+.solo-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
+.solo:hover .solo-cover img { transform: scale(1.06); }
+.solo-cover::after {
+  content: attr(data-initials); position: absolute; inset: 0; z-index: -1; display: grid; place-items: center;
+  font-family: var(--display); font-weight: 800; font-size: 4rem; color: var(--initials);
+}
+.solo-cover:has(img)::after { display: none; }
+.solo-body { display: flex; flex-direction: column; gap: 8px; padding: 18px 20px 22px; }
+.solo-by { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+.solo-body h3 { font-weight: 800; font-size: 1.9rem; }
+.solo-body p { color: var(--muted); font-size: 0.95rem; }
+
 .modal-facts { padding-left: 18px; color: var(--muted); font-size: 0.95rem; }
 .modal-facts:empty { display: none; }

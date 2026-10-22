@@ -1,34 +1,34 @@
 const people = [
   {
-    id: "marco_d", name: "Marco D'Arrigo", role: "Unity & Godot Programmer", initials: "MD",
+    id: "marco_d", name: "Marco D'Arrigo", role: "Unity Programmer", initials: "MD",
     img: "../imgsProfile/marcod.jpg",
-    tags: ["Unity", "Godot", "C# / GDScript"],
+    tags: ["Unity", "C#"],
     link: "https://github.com/MeraMadness", linkLabel: "GitHub",
     it: {
       summary: "Smanetto a 360° sulla logica di gioco e sull'architettura. Più un bug è complesso, più mi diverto a risolverlo.",
-      detail: "Gestisco architettura del codice e logica di gameplay, saltando senza problemi da Unity a Godot. Scrivo sistemi puliti e flessibili.",
-      facts: ["Engine: Unity, Godot (C# / GDScript)", "Focus: architettura dei sistemi, gameplay, problem solving"]
+      detail: "Gestisco architettura del codice e logica di gameplay, con Unity come motore principale. Scrivo sistemi puliti e flessibili.",
+      facts: ["Engine: Unity (C#)", "Focus: architettura dei sistemi, gameplay, problem solving"]
     },
     en: {
       summary: "Handling full-stack code architecture and gameplay logic. The more complex the puzzle, the more I enjoy breaking it down.",
-      detail: "I handle code architecture and gameplay logic in Unity and Godot, focusing on clean, scalable systems.",
-      facts: ["Engines: Unity, Godot (C# / GDScript)", "Focus: systems architecture, gameplay, problem solving"]
+      detail: "I handle code architecture and gameplay logic in Unity, focusing on clean, scalable systems.",
+      facts: ["Engine: Unity (C#)", "Focus: systems architecture, gameplay, problem solving"]
     }
   },
   {
-    id: "valeria_n", name: "Valeria Napoli", role: "Unity & Godot Programmer", initials: "VN",
+    id: "valeria_n", name: "Valeria Napoli", role: "Unity Programmer", initials: "VN",
     img: "../imgsProfile/vale.png",
-    tags: ["Unity", "Godot", "AI Behavior"],
+    tags: ["Unity", "AI Behavior"],
     link: "https://github.com/vale130612", linkLabel: "GitHub",
     it: {
       summary: "Sviluppo la logica di gioco e i sistemi core, traducendo le idee del team in meccaniche fluide e giocabili.",
-      detail: "Mi occupo di gameplay, intelligenza artificiale e sistemi core su Unity e Godot, con meccaniche ottimizzate e pronte da giocare.",
-      facts: ["Engine: Unity, Godot", "Focus: comportamento IA, logica core, stabilità delle meccaniche"]
+      detail: "Mi occupo di gameplay, intelligenza artificiale e sistemi core su Unity, con meccaniche ottimizzate e pronte da giocare.",
+      facts: ["Engine: Unity", "Focus: comportamento IA, logica core, stabilità delle meccaniche"]
     },
     en: {
       summary: "Specialized in core gameplay systems and AI mechanics, turning team concepts into working prototypes.",
-      detail: "I work on gameplay, AI and core systems in Unity and Godot, turning ideas into optimized, playable mechanics.",
-      facts: ["Engines: Unity, Godot", "Focus: AI behavior, core systems, gameplay stability"]
+      detail: "I work on gameplay, AI and core systems in Unity, turning ideas into optimized, playable mechanics.",
+      facts: ["Engine: Unity", "Focus: AI behavior, core systems, gameplay stability"]
     }
   },
   {
@@ -65,6 +65,19 @@ const people = [
   }
 ];
 
+// Progetti SOLO: uno per voce. Se la lista e' vuota la sezione non appare.
+// `by` = id del membro: marco_d, valeria_n, marco_v oppure serena_n.
+// Esempio:
+// {
+//   id: "il-mio-gioco", by: "marco_d",
+//   cover: "../media/il-mio-gioco.png",              // opzionale (se manca, sfondo colorato)
+//   tags: ["Unity", "Game Jam"],
+//   link: "https://...", linkLabel: "Itch.io",        // opzionale
+//   it: { title: "Titolo", summary: "Una riga.", detail: "Descrizione piu' lunga." },
+//   en: { title: "Title",  summary: "One line.",  detail: "Longer description." }
+// }
+const soloProjects = [];
+
 const $ = (id) => document.getElementById(id);
 const tagsHtml = (item) => item.tags.map(t => `<span class="tag">${t}</span>`).join('');
 
@@ -88,6 +101,25 @@ function personTile(p) {
   return el;
 }
 
+function soloCard(p) {
+  const author = people.find(a => a.id === p.by);
+  const t = p[currentLang];
+  const el = document.createElement('button');
+  el.className = 'solo';
+  el.dataset.id = p.id;
+  el.innerHTML = `
+    <span class="solo-cover" data-initials="${author ? author.initials : ''}">${p.cover ? `<img src="${p.cover}" alt="" loading="lazy" />` : ''}</span>
+    <span class="solo-body">
+      <span class="solo-by">${author ? (currentLang === 'it' ? 'di ' : 'by ') + author.name : ''}</span>
+      <h3>${t.title}</h3>
+      <p>${t.summary}</p>
+      <span class="tags">${tagsHtml(p)}</span>
+    </span>`;
+  const img = el.querySelector('img');
+  if (img) dropBrokenImg(img);
+  return el;
+}
+
 function render() {
   try { localStorage.setItem('selected-lang', currentLang); } catch (e) { /* storage blocked */ }
   document.documentElement.lang = currentLang;
@@ -97,39 +129,49 @@ function render() {
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === currentLang));
 
   $('peopleGrid').replaceChildren(...people.map(personTile));
+  $('soloGrid').replaceChildren(...soloProjects.map(soloCard));
+  $('soloSection').hidden = soloProjects.length === 0;
+  $('soonNote').hidden = soloProjects.length > 0;
 }
 
 const modal = $('portfolioModal');
 const closeModal = () => modal.setAttribute('aria-hidden', 'true');
 
 function openItem(id) {
-  const item = people.find(i => i.id === id);
+  const person = people.find(i => i.id === id);
+  const solo = soloProjects.find(i => i.id === id);
+  const item = person || solo;
   if (!item) return;
   const t = item[currentLang];
+  const author = solo ? people.find(p => p.id === solo.by) : null;
+  const picture = person ? person.img : solo.cover;
 
   const media = $('pModalMedia');
   media.replaceChildren();
-  media.dataset.initials = item.initials;
-  const img = document.createElement('img');
-  img.alt = '';
-  dropBrokenImg(img);
-  img.src = item.img;
-  media.appendChild(img);
+  media.dataset.initials = (person || author || {}).initials || '';
+  if (picture) {
+    const img = document.createElement('img');
+    img.alt = '';
+    dropBrokenImg(img);
+    img.src = picture;
+    media.appendChild(img);
+  }
 
-  $('pModalTitle').textContent = item.name;
-  $('pModalRole').textContent = item.role || '';
-  $('pModalRole').hidden = !item.role;
+  const role = person ? person.role : (author ? (currentLang === 'it' ? 'di ' : 'by ') + author.name : '');
+  $('pModalTitle').textContent = person ? person.name : t.title;
+  $('pModalRole').textContent = role;
+  $('pModalRole').hidden = !role;
   $('pModalDesc').textContent = t.detail;
-  $('pModalFacts').innerHTML = t.facts.map(f => `<li>${f}</li>`).join('');
+  $('pModalFacts').innerHTML = (t.facts || []).map(f => `<li>${f}</li>`).join('');
   $('pModalTags').innerHTML = tagsHtml(item);
   $('pModalLinks').innerHTML = item.link
-    ? `<a class="btn btn-primary" href="${item.link}" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> ${item.linkLabel}</a>`
+    ? `<a class="btn btn-primary" href="${item.link}" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> ${item.linkLabel || 'Link'}</a>`
     : '';
   modal.setAttribute('aria-hidden', 'false');
 }
 
 document.addEventListener('click', (e) => {
-  const c = e.target.closest('.tile');
+  const c = e.target.closest('.tile, .solo');
   if (c) openItem(c.dataset.id);
 });
 modal.querySelector('.modal-close').addEventListener('click', closeModal);
@@ -151,5 +193,10 @@ $('navBackdrop').addEventListener('click', () => setMenu(false));
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
 menuToggle.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
 nav.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+
+document.querySelectorAll('[data-discord]').forEach(a => {
+  a.hidden = !SITE.discordUrl;
+  if (SITE.discordUrl) a.href = SITE.discordUrl;
+});
 
 render();
