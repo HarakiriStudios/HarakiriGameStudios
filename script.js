@@ -24,6 +24,22 @@ const gamesDatabase = {
   }
 };
 
+// Link Discord: incolla qui l'invito (es. "https://discord.gg/xxxxx") e il bottone compare da solo.
+const discordUrl = "";
+
+// Tappe del progetto: `done: true` quando completata. La percentuale si calcola da sola.
+// (Le ultime tre sono segnaposto: cambiale con le vostre tappe reali.)
+const milestones = [
+  { done: true,  it: "Basi VR: OpenXR e simulatore",           en: "VR groundwork: OpenXR and simulator" },
+  { done: true,  it: "Primo test su Meta Quest 3S",            en: "First run on Meta Quest 3S" },
+  { done: true,  it: "Movimento e interazione con i controller", en: "Movement and controller interaction" },
+  { done: true,  it: "Menu e puzzle in VR",                    en: "Menus and puzzles in VR" },
+  { done: true,  it: "Opzioni di comfort",                     en: "Comfort options" },
+  { done: false, it: "Playtest e correzione bug",              en: "Playtesting and bug fixing" },
+  { done: false, it: "Rifinitura grafica",                     en: "Visual polish" },
+  { done: false, it: "Demo pubblica",                          en: "Public demo" }
+];
+
 // Devlog: la voce piu' recente per prima. Formato data: AAAA-MM-GG.
 const devlog = [
   {
@@ -72,7 +88,9 @@ function applyLanguage() {
     b.classList.toggle('active', b.dataset.lang === currentLang);
   });
   renderGames();
+  renderProgress();
   renderDevlog();
+  renderDiscord();
 }
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -189,6 +207,27 @@ function renderGames() {
         <span class="game-cta">${currentLang === 'it' ? 'Dettagli' : 'Details'}</span>
       </span>`;
     rail.appendChild(card);
+  });
+}
+
+function renderProgress() {
+  const done = milestones.filter(m => m.done).length;
+  const pct = Math.round((done / milestones.length) * 100);
+  $('progress').innerHTML = `
+    <div class="progress-top">
+      <span class="progress-title">${currentLang === 'it' ? 'Avanzamento della demo VR' : 'VR demo progress'}</span>
+      <span class="progress-pct">${pct}%</span>
+    </div>
+    <div class="progress-bar" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><span style="width:${pct}%"></span></div>
+    <ul class="milestones">
+      ${milestones.map(m => `<li class="${m.done ? 'done' : ''}"><i class="fa-${m.done ? 'solid fa-circle-check' : 'regular fa-circle'}"></i>${m[currentLang]}</li>`).join('')}
+    </ul>`;
+}
+
+function renderDiscord() {
+  document.querySelectorAll('[data-discord]').forEach(a => {
+    a.hidden = !discordUrl;
+    if (discordUrl) a.href = discordUrl;
   });
 }
 

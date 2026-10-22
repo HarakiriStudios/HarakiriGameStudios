@@ -220,6 +220,23 @@ h1, h2, h3 { font-family: var(--display); text-transform: uppercase; line-height
 .devlog strong { display: block; font-family: var(--display); font-weight: 700; font-size: 1.9rem; text-transform: uppercase; line-height: 1.1; margin: 4px 0; }
 .devlog p { color: var(--muted); }
 
+/* ---------- Progress ---------- */
+.progress { max-width: 760px; margin-bottom: 44px; }
+.progress-top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.progress-title { font-family: var(--display); font-weight: 700; font-size: 1.3rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.progress-pct { font-family: var(--display); font-weight: 800; font-size: 3rem; line-height: 1; color: var(--accent); }
+.progress-bar { height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; margin: 10px 0 20px; }
+.progress-bar span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width 1s var(--ease); }
+.milestones { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px 24px; }
+.milestones li { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 0.95rem; }
+.milestones li i { width: 18px; text-align: center; font-size: 0.85rem; }
+.milestones li.done { color: var(--text); }
+.milestones li.done i { color: var(--accent); }
+
+.follow { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--line); max-width: 760px; }
+.follow p { color: var(--muted); margin-bottom: 14px; }
+.follow .socials { justify-content: flex-start; }
+
 /* ---------- Team tiles (gallery) ---------- */
 .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
 .tile { background: none; border: 0; padding: 0; cursor: pointer; text-align: left; display: flex; flex-direction: column; gap: 14px; }
@@ -271,15 +288,16 @@ h1, h2, h3 { font-family: var(--display); text-transform: uppercase; line-height
   transition: background 0.2s, color 0.2s;
 }
 .modal-close:hover { background: var(--text); color: var(--bg); }
-.modal-media { aspect-ratio: 4 / 3; }
-.modal-media img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.modal-media { aspect-ratio: 16 / 10; max-height: 340px; }
+.modal-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
 .modal-body { padding: 26px 28px 30px; display: flex; flex-direction: column; gap: 12px; }
 .modal-body h3 { font-weight: 800; font-size: 2.4rem; }
 .modal-role { color: var(--accent-2); font-weight: 600; }
 .modal-extra { color: var(--muted); font-size: 0.9rem; border-left: 2px solid var(--accent); padding-left: 12px; }
 .modal-links { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
 .modal-links.row { flex-direction: row; flex-wrap: wrap; }
-.modal-links .btn { flex: 1 1 150px; padding: 11px 20px; }
+.modal-links .btn { padding: 11px 20px; }
+.modal-links.row .btn { flex: 1 1 150px; }
 .modal-links .btn:not(.btn-primary) { border-color: var(--line-strong); }
 .soon { color: var(--muted); }
 

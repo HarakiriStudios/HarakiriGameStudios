@@ -65,40 +65,7 @@ const people = [
   }
 ];
 
-const projects = [
-  {
-    id: "ggj_2025", name: "Global Game Jam 2025", icon: "fa-solid fa-trophy",
-    tags: ["48h", "Game Jam", "Team"],
-    link: "https://itch.io", linkLabel: "Itch.io",
-    it: {
-      summary: "Sviluppato da tutto il team in 48 ore. Una sinergia tra codice e arte lo-fi.",
-      detail: "Prototipo \"Chronos Echo\", sviluppato interamente dal team unito durante la maratona di sviluppo.",
-      facts: []
-    },
-    en: {
-      summary: "Developed by all four members in 48 hours. A blend of custom code and lo-fi art.",
-      detail: "\"Chronos Echo\" prototype, built by the whole team over the intensive game jam.",
-      facts: []
-    }
-  },
-  {
-    id: "vfx_sandbox", name: "Custom VFX Shader Sandbox", icon: "fa-solid fa-wand-magic-sparkles",
-    tags: ["Shaders", "VFX", "R&D"],
-    it: {
-      summary: "Strumento interno che unisce simulazioni matematiche e art design.",
-      detail: "Una suite creata internamente da Harakiri Studios per simulare l'interazione tra fumo e fuoco.",
-      facts: []
-    },
-    en: {
-      summary: "In-house sandbox merging mathematical simulations with raw art assets.",
-      detail: "A custom shader suite assembled in-house to handle smoke and fire particles.",
-      facts: []
-    }
-  }
-];
-
 const $ = (id) => document.getElementById(id);
-const all = [...people, ...projects];
 const tagsHtml = (item) => item.tags.map(t => `<span class="tag">${t}</span>`).join('');
 
 let currentLang = 'it';
@@ -121,18 +88,6 @@ function personTile(p) {
   return el;
 }
 
-function projectCard(p) {
-  const el = document.createElement('button');
-  el.className = 'project';
-  el.dataset.id = p.id;
-  el.innerHTML = `
-    <i class="${p.icon}"></i>
-    <h3>${p.name}</h3>
-    <p>${p[currentLang].summary}</p>
-    <span class="tags">${tagsHtml(p)}</span>`;
-  return el;
-}
-
 function render() {
   try { localStorage.setItem('selected-lang', currentLang); } catch (e) { /* storage blocked */ }
   document.documentElement.lang = currentLang;
@@ -142,31 +97,24 @@ function render() {
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === currentLang));
 
   $('peopleGrid').replaceChildren(...people.map(personTile));
-  $('projectsGrid').replaceChildren(...projects.map(projectCard));
 }
 
 const modal = $('portfolioModal');
 const closeModal = () => modal.setAttribute('aria-hidden', 'true');
 
 function openItem(id) {
-  const item = all.find(i => i.id === id);
+  const item = people.find(i => i.id === id);
   if (!item) return;
   const t = item[currentLang];
 
   const media = $('pModalMedia');
   media.replaceChildren();
-  media.className = 'modal-media';
-  if (item.img) {
-    media.dataset.initials = item.initials;
-    const img = document.createElement('img');
-    img.alt = '';
-    dropBrokenImg(img);
-    img.src = item.img;
-    media.appendChild(img);
-  } else {
-    media.classList.add('icon');
-    media.innerHTML = `<i class="${item.icon}"></i>`;
-  }
+  media.dataset.initials = item.initials;
+  const img = document.createElement('img');
+  img.alt = '';
+  dropBrokenImg(img);
+  img.src = item.img;
+  media.appendChild(img);
 
   $('pModalTitle').textContent = item.name;
   $('pModalRole').textContent = item.role || '';
@@ -181,7 +129,7 @@ function openItem(id) {
 }
 
 document.addEventListener('click', (e) => {
-  const c = e.target.closest('.tile, .project');
+  const c = e.target.closest('.tile');
   if (c) openItem(c.dataset.id);
 });
 modal.querySelector('.modal-close').addEventListener('click', closeModal);
