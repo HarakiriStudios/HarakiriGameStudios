@@ -181,22 +181,11 @@ body.menu-open .nav-backdrop { opacity: 1; pointer-events: auto; }
 .modal-fun { color: var(--muted); font-size: 0.95rem; }
 .modal-fun strong { color: var(--text); }
 
-/* ---------- Games rail ---------- */
-.rail-nav { display: flex; gap: 8px; }
-.rail-nav button {
-  width: 46px; height: 46px; border-radius: 50%; cursor: pointer; background: none;
-  border: 1.5px solid var(--line); transition: background 0.2s, border-color 0.2s, color 0.2s;
-}
-.rail-nav button:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
-
-.rail {
-  display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
-  margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter) 8px; scroll-padding-left: var(--gutter);
-}
-.rail::-webkit-scrollbar { display: none; }
+/* ---------- Games ---------- */
+.rail { display: flex; gap: 20px; }
 
 .game-card {
-  position: relative; flex: 0 0 min(320px, 78vw); height: 500px; scroll-snap-align: start;
+  position: relative; flex: 1 1 100%; height: 440px;
   border-radius: 18px; overflow: hidden; cursor: pointer; text-align: left;
   background: var(--surface); color: #fff; border: 0; padding: 0; isolation: isolate;
 }
@@ -220,7 +209,6 @@ body.menu-open .nav-backdrop { opacity: 1; pointer-events: auto; }
 }
 
 /* One game: show it as a wide featured card */
-.rail.single { overflow: visible; }
 .rail.single .game-card { flex: 1 1 100%; height: 440px; }
 .rail.single .game-body { max-width: 560px; }
 .game-card.noimg { background: radial-gradient(60% 80% at 80% 20%, rgba(255, 59, 59, 0.35), transparent 70%), radial-gradient(50% 70% at 10% 90%, rgba(120, 60, 255, 0.3), transparent 70%), #14141a; }
@@ -233,6 +221,30 @@ body.menu-open .nav-backdrop { opacity: 1; pointer-events: auto; }
 }
 .rail.single .game-card.has-logo .game-body { max-width: 38%; }
 .game-card.noimg::before { background: linear-gradient(180deg, transparent 40%, rgba(8, 8, 10, 0.6)); }
+
+/* Several projects: a strip of slanted slices of art */
+.rail.slices { gap: 0; height: clamp(420px, 62vh, 620px); --skew: 56px; --gap: 5px; }
+.slice {
+  position: relative; flex: 1 1 0; min-width: 0; margin-left: calc(var(--gap) - var(--skew));
+  border: 0; padding: 0; cursor: pointer; text-align: left; overflow: hidden; isolation: isolate; color: #fff;
+  background: var(--surface);
+  clip-path: polygon(var(--skew) 0, 100% 0, calc(100% - var(--skew)) 100%, 0 100%);
+  transition: flex-grow 0.6s var(--ease);
+}
+.slice:first-child { margin-left: 0; clip-path: polygon(0 0, 100% 0, calc(100% - var(--skew)) 100%, 0 100%); }
+.slice:last-child { clip-path: polygon(var(--skew) 0, 100% 0, 100% 100%, 0 100%); }
+.slice:only-child { clip-path: none; }
+.slice > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 0.8s var(--ease); }
+.slice.noimg { background: linear-gradient(160deg, hsl(var(--hue), 55%, 30%), hsl(calc(var(--hue) + 40), 45%, 12%)); }
+.slice::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, transparent 35%, rgba(8, 8, 10, 0.9)); }
+.slice-body { position: absolute; inset: auto 0 0 0; padding: 0 calc(var(--skew) + 8px) 28px calc(var(--skew) + 8px); display: flex; flex-direction: column; gap: 8px; }
+.slice:first-child .slice-body { padding-left: 28px; }
+.slice:last-child .slice-body { padding-right: 28px; }
+.slice-body h3 { font-weight: 800; font-size: clamp(1.4rem, 2.2vw, 2.2rem); }
+.slice-body p { font-size: 0.9rem; color: #d0d0d8; max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.5s var(--ease), opacity 0.4s; }
+.slice:hover, .slice:focus-visible { flex-grow: 2.4; outline-offset: -4px; }
+.slice:hover > img, .slice:focus-visible > img { transform: scale(1.06); }
+.slice:hover .slice-body p, .slice:focus-visible .slice-body p { max-height: 6em; opacity: 1; }
 
 /* ---------- Devlog ---------- */
 .devlog { list-style: none; display: grid; gap: 28px; max-width: 760px; }
@@ -359,8 +371,11 @@ body.menu-open .nav-backdrop { opacity: 1; pointer-events: auto; }
   .nav a::after { display: none; }
   .nav a:hover, .nav a[aria-current="page"] { color: var(--accent); }
   .section-head { flex-direction: column; align-items: flex-start; }
-  .rail-nav { display: none; }
   .game-card { height: 440px; }
+  .rail.slices { flex-direction: column; height: auto; gap: 8px; }
+  .slice, .slice:first-child, .slice:last-child { margin-left: 0; clip-path: none; height: 190px; flex: none; border-radius: 14px; }
+  .slice-body, .slice:first-child .slice-body, .slice:last-child .slice-body { padding: 0 20px 18px; }
+  .slice-body p { max-height: none; opacity: 1; }
   .game-card.has-logo, .rail.single .game-card.has-logo { background-position: center 8px, 0 0, 0 0; background-size: 100% auto, auto, auto; }
   .rail.single .game-card.has-logo .game-body { max-width: none; }
 }

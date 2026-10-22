@@ -4,6 +4,7 @@
 
 // Un gioco = una voce. `screenshots` e `stores` possono restare vuoti.
 // Per aggiungere immagini: metti i file in media/ e scrivi ["media/shot1.png", ...]
+// Con piu' giochi compare la striscia a fette: usa `cover` (immagine verticale/quadrata) o il primo screenshot.
 const gamesDatabase = {
   "ikai": {
     logo: "media/ikai-logo.png",
@@ -203,25 +204,47 @@ const gameModal = $('gameModal');
 function renderGames() {
   const rail = $('gamesRail');
   const entries = Object.entries(gamesDatabase);
+  const multi = entries.length > 1;
   rail.innerHTML = '';
-  rail.classList.toggle('single', entries.length === 1);
-  $('railPrev').parentElement.hidden = entries.length < 3;
+  rail.classList.toggle('single', !multi);
+  rail.classList.toggle('slices', multi);
 
-  entries.forEach(([key, game]) => {
+  const title = $('gamesTitle');
+  title.dataset.langIt = multi ? 'I nostri giochi' : 'Il nostro gioco';
+  title.dataset.langEn = multi ? 'Our games' : 'Our game';
+  title.textContent = title.dataset[currentLang === 'it' ? 'langIt' : 'langEn'];
+
+  entries.forEach(([key, game], i) => {
     const t = game[currentLang];
-    const cover = game.screenshots[0];
     const card = document.createElement('button');
-    card.className = 'game-card' + (cover ? '' : ' noimg') + (game.logo ? ' has-logo' : '');
-    if (game.logo) card.style.setProperty('--logo', `url("${game.logo}")`);
     card.dataset.game = key;
-    card.innerHTML = `
-      ${cover ? `<img src="${cover}" alt="" loading="lazy" />` : ''}
-      <span class="game-body">
-        <span class="pill">${game.status[currentLang]}</span>
-        <h3>${t.title}</h3>
-        <p>${t.short}</p>
-        <span class="game-cta">${currentLang === 'it' ? 'Dettagli' : 'Details'}</span>
-      </span>`;
+
+    if (multi) {
+      // Several projects: slanted slices of key art (game.cover, else the first screenshot)
+      const art = game.cover || game.screenshots[0];
+      card.className = 'slice' + (art ? '' : ' noimg');
+      card.style.setProperty('--hue', i * 55);
+      card.innerHTML = `
+        ${art ? `<img src="${art}" alt="" loading="lazy" />` : ''}
+        <span class="slice-body">
+          <span class="pill">${game.status[currentLang]}</span>
+          <h3>${t.title}</h3>
+          <p>${t.short}</p>
+        </span>`;
+    } else {
+      // One project: a wide featured card (with the logo, if there is one)
+      const cover = game.screenshots[0];
+      card.className = 'game-card' + (cover ? '' : ' noimg') + (game.logo ? ' has-logo' : '');
+      if (game.logo) card.style.setProperty('--logo', `url("${game.logo}")`);
+      card.innerHTML = `
+        ${cover ? `<img src="${cover}" alt="" loading="lazy" />` : ''}
+        <span class="game-body">
+          <span class="pill">${game.status[currentLang]}</span>
+          <h3>${t.title}</h3>
+          <p>${t.short}</p>
+          <span class="game-cta">${currentLang === 'it' ? 'Dettagli' : 'Details'}</span>
+        </span>`;
+    }
     rail.appendChild(card);
   });
 }
@@ -261,11 +284,9 @@ function renderDevlog() {
   }).join('');
 }
 
-$('railPrev').addEventListener('click', () => $('gamesRail').scrollBy({ left: -340, behavior: 'smooth' }));
-$('railNext').addEventListener('click', () => $('gamesRail').scrollBy({ left: 340, behavior: 'smooth' }));
 
 $('gamesRail').addEventListener('click', (e) => {
-  const card = e.target.closest('.game-card');
+  const card = e.target.closest('.game-card, .slice');
   if (!card) return;
   const game = gamesDatabase[card.dataset.game];
   const t = game[currentLang];
