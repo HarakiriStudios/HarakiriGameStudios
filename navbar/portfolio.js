@@ -144,8 +144,11 @@ const nav = $('nav');
 const menuToggle = $('menuToggle');
 const setMenu = (open) => {
   nav.classList.toggle('open', open);
+  document.body.classList.toggle('menu-open', open);
   menuToggle.setAttribute('aria-expanded', String(open));
 };
+$('navBackdrop').addEventListener('click', () => setMenu(false));
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
 menuToggle.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
 nav.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
 

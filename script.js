@@ -6,6 +6,7 @@
 // Per aggiungere immagini: metti i file in media/ e scrivi ["media/shot1.png", ...]
 const gamesDatabase = {
   "ikai": {
+    logo: "media/ikai-logo.png",
     status: { it: "Tech demo VR", en: "VR tech demo" },
     it: {
       title: "IKAI: The Other Side",
@@ -28,16 +29,16 @@ const gamesDatabase = {
 const discordUrl = "";
 
 // Tappe del progetto: `done: true` quando completata. La percentuale si calcola da sola.
-// (Le ultime tre sono segnaposto: cambiale con le vostre tappe reali.)
 const milestones = [
-  { done: true,  it: "Basi VR: OpenXR e simulatore",           en: "VR groundwork: OpenXR and simulator" },
-  { done: true,  it: "Primo test su Meta Quest 3S",            en: "First run on Meta Quest 3S" },
+  { done: true,  it: "Basi VR: OpenXR e simulatore",             en: "VR groundwork: OpenXR and simulator" },
+  { done: true,  it: "Primo test su Meta Quest 3S",              en: "First run on Meta Quest 3S" },
   { done: true,  it: "Movimento e interazione con i controller", en: "Movement and controller interaction" },
-  { done: true,  it: "Menu e puzzle in VR",                    en: "Menus and puzzles in VR" },
-  { done: true,  it: "Opzioni di comfort",                     en: "Comfort options" },
-  { done: false, it: "Playtest e correzione bug",              en: "Playtesting and bug fixing" },
-  { done: false, it: "Rifinitura grafica",                     en: "Visual polish" },
-  { done: false, it: "Demo pubblica",                          en: "Public demo" }
+  { done: true,  it: "Menu e puzzle in VR",                      en: "Menus and puzzles in VR" },
+  { done: true,  it: "Opzioni di comfort",                       en: "Comfort options" },
+  { done: false, it: "Nuovo progetto solo-VR da zero",           en: "New VR-only project from scratch" },
+  { done: false, it: "Modelli 3D rifatti per la VR",             en: "3D models remade for VR" },
+  { done: false, it: "Look in stile PSX",                        en: "PSX-style look" },
+  { done: false, it: "Tech demo pronta da mostrare",             en: "Tech demo ready to show" }
 ];
 
 // Devlog: la voce piu' recente per prima. Formato data: AAAA-MM-GG.
@@ -107,8 +108,11 @@ const topbar = $('topbar');
 
 function setMenu(open) {
   nav.classList.toggle('open', open);
+  document.body.classList.toggle('menu-open', open);
   menuToggle.setAttribute('aria-expanded', String(open));
 }
+$('navBackdrop').addEventListener('click', () => setMenu(false));
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
 menuToggle.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
 nav.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
 
@@ -196,7 +200,8 @@ function renderGames() {
     const t = game[currentLang];
     const cover = game.screenshots[0];
     const card = document.createElement('button');
-    card.className = 'game-card' + (cover ? '' : ' noimg');
+    card.className = 'game-card' + (cover ? '' : ' noimg') + (game.logo ? ' has-logo' : '');
+    if (game.logo) card.style.setProperty('--logo', `url("${game.logo}")`);
     card.dataset.game = key;
     card.innerHTML = `
       ${cover ? `<img src="${cover}" alt="" loading="lazy" />` : ''}
