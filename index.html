@@ -4,282 +4,176 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Harakiri Game Studios</title>
-  <link rel="icon" type="image/x-icon" href="logo/logo-white.svg"/>
+  <link rel="icon" type="image/svg+xml" href="logo/logo-white.svg" />
   <meta name="description" content="Harakiri Game Studios - Esperienze indie visive e coinvolgenti.">
 
-  <!-- Open Graph / Facebook / Discord / Telegram -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://harakirigamestudios.com/">
   <meta property="og:title" content="Harakiri Game Studios">
   <meta property="og:description" content="Esperienze indie visive e coinvolgenti.">
-  <meta property="og:image" content="logo/preview-banner.png">
+  <meta property="og:image" content="logo/logo-white.svg">
 
-  <!-- Twitter / X -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:title" content="Harakiri Game Studios">
-  <meta property="twitter:description" content="Esperienze indie visive e coinvolgenti.">
-  <meta property="twitter:image" content="logo/preview-banner.png">
-
-  <!-- FontAwesome CDN -->
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-p9+r64T1ZpskOzy0zEqm1S/x6W9ogA6pR3TzlUtl69XxRyCuVqexWe2RlUn3Fv1F1ek9Qt+gV7Gkgv4KURRhXw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  
-  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Space+Grotesk:wght@300;400;700&family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Russo+One&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="elegant-dark">
+<body>
+  <div class="page">
 
-  <!-- Scroll to Top Button -->
-  <button id="scrollToTop" class="audio-click" aria-label="Torna su">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
-  <div id="particles-js"></div>
-  <div class="cyber-grid"></div>
-  <div class="crt-scanlines"></div>
-
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">
-      <a href="#hero" class="audio-click" style="display: block; height: 26px; width: 26px; position: relative;">
-        <img src="logo/logo-white.svg" class="nav-logo dark-logo logo-large" aria-hidden="true" style="position: absolute; top:0; left:0; height: 26px;" />
-        <img src="logo/logo-black.svg" class="nav-logo light-logo logo-large" aria-hidden="true" style="position: absolute; top:0; left:0; height: 26px;" />
+    <!-- Banner -->
+    <header class="banner">
+      <a href="#top" class="brand" id="top">
+        <img src="logo/logo-white.svg" alt="" class="brand-logo" />
+        <span class="brand-text">
+          <span class="brand-name">HARAKIRI</span>
+          <span class="brand-sub">GAME STUDIOS</span>
+        </span>
       </a>
-      <span>Harakiri Game Studios</span>
-    </div>
+      <p class="banner-tag" data-lang-it="Esperienze indie visive e coinvolgenti." data-lang-en="Visual and immersive indie experiences.">Esperienze indie visive e coinvolgenti.</p>
+    </header>
 
-    <nav>
+    <!-- Nav bar -->
+    <nav class="navbar" aria-label="Principale">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">☰ MENU</button>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#about" class="audio-click" data-lang-it="Chi Siamo" data-lang-en="About Us">Chi Siamo</a></li>
-        <li><a href="#games" class="audio-click" data-lang-it="Giochi" data-lang-en="Games">Giochi</a></li>
-        <li><a href="navbar/portfolio.html" class="audio-click" data-lang-it="Portfolio" data-lang-en="Portfolio">Portfolio</a></li>
-        <li><a href="#contact" class="audio-click" data-lang-it="Contatti" data-lang-en="Contact">Contatti</a></li>
-        <li>
-          <select id="languageSelector" aria-label="Seleziona Lingua" class="theme-dropdown audio-click">
-            <option value="it">IT</option>
-            <option value="en">EN</option>
-          </select>
-        </li>
-        <li>
-          <select id="themeSelector" aria-label="Seleziona tema" class="theme-dropdown audio-click">
-            <option value="cyber-dark">Cyber Dark</option>
-            <option value="cyber-white">Cyber White</option>
-            <option value="elegant-dark" selected>Elegant Dark</option>
-            <option value="elegant-light">Elegant Light</option>
-          </select>
-        </li>
+        <li><a href="#about" data-lang-it="Chi Siamo" data-lang-en="About">Chi Siamo</a></li>
+        <li><a href="#games" data-lang-it="Giochi" data-lang-en="Games">Giochi</a></li>
+        <li><a href="#team" data-lang-it="Team" data-lang-en="Team">Team</a></li>
+        <li><a href="navbar/portfolio.html">Portfolio</a></li>
+        <li><a href="#contact" data-lang-it="Contatti" data-lang-en="Contact">Contatti</a></li>
       </ul>
-      <div class="menu-toggle audio-click" onclick="toggleMenu()" aria-label="Toggle menu">☰</div>
+      <div class="lang-switch" role="group" aria-label="Lingua">
+        <button class="lang-btn" data-lang="it">IT</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
     </nav>
-  </header>
 
-  <!-- Hero Section -->
-  <section id="hero" class="hero">
-    <div class="hero-content">
-      <h1 data-text="Harakiri Game Studios">Harakiri Game Studios</h1>
-      <p class="hero-subtext" data-lang-it="Esperienze indie visive e coinvolgenti." data-lang-en="Visual and immersive indie experiences.">Esperienze indie visive e coinvolgenti.</p>
-      <button id="openTrailerBtn" class="win-action-btn audio-click" style="margin-top: 15px;" data-lang-it="GUARDA IL TRAILER" data-lang-en="WATCH TRAILER">GUARDA IL TRAILER</button>
+    <div class="layout">
+
+      <!-- Main column -->
+      <main class="main-col">
+
+        <section id="about" class="box">
+          <h2 class="box-title" data-lang-it="Chi Siamo" data-lang-en="About Us">Chi Siamo</h2>
+          <div class="box-body">
+            <p data-lang-it="Siamo un team indie che realizza mondi bizzarri, surreali e magnetici. Sperimentiamo con gameplay, arte e narrazione per creare esperienze uniche e indimenticabili." data-lang-en="We are an indie team crafting bizarre, surreal, and magnetic worlds. We experiment with gameplay, art, and storytelling to create unique and unforgettable experiences.">Siamo un team indie che realizza mondi bizzarri, surreali e magnetici. Sperimentiamo con gameplay, arte e narrazione per creare esperienze uniche e indimenticabili.</p>
+          </div>
+        </section>
+
+        <section id="games" class="box">
+          <h2 class="box-title" data-lang-it="I Nostri Giochi" data-lang-en="Our Games">I Nostri Giochi</h2>
+          <div class="box-body">
+            <div id="gamesGrid" class="games-grid"></div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Sidebar -->
+      <aside class="side-col">
+
+        <section id="team" class="box">
+          <h2 class="box-title" data-lang-it="Il Team" data-lang-en="The Team">Il Team</h2>
+          <div class="box-body">
+            <div class="team-list">
+              <button class="member"
+                      data-name="Marco D'Arrigo"
+                      data-role-it="Game Programmer" data-role-en="Unity Programmer"
+                      data-bio-it="Faccio di tutto su Unity: dal codice puro alla struttura di gioco. Più un problema è impossibile da risolvere, più mi diverto a distruggerlo."
+                      data-bio-en="I do a bit of everything in Unity: from pure code to game design architecture. The more complex the bug, the more I love crushing it."
+                      data-github="https://github.com/MeraMadness">
+                <img src="imgsProfile/marcod.jpg" alt="" loading="lazy" />
+                <span class="member-info"><strong>Marco D'Arrigo</strong><span class="member-role">Unity Programmer</span></span>
+              </button>
+
+              <button class="member"
+                      data-name="Valeria Napoli"
+                      data-role-it="Game Programmer" data-role-en="Unity Programmer"
+                      data-bio-it="Sviluppo la logica di gioco, l'IA e i sistemi core in Unity. Trasformo le idee del team in meccaniche reali, fluide e pronte all'azione."
+                      data-bio-en="I code gameplay systems, AI, and core mechanics in Unity. Turning our wild ideas into solid, fluid, and playable mechanics."
+                      data-github="https://github.com/vale130612">
+                <img src="imgsProfile/vale.png" alt="" loading="lazy" />
+                <span class="member-info"><strong>Valeria Napoli</strong><span class="member-role">Unity Programmer</span></span>
+              </button>
+
+              <button class="member"
+                      data-name="Marco Valastro"
+                      data-role-it="Digital Artist" data-role-en="Digital Artist"
+                      data-bio-it="Do vita e colore ai nostri mondi. Dai primi schizzi di concept art fino all'interfaccia di gioco, curo l'estetica e l'atmosfera visiva."
+                      data-bio-en="Bringing life and color to our worlds. From early concept art to the final UI, I shape the aesthetic and visual atmosphere."
+                      data-instagram="https://www.instagram.com/valstrax_draw/">
+                <img src="imgsProfile/marco.jpg" alt="" loading="lazy" />
+                <span class="member-info"><strong>Marco Valastro</strong><span class="member-role">Digital Artist</span></span>
+              </button>
+
+              <button class="member"
+                      data-name="Serena Napoli"
+                      data-role-it="3D Generalist" data-role-en="3D Generalist"
+                      data-bio-it="Modello in tre dimensioni tutto ciò che serve, dai personaggi agli oggetti ambientali, e do loro vita facendoli muovere e animare."
+                      data-bio-en="Modeling everything we need in 3D, from characters to props, and bringing them to life with dynamic animations."
+                      data-artstation="https://www.artstation.com/serenanapoli_3d">
+                <img src="imgsProfile/sere.jpg" alt="" loading="lazy" />
+                <span class="member-info"><strong>Serena Napoli</strong><span class="member-role">3D Generalist</span></span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" class="box">
+          <h2 class="box-title" data-lang-it="Contatti" data-lang-en="Contact">Contatti</h2>
+          <div class="box-body">
+            <ul class="contact-list">
+              <li><a href="https://instagram.com/harakiri.studios" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+              <li><a href="https://itch.io/team/harakirigamestudios" target="_blank" rel="noopener"><i class="fa-solid fa-gamepad"></i> Itch.io</a></li>
+              <li><a href="https://x.com/HarakiriStudios" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> Twitter / X</a></li>
+            </ul>
+          </div>
+        </section>
+
+      </aside>
     </div>
-  </section>
 
-  <!-- Sezione News / Marquee -->
-  <div class="retro-ticker">
-    <marquee id="tickerMarquee" scrollamount="5" data-lang-it="++ HARAKIRI OS v3.4 ONLINE ++ CARICAMENTO CORE DATABASE COMPLETATO CON SUCCESSO ++ PROSSIMO RILASCIO PREVISTO IN ESTATE ++" data-lang-en="++ HARAKIRI OS v3.4 ONLINE ++ CORE DATABASE LOADED SUCCESSFULLY ++ NEXT RELEASE EXPECTED THIS SUMMER ++">++ HARAKIRI OS v3.4 ONLINE ++ CARICAMENTO CORE DATABASE COMPLETATO CON SUCCESSO ++ PROSSIMO RILASCIO PREVISTO IN ESTATE ++</marquee>
+    <footer class="footer">
+      <p>&copy; 2026 Harakiri Game Studios</p>
+    </footer>
   </div>
 
-  <!-- About Section -->
-  <section id="about" class="unified-about-team">
-    
-    <div class="about-brand-intro">
-      <h2 class="unified-section-title" data-lang-it="Chi Siamo" data-lang-en="About Us">Chi Siamo</h2>
-      <p class="about-brand-text" data-lang-it="Siamo un team indie che realizza mondi bizzarri, surreali e magnetici. Sperimentiamo con gameplay, arte e narrazione per creare esperienze uniche e indimenticabili." data-lang-en="We are an indie team crafting bizarre, surreal, and magnetic worlds. We experiment with gameplay, art, and storytelling to create unique and unforgettable experiences.">Siamo un team indie che realizza mondi bizzarri, surreali e magnetici. Sperimentiamo con gameplay, arte e narrazione per creare esperienze uniche e indimenticabili.</p>
-    </div>
-
-    <div id="team" class="team-showcase">
-      <h2 class="unified-section-title" style="margin-bottom: 40px;" data-lang-it="Il Nostro Team" data-lang-en="Our Team">Il Nostro Team</h2>
-      
-      <div class="team-grid">
-        <button class="member audio-click" 
-                data-name="Marco D'Arrigo" 
-                data-role-it="Game Programmer" 
-                data-role-en="Unity Programmer" 
-                data-bio-it="Faccio di tutto su Unity: dal codice puro alla struttura di gioco. Più un problema è impossibile da risolvere, più mi diverto a distruggerlo." 
-                data-bio-en="I do a bit of everything in Unity: from pure code to game design architecture. The more complex the bug, the more I love crushing it." 
-                data-github="https://github.com/MeraMadness">
-          <img src="imgsProfile/marcod.jpg" alt="Marco D'Arrigo" loading="lazy" />
-          <h3>Marco D'Arrigo</h3>
-          <p class="member-role">Unity Programmer</p>
-        </button>
-        
-        <button class="member audio-click" 
-                data-name="Valeria Napoli" 
-                data-role-it="Game Programmer" 
-                data-role-en="Unity Programmer" 
-                data-bio-it="Sviluppo la logica di gioco, l'IA e i sistemi core in Unity. Trasformo le idee del team in meccaniche reali, fluide e pronte all'azione." 
-                data-bio-en="I code gameplay systems, AI, and core mechanics in Unity. Turning our wild ideas into solid, fluid, and playable mechanics." 
-                data-github="https://github.com/vale130612">
-          <img src="imgsProfile/vale.png" alt="Valeria Napoli" loading="lazy" />
-          <h3>Valeria Napoli</h3>
-          <p class="member-role">Unity Programmer</p>
-        </button>
-        
-        <button class="member audio-click" 
-                data-name="Marco Valastro" 
-                data-role-it="Digital Artist" 
-                data-role-en="Digital Artist" 
-                data-bio-it="Do vita e colore ai nostri mondi. Dai primi schizzi di concept art fino all'interfaccia di gioco, curo l'estetica e l'atmosfera visiva." 
-                data-bio-en="Bringing life and color to our worlds. From early concept art to the final UI, I shape the aesthetic and visual atmosphere." 
-                data-instagram="https://www.instagram.com/valstrax_draw/">
-          <img src="imgsProfile/marco.jpg" alt="Marco Valastro" loading="lazy" />
-          <h3>Marco Valastro</h3>
-          <p class="member-role">Digital Artist</p>
-        </button>
-        
-        <button class="member audio-click" 
-                data-name="Serena Napoli" 
-                data-role-it="3D Generalist" 
-                data-role-en="3D Generalist" 
-                data-bio-it="Modello in tre dimensioni tutto ciò che serve, dai personaggi agli oggetti ambientali, e do loro vita facendoli muovere e animare." 
-                data-bio-en="Modeling everything we need in 3D, from characters to props, and bringing them to life with dynamic animations." 
-                data-artstation="https://www.artstation.com/serenanapoli_3d">
-          <img src="imgsProfile/sere" alt="Serena Napoli" loading="lazy" />
-          <h3>Serena Napoli</h3>
-          <p class="member-role">3D Generalist</p>
-        </button>
-      </div>
-    </div>
-
-</section>
-
-  <!-- Games Section -->
-  <section id="games" class="ps-fullscreen-wrapper">
-    
-    <div class="ps-game-slice audio-click" data-game="neon-abyss" style="--bg-img: url('https://picsum.photos/id/1005/1200/800');">
-      <div class="slice-content">
-        <h2 class="slice-title">Neon Abyss of Mind</h2>
-        <p class="slice-desc" data-lang-it="Un viaggio psichedelico destrutturato all'interno della memoria RAM..." data-lang-en="A deconstructed psychedelic journey inside the RAM memory...">Un viaggio psichedelico destrutturato all'interno della memoria RAM...</p>
-        <span class="action-text" data-lang-it="[Clicca per Dettagli]" data-lang-en="[Click for Details]">[Clicca per Dettagli]</span>
-      </div>
-    </div>
-
-    <div class="ps-game-slice audio-click" data-game="cosmic-rituals" style="--bg-img: url('https://picsum.photos/id/1035/1200/800');">
-      <div class="slice-content">
-        <h2 class="slice-title">Cosmic Rituals</h2>
-        <p class="slice-desc" data-lang-it="Simulatore di culti spaziali a 8-bit. Gestisci complessi rituali..." data-lang-en="8-bit space cult simulator. Manage complex cosmic rituals...">Simulatore di culti spaziali a 8-bit. Gestisci complessi rituali...</p>
-        <span class="action-text" data-lang-it="[Clicca per Dettagli]" data-lang-en="[Click for Details]">[Clicca per Dettagli]</span>
-      </div>
-    </div>
-
-    <div class="ps-game-slice audio-click" data-game="lucid-deathloop" style="--bg-img: url('https://picsum.photos/id/1065/1200/800');">
-      <div class="slice-content">
-        <h2 class="slice-title">Lucid Deathloop</h2>
-        <p class="slice-desc" data-lang-it="Muori, destabilizza l'ambiente circostante, rompi le variabili globali..." data-lang-en="Die, destabilize the environment, break global variables...">Muori, destabilizza l'ambiente circostante, rompi le variabili globali...</p>
-        <span class="action-text" data-lang-it="[Clicca per Dettagli]" data-lang-en="[Click for Details]">[Clicca per Dettagli]</span>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- Footer (Contatti Integrati) -->
-  <footer>
-    <div class="footer-contact-wrapper">
-      <h2 data-lang-it="Contattaci" data-lang-en="Contact Us">Contattaci</h2>
-      <p style="margin-bottom: 20px;" data-lang-it="Seguici sui nostri canali social per aggiornamenti costanti." data-lang-en="Follow us on our social handles for constant updates.">Seguici sui nostri canali social per aggiornamenti costanti.</p>
-      
-      <ul class="contact-list" style="margin-bottom: 30px;">
-        <li><a href="https://instagram.com/harakiri.studios" target="_blank" rel="noopener" class="audio-click"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
-        <li><a href="https://itch.io/team/harakirigamestudios" target="_blank" rel="noopener" class="audio-click"><i class="fa-solid fa-gamepad"></i> Itch.io</a></li>
-        <li><a href="https://x.com/HarakiriStudios" target="_blank" rel="noopener" class="audio-click"><i class="fa-brands fa-x-twitter"></i> Twitter</a></li>
-        <li><a href="https://discord.gg/yourdiscordinvite" target="_blank" rel="noopener" class="audio-click"><i class="fa-brands fa-discord"></i> Discord</a></li>
-      </ul>
-    </div>
-
-    <hr style="border: 0; border-top: 1px dashed var(--window-border); max-width: 400px; margin: 0 auto 20px auto; opacity: 0.5;">
-
-    <p>&copy; 2026 Harakiri Game Studios</p>
-    
-    <div class="retro-banners">
-      <span class="env-text">[ MADE FOR CYBER-ENVIRONMENTS ]</span>
-      <span class="env-text">[ SYSTEM: ONLINE ]</span>
-    </div>
-  </footer>
-
-  <!-- MODAL TRAILER -->
-  <div id="trailerModal" class="modal" aria-hidden="true" role="dialog">
-    <div class="modal-content retro-popup large-popup">
+  <!-- Modal: team member -->
+  <div id="teamModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+    <div class="modal-content">
       <div class="window-header">
-        <span class="window-title" data-cyber="MEDIA_STREAM_PLAYER.HK" data-elegant-it="Visualizzatore Media" data-elegant-en="Media Player"><i class="fa-solid fa-video"></i> <span></span></span>
-        <button class="modal-close audio-click">&times;</button>
+        <span id="modalTitle" class="window-title"></span>
+        <button class="modal-close" aria-label="Chiudi">&times;</button>
+      </div>
+      <div class="window-body center">
+        <img id="modalImg" class="modal-avatar" src="" alt="" />
+        <h4 id="modalRole" class="modal-role"></h4>
+        <p id="modalDesc" class="modal-desc"></p>
+        <div id="modalLinks" class="modal-links"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: game -->
+  <div id="gameModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="gameModalTitle">
+    <div class="modal-content wide">
+      <div class="window-header">
+        <span id="gameModalTitle" class="window-title"></span>
+        <button class="modal-close" aria-label="Chiudi">&times;</button>
       </div>
       <div class="window-body">
-        <div class="video-container">
-          <iframe id="trailerIframe" src="" title="Harakiri Studio Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div style="text-align: center; margin-top: 15px;">
-          <button class="win-action-btn closeModalBtn audio-click" data-lang-it="CHIUDI TRAILER" data-lang-en="CLOSE TRAILER">CHIUDI TRAILER</button>
-        </div>
+        <p id="gameModalDesc" class="modal-desc"></p>
+        <div id="gameModalGallery" class="gallery"></div>
+        <p id="gameModalExtra" class="modal-extra"></p>
+        <div id="gameModalStores" class="modal-links row"></div>
       </div>
     </div>
   </div>
 
-  <!-- MODAL 1: Dettaglio Staff (Aggiornato con Immagine e Portfolio) -->
-  <div id="teamModal" class="modal" aria-hidden="true" role="dialog">
-    <div class="modal-content retro-popup">
-      <div class="window-header">
-        <span id="modalTitle" class="window-title">Nome Staff</span>
-        <button class="modal-close audio-click">&times;</button>
-      </div>
-      <div class="window-body" style="text-align: center;">
-        <!-- Elemento Immagine aggiunto per il popup -->
-        <img id="modalImg" src="" alt="" style="width: 90px; height: 90px; border-radius: 50%; border: var(--border-style); object-fit: cover; margin-bottom: 15px;" />
-        
-        <h4 id="modalRole" style="color: var(--accent-neon); margin-bottom: 10px;">Ruolo</h4>
-        <p id="modalDesc" style="margin-bottom: 20px; text-align: left;"></p>
-        
-        <!-- Contenitore dinamico per il link del Portfolio -->
-        <div id="modalPortfolioWrapper" style="margin-bottom: 20px;"></div>
-        
-        <div style="text-align: center;">
-          <button class="win-action-btn closeModalBtn audio-click">OK</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL 2: Dettaglio Gioco -->
-  <div id="gameModal" class="modal" aria-hidden="true" role="dialog">
-    <div class="modal-content retro-popup large-popup">
-      <div class="window-header">
-        <span class="window-title" data-cyber="GAME_DATABASE.SYS" data-elegant-it="Dettagli Gioco" data-elegant-en="Game Details"><i class="fa-solid fa-floppy-disk"></i> <span></span></span>
-        <button class="modal-close audio-click">&times;</button>
-      </div>
-      <div class="window-body" style="text-align: left;">
-        <h2 id="gameModalTitle" style="text-align: center; margin-bottom: 15px;">Nome Gioco</h2>
-        
-        <h3 class="popup-sub-title"><i class="fa-solid fa-file-lines"></i> <span data-lang-it="1. PANORAMICA" data-lang-en="1. OVERVIEW">1. PANORAMICA</span></h3>
-        <p id="gameModalDesc" style="margin-bottom: 15px; font-size: 0.95rem;"></p>
-        
-        <h3 class="popup-sub-title"><i class="fa-solid fa-images"></i> <span data-lang-it="2. SCREENSHOTS" data-lang-en="2. SCREENSHOTS">2. SCREENSHOTS</span></h3>
-        <div id="gameModalGallery" class="popup-gallery" style="margin-bottom: 15px;"></div>
-
-        <h3 class="popup-sub-title"><i class="fa-solid fa-cart-shopping"></i> <span data-lang-it="3. LINK STORE" data-lang-en="3. STORE LINKS">3. LINK STORE</span></h3>
-        <div id="gameModalStores" class="popup-stores-wrapper" style="margin-bottom: 20px;"></div>
-
-        <div id="gameModalExtra" class="modal-extra-box"></div>
-        
-        <div style="text-align: center; margin-top: 20px;">
-          <button class="win-action-btn closeModalBtn audio-click" data-lang-it="CHIUDI RECORD" data-lang-en="CLOSE RECORD">CHIUDI RECORD</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script src="script.js"></script>
-
 </body>
 </html>
