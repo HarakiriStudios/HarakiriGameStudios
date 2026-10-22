@@ -61,6 +61,12 @@
   }
 };
 
+const gameStatus = {
+  "neon-abyss": { it: "Alpha 0.4", en: "Alpha 0.4" },
+  "cosmic-rituals": { it: "Disponibile", en: "Available" },
+  "lucid-deathloop": { it: "In sviluppo", en: "In development" }
+};
+
 const socialPlatforms = [
   { key: 'portfolio', icon: 'fa-solid fa-briefcase', label: 'Portfolio' },
   { key: 'github', icon: 'fa-brands fa-github', label: 'GitHub' },
@@ -99,19 +105,29 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
   });
 });
 
-/* ---------- Mobile menu ---------- */
-const navLinks = $('navLinks');
+/* ---------- Top bar / mobile menu ---------- */
+const nav = $('nav');
 const menuToggle = $('menuToggle');
-menuToggle.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
+const topbar = $('topbar');
+
+function setMenu(open) {
+  nav.classList.toggle('open', open);
   menuToggle.setAttribute('aria-expanded', String(open));
-});
-navLinks.addEventListener('click', (e) => {
-  if (e.target.closest('a')) {
-    navLinks.classList.remove('open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-  }
-});
+}
+menuToggle.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+nav.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+
+const onScroll = () => topbar.classList.toggle('scrolled', window.scrollY > 40);
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ---------- Reveal on scroll ---------- */
+const revealObserver = 'IntersectionObserver' in window
+  ? new IntersectionObserver((entries) => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); revealObserver.unobserve(en.target); } });
+    }, { threshold: 0.12 })
+  : null;
+document.querySelectorAll('.reveal').forEach(el => revealObserver ? revealObserver.observe(el) : el.classList.add('in'));
 
 /* ---------- Modals ---------- */
 function openModal(modal) { modal.setAttribute('aria-hidden', 'false'); }
@@ -130,17 +146,27 @@ document.addEventListener('keydown', (e) => {
 /* ---------- Team ---------- */
 const teamModal = $('teamModal');
 
-// Broken/missing photo: fall back to an empty box instead of the broken-image icon
-document.querySelectorAll('.member img').forEach(img => {
-  img.addEventListener('error', () => { img.removeAttribute('src'); });
-});
+// Missing photo: drop the <img> so the initials behind it show
+function dropBrokenImg(img) { img.addEventListener('error', () => img.remove()); }
+document.querySelectorAll('.tile-media img').forEach(dropBrokenImg);
 
 document.querySelectorAll('.member').forEach(member => {
   member.addEventListener('click', () => {
     $('modalTitle').textContent = member.dataset.name;
-    const img = $('modalImg');
-    const src = member.querySelector('img').getAttribute('src');
-    if (src) img.src = src; else img.removeAttribute('src');
+
+    const media = $('modalMedia');
+    media.dataset.initials = member.querySelector('.tile-media').dataset.initials;
+    media.querySelector('img')?.remove();
+    const src = member.querySelector('.tile-media img')?.getAttribute('src');
+    if (src) {
+      const img = document.createElement('img');
+      img.id = 'modalImg';
+      img.alt = '';
+      dropBrokenImg(img);
+      img.src = src;
+      media.appendChild(img);
+    }
+
     $('modalRole').textContent = member.getAttribute(`data-role-${currentLang}`);
     $('modalDesc').textContent = member.getAttribute(`data-bio-${currentLang}`);
 
@@ -153,7 +179,7 @@ document.querySelectorAll('.member').forEach(member => {
       a.href = url;
       a.target = '_blank';
       a.rel = 'noopener';
-      a.className = 'btn';
+      a.className = 'btn btn-ghost';
       a.innerHTML = `<i class="${p.icon}"></i> ${p.label}`;
       links.appendChild(a);
     });
@@ -165,8 +191,8 @@ document.querySelectorAll('.member').forEach(member => {
 const gameModal = $('gameModal');
 
 function renderGames() {
-  const grid = $('gamesGrid');
-  grid.innerHTML = '';
+  const rail = $('gamesRail');
+  rail.innerHTML = '';
   Object.entries(gamesDatabase).forEach(([key, game]) => {
     const t = game[currentLang];
     const card = document.createElement('button');
@@ -174,15 +200,20 @@ function renderGames() {
     card.dataset.game = key;
     card.innerHTML = `
       <img src="${game.screenshots[0]}" alt="" loading="lazy" />
-      <span class="game-card-body">
+      <span class="game-body">
+        <span class="pill">${gameStatus[key][currentLang]}</span>
         <h3>${t.title}</h3>
         <p>${t.short}</p>
+        <span class="game-cta">${currentLang === 'it' ? 'Dettagli' : 'Details'}</span>
       </span>`;
-    grid.appendChild(card);
+    rail.appendChild(card);
   });
 }
 
-$('gamesGrid').addEventListener('click', (e) => {
+$('railPrev').addEventListener('click', () => $('gamesRail').scrollBy({ left: -340, behavior: 'smooth' }));
+$('railNext').addEventListener('click', () => $('gamesRail').scrollBy({ left: 340, behavior: 'smooth' }));
+
+$('gamesRail').addEventListener('click', (e) => {
   const card = e.target.closest('.game-card');
   if (!card) return;
   const game = gamesDatabase[card.dataset.game];
@@ -190,6 +221,7 @@ $('gamesGrid').addEventListener('click', (e) => {
 
   $('gameModalTitle').textContent = t.title;
   $('gameModalDesc').textContent = t.desc;
+  $('gameModalStatus').textContent = gameStatus[card.dataset.game][currentLang];
   $('gameModalExtra').textContent = t.extra;
 
   const gallery = $('gameModalGallery');
@@ -204,8 +236,8 @@ $('gamesGrid').addEventListener('click', (e) => {
 
   const stores = $('gameModalStores');
   stores.innerHTML = '';
-  if (game.stores.steam) stores.innerHTML += `<a class="btn" href="${game.stores.steam}" target="_blank" rel="noopener"><i class="fa-brands fa-steam"></i> Steam</a>`;
-  if (game.stores.itch) stores.innerHTML += `<a class="btn" href="${game.stores.itch}" target="_blank" rel="noopener"><i class="fa-solid fa-gamepad"></i> Itch.io</a>`;
+  if (game.stores.steam) stores.innerHTML += `<a class="btn btn-primary" href="${game.stores.steam}" target="_blank" rel="noopener"><i class="fa-brands fa-steam"></i> Steam</a>`;
+  if (game.stores.itch) stores.innerHTML += `<a class="btn btn-ghost" href="${game.stores.itch}" target="_blank" rel="noopener"><i class="fa-solid fa-gamepad"></i> Itch.io</a>`;
   if (!game.stores.steam && !game.stores.itch) {
     stores.innerHTML = `<span class="soon">${currentLang === 'it' ? 'Prossimamente' : 'Coming soon'}</span>`;
   }

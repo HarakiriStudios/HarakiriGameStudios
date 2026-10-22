@@ -7,71 +7,68 @@
   <link rel="icon" type="image/svg+xml" href="../logo/logo-white.svg" />
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Russo+One&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="portfolio.css" />
 </head>
-
 <body>
-  <div class="page">
 
-    <header class="banner">
-      <a href="../index.html" class="brand">
-        <img src="../logo/logo-white.svg" alt="" class="brand-logo" />
-        <span class="brand-text">
-          <span class="brand-name">HARAKIRI</span>
-          <span class="brand-sub">PORTFOLIO</span>
-        </span>
-      </a>
-      <p class="banner-tag" data-lang-it="Talenti, strumenti e progetti del team." data-lang-en="Talents, tools and projects of the team.">Talenti, strumenti e progetti del team.</p>
-    </header>
-
-    <nav class="navbar" aria-label="Principale">
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">☰ MENU</button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="../index.html" data-lang-it="Home" data-lang-en="Home">Home</a></li>
-        <li><a href="../index.html#games" data-lang-it="Giochi" data-lang-en="Games">Giochi</a></li>
-        <li><a href="../index.html#team" data-lang-it="Team" data-lang-en="Team">Team</a></li>
-        <li><a href="../index.html#contact" data-lang-it="Contatti" data-lang-en="Contact">Contatti</a></li>
-      </ul>
+  <header class="topbar scrolled" id="topbar">
+    <a href="../index.html" class="brand" aria-label="Harakiri Game Studios">
+      <img src="../logo/logo-white.svg" alt="" class="brand-logo" />
+      <span class="brand-name">HARAKIRI</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Principale">
+      <a href="../index.html" data-lang-it="Home" data-lang-en="Home">Home</a>
+      <a href="../index.html#games" data-lang-it="Giochi" data-lang-en="Games">Giochi</a>
+      <a href="../index.html#team" data-lang-it="Team" data-lang-en="Team">Team</a>
+      <a href="portfolio.html" aria-current="page">Portfolio</a>
+      <a href="../index.html#contact" data-lang-it="Contatti" data-lang-en="Contact">Contatti</a>
+    </nav>
+    <div class="topbar-right">
       <div class="lang-switch" role="group" aria-label="Lingua">
         <button class="lang-btn" data-lang="it">IT</button>
         <button class="lang-btn" data-lang="en">EN</button>
       </div>
-    </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
 
-    <main class="stack">
-      <section class="box">
-        <h2 class="box-title" data-lang-it="Talenti del Team" data-lang-en="Team Talents">Talenti del Team</h2>
-        <div class="box-body">
-          <p class="hint" data-lang-it="Clicca su una scheda per vedere i dettagli." data-lang-en="Click a card to see the details.">Clicca su una scheda per vedere i dettagli.</p>
-          <div id="peopleGrid" class="cards"></div>
-        </div>
-      </section>
+  <main>
+    <section class="page-hero">
+      <p class="eyebrow" data-lang-it="Portfolio" data-lang-en="Portfolio">Portfolio</p>
+      <h1 data-lang-it="Talenti e<br>progetti" data-lang-en="Talents &amp;<br>projects">Talenti e<br>progetti</h1>
+      <p class="hero-sub" data-lang-it="Clicca su una scheda per vedere i dettagli." data-lang-en="Click a card to see the details.">Clicca su una scheda per vedere i dettagli.</p>
+    </section>
 
-      <section class="box">
-        <h2 class="box-title" data-lang-it="Progetti Collettivi e Ricerca" data-lang-en="Collective Projects &amp; R&amp;D">Progetti Collettivi e Ricerca</h2>
-        <div class="box-body">
-          <div id="projectsGrid" class="cards"></div>
-        </div>
-      </section>
+    <section class="section tight">
+      <div class="section-head"><h2 data-lang-it="Il team" data-lang-en="The team">Il team</h2></div>
+      <div id="peopleGrid" class="team-grid"></div>
+    </section>
 
-      <a href="../index.html" class="btn back-btn"><i class="fa-solid fa-arrow-left"></i> <span data-lang-it="Torna alla Home" data-lang-en="Back to Home">Torna alla Home</span></a>
-    </main>
+    <section class="section tight">
+      <div class="section-head"><h2 data-lang-it="Progetti e ricerca" data-lang-en="Projects &amp; R&amp;D">Progetti e ricerca</h2></div>
+      <div id="projectsGrid" class="project-grid"></div>
+    </section>
+  </main>
 
-    <footer class="footer">
+  <footer class="footer">
+    <div class="footer-inner">
+      <a href="../index.html" class="link-arrow"><i class="fa-solid fa-arrow-left"></i> <span data-lang-it="Torna alla home" data-lang-en="Back to home">Torna alla home</span></a>
       <p>&copy; 2026 Harakiri Game Studios</p>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   <div id="portfolioModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="pModalTitle">
     <div class="modal-content wide">
-      <div class="window-header">
-        <span id="pModalTitle" class="window-title"></span>
-        <button class="modal-close" aria-label="Chiudi">&times;</button>
-      </div>
-      <div class="window-body">
-        <div id="pModalBody"></div>
+      <button class="modal-close" aria-label="Chiudi">&times;</button>
+      <div id="pModalMedia" class="modal-media" data-initials=""></div>
+      <div class="modal-body">
+        <h3 id="pModalTitle"></h3>
+        <p id="pModalRole" class="modal-role"></p>
+        <p id="pModalDesc"></p>
+        <ul id="pModalFacts" class="modal-facts"></ul>
+        <div id="pModalTags" class="tags"></div>
         <div id="pModalLinks" class="modal-links"></div>
       </div>
     </div>

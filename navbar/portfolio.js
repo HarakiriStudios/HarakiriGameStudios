@@ -1,6 +1,6 @@
 const people = [
   {
-    id: "marco_d", name: "Marco D'Arrigo", role: "Unity & Godot Programmer",
+    id: "marco_d", name: "Marco D'Arrigo", role: "Unity & Godot Programmer", initials: "MD",
     img: "../imgsProfile/marcod.jpg",
     tags: ["Unity", "Godot", "C# / GDScript"],
     link: "https://github.com/MeraMadness", linkLabel: "GitHub",
@@ -16,7 +16,7 @@ const people = [
     }
   },
   {
-    id: "valeria_n", name: "Valeria Napoli", role: "Unity & Godot Programmer",
+    id: "valeria_n", name: "Valeria Napoli", role: "Unity & Godot Programmer", initials: "VN",
     img: "../imgsProfile/vale.png",
     tags: ["Unity", "Godot", "AI Behavior"],
     link: "https://github.com/vale130612", linkLabel: "GitHub",
@@ -32,7 +32,7 @@ const people = [
     }
   },
   {
-    id: "marco_v", name: "Marco Valastro", role: "Digital Artist",
+    id: "marco_v", name: "Marco Valastro", role: "Digital Artist", initials: "MV",
     img: "../imgsProfile/marco.jpg",
     tags: ["Photoshop", "Concept Art", "UI Design"],
     link: "https://www.instagram.com/valstrax_draw/", linkLabel: "Instagram",
@@ -48,7 +48,7 @@ const people = [
     }
   },
   {
-    id: "serena_n", name: "Serena Napoli", role: "3D Generalist",
+    id: "serena_n", name: "Serena Napoli", role: "3D Generalist", initials: "SN",
     img: "../imgsProfile/sere.jpg",
     tags: ["Blender", "3D Modeling", "Texturing"],
     link: "https://www.artstation.com/serenanapoli_3d", linkLabel: "ArtStation",
@@ -99,24 +99,37 @@ const projects = [
 
 const $ = (id) => document.getElementById(id);
 const all = [...people, ...projects];
+const tagsHtml = (item) => item.tags.map(t => `<span class="tag">${t}</span>`).join('');
 
 let currentLang = 'it';
 try { currentLang = localStorage.getItem('selected-lang') || 'it'; } catch (e) { /* storage blocked */ }
 
-function card(item) {
+function dropBrokenImg(img) { img.addEventListener('error', () => img.remove()); }
+
+function personTile(p) {
   const el = document.createElement('button');
-  el.className = 'card';
-  el.dataset.id = item.id;
-  const media = item.img
-    ? `<img src="${item.img}" alt="" loading="lazy" />`
-    : `<i class="${item.icon}" style="font-size:2rem;color:var(--accent-2);width:56px;text-align:center"></i>`;
+  el.className = 'tile';
+  el.dataset.id = p.id;
   el.innerHTML = `
-    <span class="card-head">
-      ${media}
-      <span><h3>${item.name}</h3>${item.role ? `<span class="role">${item.role}</span>` : ''}</span>
-    </span>
-    <span class="tags">${item.tags.map(t => `<span class="tag">${t}</span>`).join('')}</span>
-    <p>${item[currentLang].summary}</p>`;
+    <span class="tile-media" data-initials="${p.initials}"><img src="${p.img}" alt="" loading="lazy" /></span>
+    <span class="tile-info">
+      <strong>${p.name}</strong>
+      <span class="member-role">${p.role}</span>
+      <span class="tags">${tagsHtml(p)}</span>
+    </span>`;
+  dropBrokenImg(el.querySelector('img'));
+  return el;
+}
+
+function projectCard(p) {
+  const el = document.createElement('button');
+  el.className = 'project';
+  el.dataset.id = p.id;
+  el.innerHTML = `
+    <i class="${p.icon}"></i>
+    <h3>${p.name}</h3>
+    <p>${p[currentLang].summary}</p>
+    <span class="tags">${tagsHtml(p)}</span>`;
   return el;
 }
 
@@ -128,11 +141,8 @@ function render() {
   });
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === currentLang));
 
-  $('peopleGrid').replaceChildren(...people.map(card));
-  $('projectsGrid').replaceChildren(...projects.map(card));
-  document.querySelectorAll('.card-head img').forEach(img => {
-    img.addEventListener('error', () => img.removeAttribute('src'));
-  });
+  $('peopleGrid').replaceChildren(...people.map(personTile));
+  $('projectsGrid').replaceChildren(...projects.map(projectCard));
 }
 
 const modal = $('portfolioModal');
@@ -143,25 +153,35 @@ function openItem(id) {
   if (!item) return;
   const t = item[currentLang];
 
-  const head = item.img
-    ? `<img src="${item.img}" alt="" />`
-    : `<i class="${item.icon}" style="font-size:3rem;color:var(--accent-2);margin-bottom:10px"></i>`;
-  $('pModalTitle').textContent = item.name;
-  $('pModalBody').innerHTML = `
-    <div class="modal-body-head">${head}<h3>${item.name}</h3>${item.role ? `<div class="role">${item.role}</div>` : ''}</div>
-    <p>${t.detail}</p>
-    ${t.facts.length ? `<ul class="modal-facts">${t.facts.map(f => `<li>${f}</li>`).join('')}</ul>` : ''}
-    <div class="tags">${item.tags.map(x => `<span class="tag">${x}</span>`).join('')}</div>`;
-  $('pModalBody').querySelector('img')?.addEventListener('error', (e) => e.target.removeAttribute('src'));
+  const media = $('pModalMedia');
+  media.replaceChildren();
+  media.className = 'modal-media';
+  if (item.img) {
+    media.dataset.initials = item.initials;
+    const img = document.createElement('img');
+    img.alt = '';
+    dropBrokenImg(img);
+    img.src = item.img;
+    media.appendChild(img);
+  } else {
+    media.classList.add('icon');
+    media.innerHTML = `<i class="${item.icon}"></i>`;
+  }
 
+  $('pModalTitle').textContent = item.name;
+  $('pModalRole').textContent = item.role || '';
+  $('pModalRole').hidden = !item.role;
+  $('pModalDesc').textContent = t.detail;
+  $('pModalFacts').innerHTML = t.facts.map(f => `<li>${f}</li>`).join('');
+  $('pModalTags').innerHTML = tagsHtml(item);
   $('pModalLinks').innerHTML = item.link
-    ? `<a class="btn" href="${item.link}" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> ${item.linkLabel}</a>`
+    ? `<a class="btn btn-primary" href="${item.link}" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> ${item.linkLabel}</a>`
     : '';
   modal.setAttribute('aria-hidden', 'false');
 }
 
 document.addEventListener('click', (e) => {
-  const c = e.target.closest('.card');
+  const c = e.target.closest('.tile, .project');
   if (c) openItem(c.dataset.id);
 });
 modal.querySelector('.modal-close').addEventListener('click', closeModal);
@@ -172,11 +192,13 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', () => { currentLang = btn.dataset.lang; render(); });
 });
 
-const navLinks = $('navLinks');
+const nav = $('nav');
 const menuToggle = $('menuToggle');
-menuToggle.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
+const setMenu = (open) => {
+  nav.classList.toggle('open', open);
   menuToggle.setAttribute('aria-expanded', String(open));
-});
+};
+menuToggle.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+nav.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
 
 render();
