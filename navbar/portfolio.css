@@ -19,6 +19,7 @@
 
 .tile .tags { margin-top: 8px; }
 
+.empty { padding: 28px; border: 1px dashed var(--line); border-radius: 14px; color: var(--muted); }
 .hint { color: var(--muted); margin-bottom: 20px; }
 .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
 .solo {

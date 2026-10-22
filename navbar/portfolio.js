@@ -65,7 +65,7 @@ const people = [
   }
 ];
 
-// Progetti SOLO: uno per voce. Se la lista e' vuota la sezione non appare.
+// Progetti SOLO: uno per voce. Se la lista e' vuota la sezione mostra un messaggio "presto".
 // `by` = id del membro: marco_d, valeria_n, marco_v oppure serena_n.
 // Esempio:
 // {
@@ -130,8 +130,7 @@ function render() {
 
   $('peopleGrid').replaceChildren(...people.map(personTile));
   $('soloGrid').replaceChildren(...soloProjects.map(soloCard));
-  $('soloSection').hidden = soloProjects.length === 0;
-  $('soonNote').hidden = soloProjects.length > 0;
+  $('soloEmpty').hidden = soloProjects.length > 0;
 }
 
 const modal = $('portfolioModal');
